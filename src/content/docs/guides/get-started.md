@@ -14,6 +14,6 @@ ollama run codellama:7b-instruct
 ollama run codellama:7b-code
 ```
 
-4. Open VS code (if already open a restart might be needed) and press `ctr + shift + T` to open the side panel.
+4. Open VS code (if already open a restart might be needed) and press `CTRL+SHIFT+Z CTRL+SHIFT+T` to open the side panel.
 
 You should see the 🤖 icon indicating that twinny is ready to use.
