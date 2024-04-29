@@ -16,7 +16,7 @@ export default defineConfig({
 				{
 					label: 'Guides',
 					items: [
-						{ label: 'Get started', link: '/guides/get-started/' },
+						{ label: 'Get started', link: '/guides/get-started' },
 					],
 				},
 			],
