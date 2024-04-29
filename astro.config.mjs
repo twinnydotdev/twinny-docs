@@ -5,6 +5,7 @@ import tailwind from '@astrojs/tailwind';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://github.com/rjmacarthy/twinny-docs.github.io',
+	base: '/twinny-docs',
 	integrations: [
 		starlight({
 			title: 'twinny',
