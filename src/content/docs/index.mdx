@@ -1,14 +1,50 @@
 ---
-title: Welcome twinny
-description: The most no-nonsense, locally or API-hosted AI code completion plugin for Visual Studio Code.
+title: Welcome to Twinny
+description: Free and private AI extension for Visual Studio Code. Auto-complete suggestions, chat with AI and more.
 template: splash
 hero:
   title: |
-    twinny
-  tagline: No-nonsense Local or API-hosted AI code completion plugin for Visual Studio Code. 
+    Twinny
+  image:
+    file: ../../assets/twinny.svg
+  tagline: |
+    Free and private AI extension for Visual Studio Code. Auto-complete suggestions, chat with AI and more.
   actions:
-    - text: Get started
-      link: /twinny-docs/guides/get-started
+    - text: Getting started
+      link: /twinny-docs/general/quick-start
       icon: right-arrow
       variant: secondary
 ---
+
+import { Card, CardGrid, LinkCard } from "@astrojs/starlight/components";
+
+## Learn more
+
+<CardGrid stagger>
+  <LinkCard
+    title="Getting started"
+    description="A quick start guide for using Twinny."
+    href="/twinny-docs/general/quick-start"
+  />
+  <LinkCard
+    title="Inference providers"
+    href="/twinny-docs/general/providers"
+    description="Learn how to use an inference provider with Twinny."
+  ></LinkCard>
+  <LinkCard
+    title="Supported models"
+    description="Learn about the supported AI models."
+    href="/twinny-docs/general/supported-models"
+  ></LinkCard>
+</CardGrid>
+
+## Main features
+
+<CardGrid stagger>
+  <Card title="Code completion" icon="seti:json">
+    Twinny provides autocomplete suggestions for your code.
+  </Card>
+  <Card title="Chat with AI" icon="pencil">
+    Twinny provides a chat interface to interact with your personal AI.
+  </Card>
+</CardGrid>

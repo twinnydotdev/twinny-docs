@@ -7,8 +7,8 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				accent: colors.gray,
-				gray: colors.zinc,
+				accent: colors.stone,
+				gray: colors.stone,
 			},
 		},
 	},

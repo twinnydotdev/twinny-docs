@@ -8,15 +8,21 @@ export default defineConfig({
 	base: '/twinny-docs',
 	integrations: [
 		starlight({
-			title: 'twinny',
+			title: 'Twinny',
 			social: {
 				github: 'https://github.com/rjmacarthy/twinny',
 			},
 			sidebar: [
 				{
-					label: 'Guides',
+					label: '/',
 					items: [
-						{ label: 'Get started', link: '/guides/get-started' },
+						{ label: 'Quick start', link: '/general/quick-start' },
+						{ label: 'Inference providers', link: '/general/providers' },
+						{ label: 'Supported models', link: '/general/supported-models' },
+						{ label: 'Chat', link: '/general/chat' },
+						{ label: 'Fill in middle', link: '/general/fill-in-middle' },
+						{ label: 'Keyboard shortcuts', link: '/general/keyboard-shortcuts' },
+						{ label: 'Support twinny', link: '/general/support-twinny' },
 					],
 				},
 			],
