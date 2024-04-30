@@ -3,7 +3,7 @@ title: Chat
 description: Chat with Twinny
 ---
 
-## Open side panel
+## Open Side Panel
 
 To use Twinny Chat, open the side panel using the extension icon or by using the keyboard shortcut `CTRL+SHIFT+Z CTRL+SHIFT+T`. You can then start typing. Twinny will retain the chat history between sessions. You can find the chat history by clicking on the History icon on the side panel.
 
