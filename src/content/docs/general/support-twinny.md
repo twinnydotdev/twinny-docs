@@ -1,9 +1,9 @@
 ---
-title: Support Twinny
-description: Support Twinny by donating to the project.
+title: Support twinny
+description: Support twinny by donating to the project.
 ---
 
-Thanks for using Twinny!
+Thanks for using twinny!
 
 This project is and will always be free and open source. If you find it helpful, please consider showing your appreciation with a small donation <3
 

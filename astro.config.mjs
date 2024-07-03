@@ -8,7 +8,7 @@ export default defineConfig({
 	base: '/twinny-docs',
 	integrations: [
 		starlight({
-			title: 'Twinny',
+			title: 'twinny',
 			social: {
 				github: 'https://github.com/rjmacarthy/twinny',
 			},

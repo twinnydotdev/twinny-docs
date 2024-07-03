@@ -1,13 +1,13 @@
 ---
 title: Supported models
-description: A list of supported models for Twinny.
+description: A list of supported models for twinny.
 ---
 
-Twinny is a configurable extension/interface which means many models are technically supported. However, not all models work well with Twinny in certain scenarios.  The following is a list of the models that have been tested and found to work well with Twinny.  If you find a model that works but is not listed here, please let us know so we can add it to the list or open a pull request to add it.
+twinny is a configurable extension/interface which means many models are technically supported. However, not all models work well with twinny in certain scenarios.  The following is a list of the models that have been tested and found to work well with twinny.  If you find a model that works but is not listed here, please let us know so we can add it to the list or open a pull request to add it.
 
 ### Chat
 
-In theory any chat model which is trained for instructing will work with Twinny.  The following are some example of models recommended for chat.
+In theory any chat model which is trained for instructing will work with twinny.  The following are some example of models recommended for chat.
 
 
 - [`llama3`](https://ollama.com/library/llama3)

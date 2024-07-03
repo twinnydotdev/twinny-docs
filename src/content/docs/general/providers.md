@@ -1,12 +1,12 @@
 ---
 title: Inference providers
-description: Inference providers are a way to connect Twinny with external models and services. 
+description: Inference providers are a way to connect twinny with external models and services. 
 ---
 
 These example configurations serve as a starting point. Individual adjustments may be required depending on your specific hardware and software environments.
 
 
-> Note: Twinny chat (not auto-complete) should be compatible with any API which adheres to the OpenAI API specification.
+> Note: twinny chat (not auto-complete) should be compatible with any API which adheres to the OpenAI API specification.
 
 
 ### Ollama (recommended and configured by default)
