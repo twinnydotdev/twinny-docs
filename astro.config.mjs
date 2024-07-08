@@ -11,6 +11,7 @@ export default defineConfig({
 			title: 'twinny',
 			social: {
 				github: 'https://github.com/rjmacarthy/twinny',
+				'x.com': 'https://x.com/twinnydotdev',
 			},
 			sidebar: [
 				{
