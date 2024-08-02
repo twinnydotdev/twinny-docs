@@ -23,6 +23,7 @@ export default defineConfig({
 						{ label: 'Chat', link: '/general/chat' },
 						{ label: 'Fill in middle', link: '/general/fill-in-middle' },
 						{ label: 'Keyboard shortcuts', link: '/general/keyboard-shortcuts' },
+						{ label: 'Symmetry Network', link: '/general/symmetry' },
 						{ label: 'Support twinny', link: '/general/support-twinny' },
 					],
 				},

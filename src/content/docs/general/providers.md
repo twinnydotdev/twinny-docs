@@ -135,3 +135,17 @@ Chat functionality has not been successful on Linux with Oobabooga:
 - **Port:** `5000`
 - **Path:** `/v1/chat/completions`
 - **Model Name:** `CodeLlama-7B-GGUF`
+
+### Symmetry
+
+Symmetry is a decentralized tool that allows you to connect to a network of computational resources. It can be used as an inference provider for twinny, offering access to a variety of models through its peer-to-peer network.
+
+#### Using Symmetry
+
+1. In the twinny extension settings, select your desired model.
+2. Click the "Connect to Symmetry" button in the extension.
+3. The extension will automatically connect to the Symmetry network using the selected model.
+
+This streamlined process allows you to easily tap into the Symmetry network without manual configuration.
+
+> Note: When using Symmetry, be aware that your requests are processed by other nodes in the network. Consider the sensitivity of your data and choose trusted providers when necessary.
