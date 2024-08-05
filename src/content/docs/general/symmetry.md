@@ -27,7 +27,6 @@ Symmetry can be used as an inference provider within the twinny VSCode extension
 #### Disconnected:
 ![symmetry connected](../../../assets/symmetry_disconnected.png)
 
-
 #### Connected:
 ![symmetry connected](../../../assets/symmetry_connected.png)
 
