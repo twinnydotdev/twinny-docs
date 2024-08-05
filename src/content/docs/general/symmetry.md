@@ -14,7 +14,7 @@ The symmetry client is licensed under the MIT license.
 [https://github.com/twinnydotdev/symmetry](https://github.com/twinnydotdev/symmetry)
 
 
-## Symmetry in twinny VSCode Extension
+## Connecting to Symmetry in twinny VSCode Extension
 
 Symmetry can be used as an inference provider within the twinny VSCode extension if there are active providers available in the network for the specific model.  You can find the current providers and the available models at: [https://twinny.dev/symmetry](https://twinny.dev/symmetry).
 
@@ -24,7 +24,15 @@ Symmetry can be used as an inference provider within the twinny VSCode extension
 4. When you're connected you should see the green "Connected" status in the extension sidebar.
 5. Try sending some requests to the model using the twinny extension it should work as expected.
 
-![symmetry architecture diagram](../../../assets/twinny-vscode.png)
+#### Disconnected:
+![symmetry connected](../../../assets/symmetry_disconnected.png)
+
+#### Connected:
+![symmetry connected](../../../assets/symmetry_connected.png)
+
+Look for the icon:
+
+![symmetry provider](../../../assets/symmetry_provider.png)
 
 ## Becoming a Symmetry Provider
 
