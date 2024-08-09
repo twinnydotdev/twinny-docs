@@ -1,4 +1,7 @@
-# Chat
+---
+title: Chat
+description: Chat with twinny
+---
 
 Chat with twinny and leverage workspace embeddings for enhanced context.
 
