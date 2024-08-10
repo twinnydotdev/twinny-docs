@@ -25,6 +25,6 @@ ollama run codellama:7b-code
 
 Once both the extension and Ollama are installed you can start using twinny.
 
-1. Open VS code (if already open a restart might be needed) and press `CTRL+SHIFT+Z CTRL+SHIFT+T` to open the side panel.
+1. Open VS code (if already open a restart might be needed after install) and look for the twinny icon in the side panel.
 
-You should see the 🤖 icon indicating that twinny is ready to use. The icon will change to a spinner when twinny is making a call to the inference provider.
+You should also see the 🤖 icon indicating that twinny is ready to use. The icon will change to a spinner when twinny is making a call to the inference provider.
