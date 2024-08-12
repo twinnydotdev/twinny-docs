@@ -22,6 +22,7 @@ twinny now supports workspace embeddings to provide more relevant context for yo
 1. Your workspace documents are embedded and stored when you click the "Embed workspace documents" button.
 2. When you send a message, twinny looks up relevant chunks from the embeddings.
 3. These chunks are reranked and used as additional context for your query.
+4. Use the `@workspace` mention in the chat to search for relevant documents.
 
 ### Embedding Settings
 
