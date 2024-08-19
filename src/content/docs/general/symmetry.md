@@ -86,6 +86,7 @@ name: provider  # The name of your provider
 path: /home/richard/.config/symmetry/default # The data directory
 public: true # Whether your provider is publicly accessible
 serverKey: 4b4a9cc325d134dee6679e9407420023531fd7e96c563f6c5d00fd5549b77435 # The symmetry server key which handles provider messages
+systemMessage: "Im a system message" # Optional system message for all chats
 ```
 
 Adjust these settings based on your setup and preferences.
