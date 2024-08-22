@@ -52,12 +52,12 @@ As Symmetry grows, there's an opportunity for users to contribute by becoming pr
 
    Unix
    ```bash
-   curl -fsSL https://raw.githubusercontent.com/twinnydotdev/symmetry/master/install.sh | sh
+   curl -fsSL https://www.twinny.dev/symmetry-unix.sh | sh
    ```
 
    Windows
    ```
-   iwr -useb https://raw.githubusercontent.com/twinnydotdev/symmetry/master/install.ps1 | iex
+   iwr -useb https://www.twinny.dev/symmetry-windows.ps1 | iex
    ```
 
 2. **Configure Your Node**:
@@ -67,6 +67,50 @@ As Symmetry grows, there's an opportunity for users to contribute by becoming pr
    ```bash
    symmetry-cli
    ```
+
+The provider will start and make a test call to your provider.
+
+```
+ℹ️ INFO: 🔗 Initializing client using config file: /home/twinnydotdev/.config/symmetry/provider.yaml
+ℹ️ INFO: 📁 Symmetry client initialized.
+ℹ️ INFO: 🔑 Discovery key: xxx
+ℹ️ INFO: 🔑 Server key: 4b4a9cc325d134dee6679e9407420023531fd7e96c563f6c5d00fd5549b77435
+ℹ️ INFO: 🔗 Joining server, please wait.
+ℹ️ INFO: 🔗 Connected to server.
+ℹ️ INFO: ✅ Verification successful.
+ℹ️ INFO: 👋 Saying hello to your provider...
+ℹ️ INFO: 🚀 Sending test request to http://localhost:11434/v1/chat/completions
+ℹ️ INFO: 📡 Got response, checking stream...
+ℹ️ INFO: ✅ Test inference call successful!
+```
+
+### Programatically
+
+```bash
+npm install symmetry-core
+```
+
+```bash
+const config = {
+  apiHostname: "localhost",
+  apiKey: "",
+  apiPath: "/v1/chat/completions",
+  apiPort: 11434,
+  apiProtocol: "http",
+  apiProvider: "ollama",
+  dataCollectionEnabled: false,
+  maxConnections: 10,
+  modelName: "llama3.1:latest",
+  name: "twinnydotdev",
+  path: "/home/twinnydotdev/.config/symmetry/data",
+  public: true,
+  serverKey: "4b4a9cc325d134dee6679e9407420023531fd7e96c563f6c5d00fd5549b77435",
+  systemMessage: "I'm a system message"
+};
+
+const provider = new SymmetryProvider(config);
+```
+
 
 ### Provider Configuration
 
