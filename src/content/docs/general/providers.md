@@ -9,7 +9,7 @@ These example configurations serve as a starting point. Individual adjustments m
 > Note: twinny chat (not auto-complete) should be compatible with any API which adheres to the OpenAI API specification.
 
 
-### Ollama (recommended and configured by default)
+### Ollama (Configured by default)
 
 #### Auto-complete
 

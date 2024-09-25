@@ -51,6 +51,8 @@ Note: Models which are not base versions do not work well with fill in the middl
 
 Note: Starcoder2 doesn't always stop when it is finished.  Lowering the temperature and upping the repeat penalty helps with this issue.
 
+Use [Starcoder2 7b](https://ollama.com/library/starcoder2:7b) for best results.
+
 #### Stablecode models
 
 `code` versions of stablecode models.
