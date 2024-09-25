@@ -21,7 +21,7 @@ In theory any chat model which is trained for instructing will work with twinny.
 
 Only certain models support fill in the middle due to their training data.  The following are some example of models recommended for fill in the middle.  If you find a model that works but is not listed here, please let us know so we can add it to the list or open a pull request to add it.
 
-#### Qwen2.5-coder
+#### Qwen2.5-coder models
 
 - [`qwen2.5-coder:7b-base`](https://ollama.com/library/qwen2.5-coder:7b-base)
 
