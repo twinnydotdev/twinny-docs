@@ -9,4 +9,4 @@ If you prefer to trigger code completion manually, turn off automatic inline cod
 
 Github Copilot and twinny share the same keyboard shortcuts, so they may interfere with each other. Please enable or disable them if required.
 
-See the [Supported models page](/general/supported-models/) for supported models for fill-in-middle completions.
+See the [Supported models page](/twinny-docs/general/supported-models/) for supported models for fill-in-middle completions.

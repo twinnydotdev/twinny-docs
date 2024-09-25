@@ -16,7 +16,7 @@ The recommended way to do this is to use [Ollama](https://ollama.com/).  Ollama 
 ## Installing Ollama as an inference provider
 
 1. Visit [Install Ollama](https://ollama.com/) and follow the instructions to install Ollama on your machine.
-2. Choose a model from the list of models available on Ollama.  Two recommended models to get started are [codellama:7b-instruct](https://ollama.com/library/codellama:instruct) for chat and [codellama:7b-code](https://ollama.com/library/codellama:code) for fill-in-middle.  See the [Supported models page](/general/supported-models/) for more options.
+2. Choose a model from the list of models available on Ollama.  Two recommended models to get started are [codellama:7b-instruct](https://ollama.com/library/codellama:instruct) for chat and [codellama:7b-code](https://ollama.com/library/codellama:code) for fill-in-middle.  See the [Supported models page](/twinny-docs/general/supported-models/) for more options.
 
 ```sh
 ollama run codellama:7b-instruct
