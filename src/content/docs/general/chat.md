@@ -5,24 +5,26 @@ description: Chat with twinny
 
 Chat with twinny and leverage workspace embeddings for enhanced context.
 
-## Open Side Panel
+### Open Side Panel
 
 To use twinny Chat, access it from the VSCode sidebar. twinny will retain the chat history between sessions. You can find the chat history by clicking on the History icon on the top panel.
 
-## Context and Code Selection
+### Context and Code Selection
 
 When you highlight/select code in your editor, twinny will use that as the context for the chat message. If you have not selected any code, it will use the message alone and any previous messages. You can also right-click on selected code and select a twinny option to refactor, explain and perform other actions.
 
-## Workspace Embeddings
+### Workspace Embeddings
 
 twinny now supports workspace embeddings to provide more relevant context for your queries.
 
-### How it Works
+### RAG and Mentions How it Works
 
 1. Your workspace documents are embedded and stored when you click the "Embed workspace documents" button.
 2. When you send a message, twinny looks up relevant chunks from the embeddings.
 3. These chunks are reranked and used as additional context for your query.
 4. Use the `@workspace` mention in the chat to search for relevant documents.
+5. Use `@problems` for code issues
+6. Use `@` to add context for specific files in the workspace. 
 
 ### Embedding Settings
 
