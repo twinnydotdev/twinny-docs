@@ -10,10 +10,12 @@ twinny is a configurable extension/interface which means many models are technic
 In theory any chat model which is trained for instructing will work with twinny.  The following are some example of models recommended for chat.
 
 
-- [`llama3`](https://ollama.com/library/llama3)
+- [`llama3.1`](https://ollama.com/library/llama3.1)
 - [`codellama:7b-instruct`](https://ollama.com/library/codellama:instruct)
 - [`phind-codellama`](https://ollama.com/library/phind-codellama)
 - [`mistral`](https://ollama.com/library/mistral)
+- [`qwen2.5-coder`](https://ollama.com/library/qwen2.5-coder:7b-instruct)
+- [`codestral`](https://ollama.com/library/codestral)
 
 ### Fill-in-middle
 
