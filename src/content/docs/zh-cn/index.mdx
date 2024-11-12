@@ -1,0 +1,55 @@
+---
+title: 欢迎来到 twinny
+description: Visual Studio Code 的免费私有 AI 扩展。有自动补全代码、与 AI 对话等功能。
+template: splash
+hero:
+  title: |
+    twinny
+  image:
+    file: ../../../assets/twinny.svg
+  tagline: |
+    Visual Studio Code 的免费私有 AI 扩展。有自动补全代码、与 AI 对话等功能。
+  actions:
+    - text: 开始使用
+      link: /twinny-docs/zh-cn/general/quick-start
+      icon: right-arrow
+      variant: secondary
+---
+
+import { Card, CardGrid, LinkCard } from "@astrojs/starlight/components";
+
+## 了解更多
+
+<CardGrid stagger>
+  <LinkCard
+    title="快速开始"
+    description="一个针对使用 twinny 的快速入门指南"
+    href="/twinny-docs/zh-cn/general/quick-start"
+  />
+  <LinkCard
+    title="推理提供者"
+    description="了解如何在 twinny 中使用推理提供者"
+    href="/twinny-docs/zh-cn/general/providers"
+  ></LinkCard>
+  <LinkCard
+    title="支持的模型"
+    description="了解 twinny 支持的 AI 模型"
+    href="/twinny-docs/zh-cn/general/supported-models"
+  ></LinkCard>
+  <LinkCard
+    title="Symmetry"
+    description="去中心化的 AI 推理网络"
+    href="/twinny-docs/zh-cn/general/symmetry"
+  ></LinkCard>
+</CardGrid>
+
+## 主要功能
+
+<CardGrid stagger>
+  <Card title="代码补全" icon="seti:json">
+    twinny 为你的代码提供自动补全建议
+  </Card>
+  <Card title="Chat with AI" icon="pencil">
+    twinny 提供一个聊天界面来与私人 AI 互动
+  </Card>
+</CardGrid>
