@@ -163,7 +163,12 @@ While currently focused on the twinny extension, Symmetry's potential extends fu
    A: Currently, Symmetry is primarily used within the twinny VSCode extension. However, plans for a Node.js package are in development, which will allow broader integration in various projects.
 
 5. **Q: Are there rewards for being a provider?**
-   A: At present, there isn't a formal reward system. However, as the network evolves, incentive structures may be implemented. Contributing as a provider is currently an opportunity to support the network and gain experience with decentralized technologies.
+
+    A: Yes, providers can earn points through a gamification system:
+- 1 base point for every hour they stay online
+- Progressive bonus points each consecutive hour (2, 3, 4, etc.) up to a maximum of 6 bonus points
+- Points currently serve as a fun way to track participation and engagement
+- While there may be potential for future utility token integration with the Twinny VSCode extension and Symmetry network, this is not guaranteed and there are no concrete plans at this time.
 
 6. **Q: How can I stay updated on Symmetry's development?**
    A: Keep an eye on the official Symmetry GitHub repository and documentation for the latest updates and announcements.
