@@ -1,15 +1,15 @@
 ---
 title: Symmetry - Inference Network
-description: Explore Symmetry, a decentralized computing network integrated with twinny VSCode extension and beyond.
+description: Explore Symmetry, a distributed computing network integrated with twinny VSCode extension and beyond.
 ---
 
-Symmetry is an experimental decentralized computing network that allows users to share and access computational resources. Initially integrated with the twinny VSCode extension, Symmetry has potential to become a powerful tool for developers, researchers, and data scientists.
+Symmetry is a distributed network that allows users to share and access computational resources. Initially integrated with the twinny VSCode extension, Symmetry has potential to become a powerful tool for developers, researchers, and data scientists.
 
 Note: Symmetry is still in alpha and there may be some issues. Please report any issues you find at [https://github.com/twinnydotdev/symmetry](https://github.com/twinnydotdev/symmetry).
 
 ![symmetry architecture diagram](../../../assets/symmetry-architecture.png)
 
-The symmetry client is licensed under the MIT license.
+The symmetry client is licensed under the Apache 2.0 license.
 
 [https://github.com/twinnydotdev/symmetry](https://github.com/twinnydotdev/symmetry)
 
@@ -90,11 +90,11 @@ The provider will start and make a test call to your provider.
 npm install symmetry-core
 ```
 
-```bash
+```javascript
 const config = {
   apiHostname: "localhost",
-  apiKey: "",
-  apiPath: "/v1/chat/completions",
+  apiKey: "apikeyforprovider", // not publically available or transported to server
+  apiChatPath: "/v1/chat/completions",
   apiPort: 11434,
   apiProtocol: "http",
   apiProvider: "ollama",
@@ -102,10 +102,11 @@ const config = {
   maxConnections: 10,
   modelName: "llama3.1:latest",
   name: "twinnydotdev",
-  path: "/home/twinnydotdev/.config/symmetry/data",
+  dataPath: "/home/twinnydotdev/.config/symmetry/data",
   public: true,
   serverKey: "4b4a9cc325d134dee6679e9407420023531fd7e96c563f6c5d00fd5549b77435",
-  systemMessage: "I'm a system message"
+  systemMessage: "I'm a system message",
+  userSecret: "supersecretpasswordforuptimetracking"
 };
 
 const provider = new SymmetryProvider(config);
@@ -119,7 +120,7 @@ Example `provider.yaml`:
 ```yaml
 apiHostname: localhost # The host of your inference server
 apiKey: # The API key for your inference server
-apiPath: /v1/chat/completions # The path to the inference endpoint
+apiChatPath: /v1/chat/completions # The path to the inference endpoint
 apiPort: 11434 # The port of your inference server
 apiProtocol: http # The protocol of your inference server
 apiProvider: ollama # The name of the inference provider
@@ -127,10 +128,11 @@ dataCollectionEnabled: true # Whether to advertise that data collection is enabl
 maxConnections: 10 # The maximum number of connections to allow
 modelName: llama3:8b # The name of the model you are serving
 name: provider  # The name of your provider
-path: /home/richard/.config/symmetry/default # The data directory
+dataPath: /home/richard/.config/symmetry/default # The data directory
 public: true # Whether your provider is publicly accessible
 serverKey: 4b4a9cc325d134dee6679e9407420023531fd7e96c563f6c5d00fd5549b77435 # The symmetry server key which handles provider messages
 systemMessage: "Im a system message" # Optional system message for all chats
+userSecret: "supersecretpasswordforuptimetracking" # A secret for uniquely identify peers on the network
 ```
 
 Adjust these settings based on your setup and preferences.
@@ -173,4 +175,6 @@ While currently focused on the twinny extension, Symmetry's potential extends fu
 6. **Q: How can I stay updated on Symmetry's development?**
    A: Keep an eye on the official Symmetry GitHub repository and documentation for the latest updates and announcements.
 
-By exploring Symmetry, whether as a user through the twinny extension or as a provider, you're participating in the development of decentralized computing technologies. As Symmetry evolves, it aims to offer more flexible and powerful options for developers and researchers alike.
+By exploring Symmetry, whether as a user through the twinny extension or as a provider, you're participating in the development of distributed computing technologies. As Symmetry evolves, it aims to offer more flexible and powerful options for developers and researchers alike.
+
+Please refer to the [privacy policy](https://www.twinny.dev/privacy) for information regarding usage of the network.
