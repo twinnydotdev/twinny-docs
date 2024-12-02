@@ -40,10 +40,10 @@ As Symmetry grows, there's an opportunity for users to contribute by becoming pr
 
 ### Why Consider Becoming a Provider?
 
-- Contribute to a decentralized computing network
+- Contribute to a distributed computing network
 - Utilize idle computational resources
 - Potential for future incentive systems (subject to network development)
-- Gain experience with decentralized technologies
+- Gain experience with peer to peer technologies
 - Become the collector of data for machine learning research 
 
 ### How to Become a Provider

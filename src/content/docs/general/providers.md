@@ -138,7 +138,7 @@ Chat functionality has not been successful on Linux with Oobabooga:
 
 ### Symmetry
 
-Symmetry is a decentralized tool that allows you to connect to a network of computational resources. It can be used as an inference provider for twinny, offering access to a variety of models through its peer-to-peer network.
+Symmetry is a distributed tool that allows you to connect to a network of computational resources. It can be used as an inference provider for twinny, offering access to a variety of models through its peer-to-peer network.
 
 #### Using Symmetry
 
