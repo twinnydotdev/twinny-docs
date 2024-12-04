@@ -1,7 +1,7 @@
 import { $ as __astro_tag_component__, F as Fragment, _ as createVNode } from './astro_D8JpLML5.mjs';
 import { $ as $$Image } from './pages/node_CFP0O91b.mjs';
-import { $ as $$CardGrid, a as $$LinkCard, b as $$Card } from './Code_CTjHjqj6.mjs';
-import './prerender_CQfQ8MP6.mjs';
+import { $ as $$CardGrid, a as $$LinkCard, b as $$Card } from './Code_Yxp0dKfz.mjs';
+import './prerender_DkPztLGz.mjs';
 import 'clsx';
 
 const frontmatter = {
@@ -16,7 +16,7 @@ const frontmatter = {
     "tagline": "Visual Studio Code \u7684\u514D\u8D39\u79C1\u6709 AI \u6269\u5C55\u3002\u6709\u81EA\u52A8\u8865\u5168\u4EE3\u7801\u3001\u4E0E AI \u5BF9\u8BDD\u7B49\u529F\u80FD\u3002\n",
     "actions": [{
       "text": "\u5F00\u59CB\u4F7F\u7528",
-      "link": "/twinny-docs/zh-cn/general/quick-start",
+      "link": "/zh-cn/general/quick-start",
       "icon": "right-arrow",
       "variant": "secondary"
     }]
@@ -49,19 +49,19 @@ function _createMdxContent(props) {
       children: [createVNode($$LinkCard, {
         title: "\u5FEB\u901F\u5F00\u59CB",
         description: "\u4E00\u4E2A\u9488\u5BF9\u4F7F\u7528 twinny \u7684\u5FEB\u901F\u5165\u95E8\u6307\u5357",
-        href: "/twinny-docs/zh-cn/general/quick-start"
+        href: "/zh-cn/general/quick-start"
       }), createVNode($$LinkCard, {
         title: "\u63A8\u7406\u63D0\u4F9B\u8005",
         description: "\u4E86\u89E3\u5982\u4F55\u5728 twinny \u4E2D\u4F7F\u7528\u63A8\u7406\u63D0\u4F9B\u8005",
-        href: "/twinny-docs/zh-cn/general/providers"
+        href: "/zh-cn/general/providers"
       }), createVNode($$LinkCard, {
         title: "\u652F\u6301\u7684\u6A21\u578B",
         description: "\u4E86\u89E3 twinny \u652F\u6301\u7684 AI \u6A21\u578B",
-        href: "/twinny-docs/zh-cn/general/supported-models"
+        href: "/zh-cn/general/supported-models"
       }), createVNode($$LinkCard, {
         title: "Symmetry",
         description: "\u53BB\u4E2D\u5FC3\u5316\u7684 AI \u63A8\u7406\u7F51\u7EDC",
-        href: "/twinny-docs/zh-cn/general/symmetry"
+        href: "/zh-cn/general/symmetry"
       })]
     }), "\n", createVNode(_components.h2, {
       id: "\u4E3B\u8981\u529F\u80FD",

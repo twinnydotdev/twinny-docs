@@ -1,4 +1,4 @@
-import { b as starlightConfig, a as useTranslations } from './prerender_CQfQ8MP6.mjs';
+import { b as starlightConfig, a as useTranslations } from './prerender_DkPztLGz.mjs';
 import { ExpressiveCodeTheme, pluginFramesTexts, addClassName } from 'remark-expressive-code';
 
 function slugToLocale(slug, localesConfig) {

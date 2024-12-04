@@ -1,5 +1,5 @@
 import { renderers } from './renderers.mjs';
-import { l as levels, g as getEventPrefix, L as Logger, A as AstroIntegrationLogger, manifest } from './manifest_CizosHfd.mjs';
+import { l as levels, g as getEventPrefix, L as Logger, A as AstroIntegrationLogger, manifest } from './manifest_BsGbVDs2.mjs';
 import { appendForwardSlash as appendForwardSlash$1, joinPaths, trimSlashes, slash, prependForwardSlash, removeTrailingForwardSlash, collapseDuplicateSlashes } from '@astrojs/internal-helpers/path';
 import { R as ROUTE_DATA_SYMBOL, A as AstroError, t as ResponseSentError, v as MiddlewareNoDataOrNextCalled, w as MiddlewareNotAResponse, G as GetStaticPathsRequired, x as InvalidGetStaticPathsReturn, y as InvalidGetStaticPathsEntry, z as GetStaticPathsExpectedParams, B as GetStaticPathsInvalidRouteParam, P as PageNumberParamNotFound, N as NoMatchingStaticPathFound, C as PrerenderDynamicEndpointPathCollide, D as LocalsNotAnObject, H as ASTRO_VERSION, J as ClientAddressNotAvailable, S as StaticClientAddressNotAvailable, K as renderEndpoint, O as ReservedSlotName, Q as renderSlotToString, T as renderJSX, V as chunkToString, W as CantRenderPage, X as renderPage$1, Y as REROUTE_DIRECTIVE_HEADER } from './chunks/astro_D8JpLML5.mjs';
 import { serialize, parse } from 'cookie';
@@ -2481,8 +2481,8 @@ const serverEntrypointModule = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.de
 const _page0 = () => import('./chunks/styles_CY_nkJB0.mjs');
 const _page1 = () => import('./chunks/scripts_DWajbOtk.mjs');
 const _page2 = () => import('./chunks/node_CwC2tluF.mjs');
-const _page3 = () => import('./chunks/404_CAajvkFJ.mjs');
-const _page4 = () => import('./chunks/index_CnyqqR69.mjs');
+const _page3 = () => import('./chunks/404_C1N8ir-f.mjs');
+const _page4 = () => import('./chunks/index_BiBQla-M.mjs');
 const pageMap = new Map([
     ["node_modules/astro-expressive-code/routes/styles.ts", _page0],
     ["node_modules/astro-expressive-code/routes/scripts.ts", _page1],

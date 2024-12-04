@@ -1,7 +1,7 @@
 import { $ as __astro_tag_component__, F as Fragment, _ as createVNode } from './astro_D8JpLML5.mjs';
 import { $ as $$Image } from './pages/node_CFP0O91b.mjs';
-import { $ as $$CardGrid, a as $$LinkCard, b as $$Card } from './Code_CTjHjqj6.mjs';
-import './prerender_CQfQ8MP6.mjs';
+import { $ as $$CardGrid, a as $$LinkCard, b as $$Card } from './Code_Yxp0dKfz.mjs';
+import './prerender_DkPztLGz.mjs';
 import 'clsx';
 
 const frontmatter = {
@@ -16,7 +16,7 @@ const frontmatter = {
     "tagline": "The free and private AI extension for Visual Studio Code. Auto-complete suggestions, chat with AI and more.\n",
     "actions": [{
       "text": "Getting Started",
-      "link": "/twinny-docs/general/quick-start",
+      "link": "/general/quick-start",
       "icon": "right-arrow",
       "variant": "secondary"
     }]
@@ -49,19 +49,19 @@ function _createMdxContent(props) {
       children: [createVNode($$LinkCard, {
         title: "Getting Started",
         description: "A quick start guide for using twinny",
-        href: "/twinny-docs/general/quick-start"
+        href: "/general/quick-start"
       }), createVNode($$LinkCard, {
         title: "Inference Providers",
-        href: "/twinny-docs/general/providers",
+        href: "/general/providers",
         description: "Learn how to use an inference provider with twinny"
       }), createVNode($$LinkCard, {
         title: "Supported Models",
         description: "Learn about the supported AI models",
-        href: "/twinny-docs/general/supported-models"
+        href: "/general/supported-models"
       }), createVNode($$LinkCard, {
         title: "Symmetry",
         description: "The distributed AI inference network",
-        href: "/twinny-docs/general/symmetry"
+        href: "/general/symmetry"
       })]
     }), "\n", createVNode(_components.h2, {
       id: "main-features",
