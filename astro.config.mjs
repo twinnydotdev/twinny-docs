@@ -11,7 +11,7 @@ export default defineConfig({
     port: 3008
   },
   adapter: node({
-    mode: 'middleware',
+    mode: 'standalone',
   }),
 	site: 'https://docs.twinny.dev',
 	base: '/',
