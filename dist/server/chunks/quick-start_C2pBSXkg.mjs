@@ -1,0 +1,29 @@
+import { e as createComponent, r as renderTemplate, m as maybeRenderHead, u as unescapeHTML } from './astro_D8JpLML5.mjs';
+import 'kleur/colors';
+import 'clsx';
+import 'cssesc';
+
+const html = "<h2 id=\"prerequisites\">Prerequisites</h2>\n<p>Before you start using twinny you need to have access to an inference provider.  An inference provider is a local or cloud hosted server that runs the AI models.</p>\n<p>The recommended way to do this is to use <a href=\"https://ollama.com/\">Ollama</a>.  Ollama makes it easy to run your models locally and exposes them as an OpenAI compatible API.  Performance will depend on your hardware and chosen model, see Ollama’s documentation for more information.</p>\n<h2 id=\"installing-the-extension\">Installing the extension</h2>\n<ol>\n<li>Install the Visual Studio Code extension <a href=\"https://marketplace.visualstudio.com/items?itemName=rjmacarthy.twinny\">here</a> or for VSCodium <a href=\"https://open-vsx.org/extension/rjmacarthy/twinny\">here</a>.</li>\n</ol>\n<h2 id=\"installing-ollama-as-an-inference-provider\">Installing Ollama as an inference provider</h2>\n<ol>\n<li>Visit <a href=\"https://ollama.com/\">Install Ollama</a> and follow the instructions to install Ollama on your machine.</li>\n<li>Choose a model from the list of models available on Ollama.  Two recommended models to get started are <a href=\"https://ollama.com/library/codellama:instruct\">codellama:7b-instruct</a> for chat and <a href=\"https://ollama.com/library/codellama:code\">codellama:7b-code</a> for fill-in-middle.  See the <a href=\"/twinny-docs/general/supported-models/\">Supported models page</a> for more options.</li>\n</ol>\n<div class=\"expressive-code\"><link rel=\"stylesheet\" href=\"/_astro/ec.d6kn2.css\"><script type=\"module\" src=\"/_astro/ec.dy9ns.js\"></script><figure class=\"frame is-terminal not-content\"><figcaption class=\"header\"><span class=\"title\"></span><span class=\"sr-only\">Terminal window</span></figcaption><pre tabindex=\"0\"><code><div class=\"ec-line\"><div class=\"code\"><span style=\"--0:#82AAFF;--1:#3C63B3\">ollama</span><span style=\"--0:#D6DEEB;--1:#403F53\"> </span><span style=\"--0:#ECC48D;--1:#3C63B3\">run</span><span style=\"--0:#D6DEEB;--1:#403F53\"> </span><span style=\"--0:#ECC48D;--1:#3C63B3\">codellama:7b-instruct</span></div></div><div class=\"ec-line\"><div class=\"code\"><span style=\"--0:#82AAFF;--1:#3C63B3\">ollama</span><span style=\"--0:#D6DEEB;--1:#403F53\"> </span><span style=\"--0:#ECC48D;--1:#3C63B3\">run</span><span style=\"--0:#D6DEEB;--1:#403F53\"> </span><span style=\"--0:#ECC48D;--1:#3C63B3\">codellama:7b-code</span></div></div></code></pre><div class=\"copy\"><button title=\"Copy to clipboard\" data-copied=\"Copied!\" data-code=\"ollama run codellama:7b-instructollama run codellama:7b-code\"><div></div></button></div></figure></div>\n<p>Once both the extension and Ollama are installed you can start using twinny.</p>\n<ol>\n<li>Open VS code (if already open a restart might be needed after install) and look for the twinny icon in the side panel.</li>\n</ol>\n<p>You should also see the 🤖 icon indicating that twinny is ready to use. The icon will change to a spinner when twinny is making a call to the inference provider.</p>";
+
+				const frontmatter = {"title":"Quick start","description":"A quick start guide for using twinny."};
+				const file = "/home/richard/Desktop/twinny/twinny-docs/src/content/docs/general/quick-start.md";
+				const url = undefined;
+				function rawContent() {
+					return "\n## Prerequisites\n\nBefore you start using twinny you need to have access to an inference provider.  An inference provider is a local or cloud hosted server that runs the AI models.\n\nThe recommended way to do this is to use [Ollama](https://ollama.com/).  Ollama makes it easy to run your models locally and exposes them as an OpenAI compatible API.  Performance will depend on your hardware and chosen model, see Ollama's documentation for more information.\n\n## Installing the extension\n\n1. Install the Visual Studio Code extension [here](https://marketplace.visualstudio.com/items?itemName=rjmacarthy.twinny) or for VSCodium [here](https://open-vsx.org/extension/rjmacarthy/twinny).\n\n## Installing Ollama as an inference provider\n\n1. Visit [Install Ollama](https://ollama.com/) and follow the instructions to install Ollama on your machine.\n2. Choose a model from the list of models available on Ollama.  Two recommended models to get started are [codellama:7b-instruct](https://ollama.com/library/codellama:instruct) for chat and [codellama:7b-code](https://ollama.com/library/codellama:code) for fill-in-middle.  See the [Supported models page](/twinny-docs/general/supported-models/) for more options.\n\n```sh\nollama run codellama:7b-instruct\nollama run codellama:7b-code\n```\n\nOnce both the extension and Ollama are installed you can start using twinny.\n\n1. Open VS code (if already open a restart might be needed after install) and look for the twinny icon in the side panel.\n\nYou should also see the 🤖 icon indicating that twinny is ready to use. The icon will change to a spinner when twinny is making a call to the inference provider.\n";
+				}
+				function compiledContent() {
+					return html;
+				}
+				function getHeadings() {
+					return [{"depth":2,"slug":"prerequisites","text":"Prerequisites"},{"depth":2,"slug":"installing-the-extension","text":"Installing the extension"},{"depth":2,"slug":"installing-ollama-as-an-inference-provider","text":"Installing Ollama as an inference provider"}];
+				}
+
+				const Content = createComponent((result, _props, slots) => {
+					const { layout, ...content } = frontmatter;
+					content.file = file;
+					content.url = url;
+
+					return renderTemplate`${maybeRenderHead()}${unescapeHTML(html)}`;
+				});
+
+export { Content, compiledContent, Content as default, file, frontmatter, getHeadings, rawContent, url };
