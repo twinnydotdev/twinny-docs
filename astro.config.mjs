@@ -13,8 +13,6 @@ export default defineConfig({
   adapter: node({
     mode: 'standalone',
   }),
-	site: 'https://docs.twinny.dev',
-	base: '/',
 	integrations: [
 		starlight({
 			title: 'twinny',
