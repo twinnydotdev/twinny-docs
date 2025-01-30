@@ -94,7 +94,7 @@ npm install symmetry-core
 const config = {
   apiHostname: "localhost",
   apiKey: "apikeyforprovider", // not publically available or transported to server
-  apiChatPath: "/v1/chat/completions",
+  apiBasePath: "/v1",
   apiPort: 11434,
   apiProtocol: "http",
   apiProvider: "ollama",
