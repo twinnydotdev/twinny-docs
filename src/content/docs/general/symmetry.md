@@ -120,7 +120,7 @@ Example `provider.yaml`:
 ```yaml
 apiHostname: localhost # The host of your inference server
 apiKey: # The API key for your inference server
-apiChatPath: /v1/chat/completions # The path to the inference endpoint
+apiBasePath: /v1 # The path to the inference endpoint
 apiPort: 11434 # The port of your inference server
 apiProtocol: http # The protocol of your inference server
 apiProvider: ollama # The name of the inference provider
