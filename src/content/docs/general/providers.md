@@ -23,7 +23,7 @@ These example configurations serve as a starting point. Individual adjustments m
 
 - **Hostname:** `localhost`
 - **Port:** `11434`
-- **Path:** `/v1/chat/completions`
+- **Path:** `/v1`
 - **Model Name:** `codellama:7b-instruct` 
 
 ### Open WebUI using Ollama
