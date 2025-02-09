@@ -34,7 +34,7 @@ twinny now supports workspace embeddings to provide more relevant context for yo
   - Provider: ollama
   - Type: embedding
   - Hostname: 0.0.0.0
-  - Path: /v1/embeddings
+  - Path: /api/embed
   - Protocol: http
   - Port: 11434
 
