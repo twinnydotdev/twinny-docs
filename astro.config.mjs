@@ -1,11 +1,18 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import tailwind from '@astrojs/tailwind';
+import node from '@astrojs/node';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://twinnydotdev.github.io',
-	base: '/twinny-docs',
+	output: 'server',
+	server: {
+    host: true,
+    port: 3008
+  },
+  adapter: node({
+    mode: 'standalone',
+  }),
 	integrations: [
 		starlight({
 			title: 'twinny',
