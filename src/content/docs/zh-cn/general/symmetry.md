@@ -9,7 +9,7 @@ Symmetry 是一个实验性的去中心化计算网络，允许用户共享和�
 
 ![symmetry 结构图](../../../../assets/symmetry-architecture.png)
 
-Symmetry 客户端采用 MIT 许可证。
+Symmetry 客户端采用 Apache 2.0 许可证。
 
 [https://github.com/twinnydotdev/symmetry](https://github.com/twinnydotdev/symmetry)
 
@@ -90,22 +90,18 @@ Symmetry 客户端采用 MIT 许可证。
 npm install symmetry-core
 ```
 
-```bash
+```javascript
 const config = {
   apiHostname: "localhost",
-  apiKey: "",
-  apiPath: "/v1/chat/completions",
+  apiKey: "apikeyforprovider", // not publically available or transported to server
+  apiBasePath: "/v1",
   apiPort: 11434,
   apiProtocol: "http",
-  apiProvider: "ollama",
-  dataCollectionEnabled: false,
-  maxConnections: 10,
   modelName: "llama3.1:latest",
   name: "twinnydotdev",
-  path: "/home/twinnydotdev/.config/symmetry/data",
-  public: true,
   serverKey: "4b4a9cc325d134dee6679e9407420023531fd7e96c563f6c5d00fd5549b77435",
-  systemMessage: "I'm a system message"
+  systemMessage: "I'm a system message",
+  userSecret: "supersecretpasswordforuptimetracking"
 };
 
 const provider = new SymmetryProvider(config);
@@ -119,18 +115,14 @@ const provider = new SymmetryProvider(config);
 ```yaml
 apiHostname: localhost # 推理服务器的主机地址
 apiKey: # 推理服务器的 API 密钥
-apiPath: /v1/chat/completions # 推理接口路径
+apiBasePath: /v1 # 推理接口基础路径
 apiPort: 11434 # 推理服务器的端口
 apiProtocol: http # 推理服务器的协议
-apiProvider: ollama # 推理提供者名称
-dataCollectionEnabled: true # 是否启用数据收集
-maxConnections: 10 # 最大连接数
 modelName: llama3:8b # 您提供的模型名称
 name: provider  # 您的提供者名称
-path: /home/richard/.config/symmetry/default # 数据存储目录
-public: true # 是否公开访问您的提供者
-serverKey: 4b4a9cc325d134dee6679e9407420023531fd7e96c563f6c5d00fd5549b77435 # Symmetry 服务器密钥
-systemMessage: "I'm a system message" # 可选的系统消息
+serverKey: 4b4a9cc325d134dee6679e9407420023531fd7e96c563f6c5d00fd5549b77435 # Symmetry 服务器密钥，用于处理提供者消息
+systemMessage: "Im a system message" # 可选的系统消息
+userSecret: "supersecretpasswordforrewardtracking" # 用于在网络上唯一标识节点的密钥
 ```
 
 根据您的设置和偏好调整这些配置。
@@ -141,12 +133,59 @@ systemMessage: "I'm a system message" # 可选的系统消息
 - 注意通过您的节点传输的数据
 - 保持稳定和可靠的连接
 
+## OpenAI 兼容 API
+
+Symmetry 现在提供了与 OpenAI 兼容的 API，允许您使用与 OpenAI 相同的 API 格式与网络交互。这使得将 Symmetry 集成到已经使用 OpenAI API 的现有应用程序变得简单。服务器运行在 `https://twinny.dev/v1`，您可以使用以下端点与其交互：
+
+### 使用 API
+
+Symmetry API 遵循 OpenAI API 格式，允许您使用标准的 OpenAI 客户端库或直接 HTTP 请求与网络交互。
+
+#### 端点
+
+- **聊天补全**：`/v1/chat/completions` - 用于与 Symmetry 网络上的模型进行基于聊天的交互
+
+#### 请求示例
+
+```javascript
+// 使用 fetch API
+const response = await fetch('https://twinny.dev/v1/chat/completions', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify({
+    model: 'llama3.1:latest',
+    messages: [
+      { role: 'system', content: '你是一个有帮助的助手。' },
+      { role: 'user', content: '你好，你好吗？' }
+    ]
+  })
+});
+
+// 响应以服务器发送事件 (SSE) 的形式流式传输
+// 您可以使用标准的 SSE 处理方法处理它
+```
+
+#### 速率限制
+
+API 包含速率限制以确保公平使用：
+- 每个时间窗口的最大请求数（由服务器配置）
+- 超过限制的请求将收到 429 状态码和错误消息
+
+#### 对话管理
+
+API 支持通过对话 ID 进行对话管理：
+- 在请求中包含 `id` 字段以维护对话上下文
+- 服务器将跟踪同一对话中的消息
+
 ## 超越 VSCode：未来发展
 
-虽然目前专注于 Twinny 扩展，但 Symmetry 的潜力不仅限于此：
+虽然最初专注于 Twinny 扩展，但 Symmetry 的功能现在已经扩展：
 
-- **独立使用**：计划开发一个 Node.js 包，使开发者可以在任何 Node.js 应用中利用 Symmetry 网络。
-- **API 访问**：未来版本可能包括直接的 API 访问，支持与广泛应用和服务的集成。
+- **OpenAI 兼容 API**：Symmetry 现在提供遵循 OpenAI 格式的 API，使其易于与现有应用程序集成。
+- **独立使用**：Node.js 包允许开发者在任何 Node.js 应用中利用 Symmetry 网络。
+- **WebSocket 统计**：通过 WebSocket 连接可获取网络的实时统计信息。
 
 ## 常见问题 (FAQ)
 
@@ -162,10 +201,15 @@ systemMessage: "I'm a system message" # 可选的系统消息
 4. **Q: 我可以在自己的项目中使用 Symmetry 吗？**  
    目前，Symmetry 主要用于 Twinny VSCode 扩展，但计划推出 Node.js 包，使其可以在各种项目中广泛集成。
 
-5. **Q: 成为提供者会有奖励吗？**  
-   目前没有正式的奖励系统，但随着网络的发展，可能会引入奖励机制。目前作为提供者贡献网络，是一个支持去中心化技术并获得经验的机会。
+5. **Q: 成为提供者会有奖励吗？**
+- 奖励将以 SOL 区块链上的代币形式发放，这些代币将用于支付提供者的服务。
+- 提供者可以通过向客户提供数据来赚取奖励。
+- 将实施工作量证明（POW）算法，以确保网络的安全性和可靠性。
+
 
 6. **Q: 如何获取 Symmetry 开发的最新动态？**  
    A: 请关注 Symmetry 官方 GitHub 仓库和文档，获取最新更新和公告。
 
 通过探索 Symmetry，无论是作为用户通过 Twinny 扩展，还是作为提供者，您都在参与去中心化计算技术的发展。随着 Symmetry 的演进，它旨在为开发者和研究人员提供更灵活、强大的选择。
+
+请参阅 [隐私政策](https://www.twinny.dev/privacy) 了解有关网络使用的信息。

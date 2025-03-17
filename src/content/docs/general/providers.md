@@ -26,6 +26,39 @@ These example configurations serve as a starting point. Individual adjustments m
 - **Path:** `/v1`
 - **Model Name:** `codellama:7b-instruct` 
 
+
+### twinny.dev
+
+twinny.dev provides an OpenAI-compatible API that allows you to interact with the Symmetry network using the same API format as OpenAI. This makes it easy to integrate with existing applications that already use the OpenAI API.
+
+#### Chat
+
+- **Hostname:** `twinny.dev`
+- **Port:** `443` (default HTTPS port)
+- **Path:** `/v1/chat/completions`
+- **Model Name:** Check available models at [https://twinny.dev/symmetry](https://twinny.dev/symmetry)
+
+#### Example Configuration
+
+1. In the twinny extension settings, configure your provider:
+   - Set the hostname to `twinny.dev`
+   - Use the default HTTPS port (443)
+   - Set the path to `/v1/chat/completions`
+   - Choose a model name from the available models listed at [https://twinny.dev/symmetry](https://twinny.dev/symmetry)
+
+2. The API follows the OpenAI format, supporting standard chat completions with messages in the following format:
+   ```json
+   {
+     "model": "model_name",
+     "messages": [
+       { "role": "system", "content": "You are a helpful assistant." },
+       { "role": "user", "content": "Hello, how are you?" }
+     ]
+   }
+   ```
+
+> Note: The API includes rate limiting to ensure fair usage. Requests exceeding the limit will receive a 429 status code with an error message.
+
 ### Open WebUI using Ollama
 
 Open WebUI can be used a proxy Ollama, simply configure the endpoint to match what is served by OpenWeb UI.
