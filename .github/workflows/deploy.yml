@@ -10,23 +10,14 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
-      
       - name: Install, build, and upload your site
-        uses: withastro/action@v2
-        with:
-          path: .
-          node-version: 18
-          package-manager: npm@latest
+        uses: withastro/action@v4
 
   deploy:
     needs: build
