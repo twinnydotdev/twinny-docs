@@ -22,7 +22,7 @@ The recommended way to set this up is by using [Ollama](https://ollama.com/). Ol
 ollama pull codellama:7b-instruct
 ```
 
-To run this model, or another of your choice (see the [Supported Models page](/general/supported-models/) for more options), use:
+To run this model, or another of your choice (see the [Supported Models page](/twinny-docs/supported-models/) for more options), use:
 
 ```sh
 ollama run your-chosen-model-name

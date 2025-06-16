@@ -22,7 +22,7 @@ Symmetry is accessible through an OpenAI-compatible API endpoint hosted at `http
 
 ### Authentication
 
-To use the `https://twinny.dev` API endpoint, you will need an API key. Refer to the [twinny.dev provider settings in twinny](/general/providers/#twinnydev-symmetry-network) for details on obtaining and using an API key.
+To use the `https://twinny.dev` API endpoint, you will need an API key. Refer to the [twinny.dev provider settings in twinny](/twinny-docs/general/providers/#twinnydev-symmetry-network) for details on obtaining and using an API key.
 
 ### Example Request (Chat Completions)
 

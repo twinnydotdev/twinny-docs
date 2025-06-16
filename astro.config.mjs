@@ -27,37 +27,37 @@ export default defineConfig({
 					label: '/',
 					items: [
 						{
-							label: 'Quick start', link: '/twinny-docs/general/quick-start',
+							label: 'Quick start', link: '/general/quick-start',
 							translations: {
 								'zh-CN': '快速开始'
 							}
 						},
-						{ label: 'Inference providers', link: '/twinny-docs/general/providers',
+						{ label: 'Inference providers', link: '/general/providers',
 							translations: {
 								'zh-CN': '推理提供者'
 							}
 						},
-						{ label: 'Supported models', link: '/twinny-docs/general/supported-models',
+						{ label: 'Supported models', link: '/general/supported-models',
 							translations: {
 								'zh-CN': '支持的模型'
 							}
 						},
-						{ label: 'Chat', link: '/twinny-docs/general/chat',
+						{ label: 'Chat', link: '/general/chat',
 							translations: {
 								'zh-CN': '对话'
 							}
 						},
-						{ label: 'Fill in middle', link: '/twinny-docs/general/fill-in-middle',
+						{ label: 'Fill in middle', link: '/general/fill-in-middle',
 							translations: {
 								'zh-CN': '自动补全'
 							}
 						},
-						{ label: 'Keyboard shortcuts', link: '/twinny-docs/general/keyboard-shortcuts',
+						{ label: 'Keyboard shortcuts', link: '/general/keyboard-shortcuts',
 							translations: {
 								'zh-CN': '键盘快捷键'
 							}
 						},
-						{ label: 'Symmetry Network', link: '/twinny-docs/general/symmetry',
+						{ label: 'Symmetry Network', link: '/general/symmetry',
 							translations: {
 								'zh-CN': 'Symmetry网络'
 							}

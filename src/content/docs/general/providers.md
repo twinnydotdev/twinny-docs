@@ -29,7 +29,7 @@ Ollama is configured as the default inference provider for twinny.
 
 ### twinny.dev (Symmetry Network)
 
-twinny.dev offers an OpenAI-compatible API, enabling interaction with the [Symmetry network](/general/symmetry) using the standard OpenAI API format. This facilitates easy integration with applications already compatible with the OpenAI API.
+twinny.dev offers an OpenAI-compatible API, enabling interaction with the [Symmetry network](/twinny-docs/general/symmetry) using the standard OpenAI API format. This facilitates easy integration with applications already compatible with the OpenAI API.
 
 #### Chat
 
@@ -204,4 +204,4 @@ This method allows for easy access to the Symmetry network without needing to ma
 > - Your requests are processed by other nodes within the peer-to-peer Symmetry network.
 > - Be mindful of data sensitivity when using any distributed or third-party network.
 > - The availability and performance of models can vary depending on the network state.
-> - For more details on Symmetry itself, refer to the [Symmetry documentation](/general/symmetry).
+> - For more details on Symmetry itself, refer to the [Symmetry documentation](/twinny-docs/general/symmetry).

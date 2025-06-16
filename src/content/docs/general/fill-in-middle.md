@@ -13,4 +13,4 @@ If you prefer to trigger code completion manually:
 
 twinny uses the same default keyboard shortcut (`Alt+\`) for manual code completion as GitHub Copilot. If you have both extensions enabled with this shortcut, it can lead to conflicts. To resolve this, you may need to disable this shortcut in one of the extensions or reconfigure it in your VS Code keyboard shortcut settings (e.g., assign a different shortcut to twinny's "Trigger Completion" command).
 
-For more information on models that support the fill-in-the-middle technique, see the [Supported Models page](/general/supported-models/).
+For more information on models that support the fill-in-the-middle technique, see the [Supported Models page](/twinny-docs/general/supported-models/).
