@@ -1,55 +1,57 @@
 ---
 title: Chat
-description: Chat with twinny
+description: Interact with twinny's chat feature and leverage workspace context.
 ---
 
-Chat with twinny and leverage workspace embeddings for enhanced context.
+twinny's chat interface allows you to ask questions, get explanations, and generate code. It can also leverage the context of your workspace for more relevant answers.
 
-### Open Side Panel
+### Accessing Chat and History
 
-To use twinny Chat, access it from the VSCode sidebar. twinny will retain the chat history between sessions. You can find the chat history by clicking on the History icon on the top panel.
+To use twinny Chat, open it from the VS Code sidebar. twinny retains your chat history between sessions. You can access the history by clicking the "History" icon in the top panel of the twinny chat view.
 
-### Context and Code Selection
+### Providing Context for Messages
 
-When you highlight/select code in your editor, twinny will use that as the context for the chat message. If you have not selected any code, it will use the message alone and any previous messages. You can also right-click on selected code and select a twinny option to refactor, explain and perform other actions.
+- **Code Selection**: If you select code in your editor before sending a message, twinny uses that selection as primary context.
+- **Conversation History**: If no code is selected, twinny uses the current message and previous conversation history for context.
+- **Right-Click Actions**: You can also right-click on selected code in the editor and choose from various twinny commands to refactor, explain, or perform other actions.
 
-### Workspace Embeddings
+### Enhanced Context with Retrieval Augmented Generation (RAG)
 
-twinny now supports workspace embeddings to provide more relevant context for your queries.
+twinny uses Retrieval Augmented Generation (RAG) to incorporate relevant information from your workspace documents into its responses, providing more accurate and context-aware assistance.
 
-### RAG and Mentions How it Works
+**How RAG Works:**
 
-1. Your workspace documents are embedded and stored when you click the "Embed workspace documents" button.
-2. When you send a message, twinny looks up relevant chunks from the embeddings.
-3. These chunks are reranked and used as additional context for your query.
-4. Use the `@workspace` mention in the chat to search for relevant documents.
-5. Use `@problems` for code issues
-6. Use `@` to add context for specific files in the workspace. 
+1.  **Create Embeddings**: First, you need to generate embeddings for your workspace documents. Click the "Embed workspace documents" button in the twinny settings panel. This process converts your documents into vector representations (embeddings) that twinny can understand and search.
+2.  **Query Augmentation**: When you send a message using specific mentions (see below), twinny searches your workspace embeddings for the most relevant document chunks.
+3.  **Contextual Response**: These retrieved chunks are then added as context to your original query, allowing the AI model to generate a more informed response.
 
-### Embedding Settings
+**Using Mentions to Trigger RAG and Add Specific Context:**
 
-- **Embedding Provider**: By default, twinny uses Ollama Embedding (all-minilm:latest) for embeddings.
-- **Provider Details**:
-  - Label: Ollama Embedding
-  - Provider: ollama
-  - Type: embedding
-  - Hostname: 0.0.0.0
-  - Path: /api/embed
-  - Protocol: http
-  - Port: 11434
+-   `@workspace`: Include this mention in your chat message to instruct twinny to search across all your embedded workspace documents for relevant context.
+-   `@file`: Type `@` followed by the name of a specific file in your workspace (e.g., `@myFile.ts`) to add that file's content as context to your query.
+-   `@problems`: Use this mention to focus twinny's attention on reported problems or diagnostics within your codebase. (Note: This may draw from a different information source than workspace document embeddings.)
 
-You can update these settings to use a different embedding provider if needed. In theory, most providers should work as long as they return the correct data structure.
+**Toggling RAG Context:**
 
-For HTTPS providers like OpenAI, a local proxy such as LiteLLM is required for it to work.
+You can toggle the use of RAG-retrieved context for each message by clicking the database-like icon in the chat input area. This allows you to control whether external workspace information is included.
 
-### Rerank Probability Threshold
+### Configuring Embeddings
 
-You can adjust the rerank probability threshold (default: 0.14) to control which results are included as context. A lower threshold means more results are likely to be included.
+twinny requires an embedding provider to generate the vector representations of your workspace documents.
 
-### Toggling Context
+-   **Default Embedding Provider**: By default, twinny uses a local Ollama instance with an embedding model like `all-minilm:latest`.
+-   **Default Connection Details (for Ollama)**:
+    -   Provider: `ollama`
+    -   Type: `embedding`
+    -   Hostname: `127.0.0.1` (or `localhost`. Use `0.0.0.0` if Ollama is in a container and needs to be accessible from other containers/host)
+    -   Path: `/api/embed`
+    -   Protocol: `http`
+    -   Port: `11434`
 
-The database-like icon with lines allows you to turn on/off the use of embedded context for each message.
+-   **Custom Providers**: You can update these settings to use a different embedding provider. Most providers that return a compatible data structure (an array of floating-point numbers) should work.
+-   **HTTPS Providers**: For providers using HTTPS (e.g., OpenAI API), a local proxy like [LiteLLM](https://litellm.ai/) is required to bridge the connection, as twinny primarily expects an HTTP endpoint for embeddings.
 
-### Embedding Workspace Documents
+**Rerank Probability Threshold:**
 
-To include your workspace documents in the embeddings, use the "Embed workspace documents" button in the settings panel.
+-   This setting (default: `0.14`) controls the sensitivity of the reranking process when multiple document chunks are retrieved.
+-   A lower threshold includes more results as context, potentially increasing comprehensiveness but also noise. A higher threshold is more selective.

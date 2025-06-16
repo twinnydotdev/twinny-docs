@@ -4,8 +4,8 @@ description: Keyboard shortcuts for twinny.
 
 ---
 
-| Shortcut                    | Description                                      |
-| ----------------------------| -------------------------------------------------|
-| `ALT+\`                     | Trigger inline code completion                   |
-| `CTRL+SHIFT+/`              | Stop the inline code generation                  | 
-| `Tab`                       | Accept the inline code generated                 |
+| Shortcut         | Description                 |
+| -----------------| --------------------------- |
+| `Alt+\`          | Trigger code completion     |
+| `Ctrl+Shift+/`   | Stop code generation        |
+| `Tab`            | Accept code completion      |

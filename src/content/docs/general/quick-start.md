@@ -5,9 +5,9 @@ description: A quick start guide for using twinny.
 
 ## Prerequisites
 
-Before you start using twinny you need to have access to an inference provider.  An inference provider is a local or cloud hosted server that runs the AI models.
+To use twinny, you need access to an inference provider. An inference provider is a local or cloud-hosted server that runs the AI models.
 
-The recommended way to do this is to use [Ollama](https://ollama.com/).  Ollama makes it easy to run your models locally and exposes them as an OpenAI compatible API.  Performance will depend on your hardware and chosen model, see Ollama's documentation for more information.
+The recommended way to set this up is by using [Ollama](https://ollama.com/). Ollama simplifies running AI models locally and exposes them through an OpenAI-compatible API. Performance will vary based on your hardware and the chosen model; please refer to Ollama's documentation for more details.
 
 ## Installing the extension
 
@@ -15,16 +15,32 @@ The recommended way to do this is to use [Ollama](https://ollama.com/).  Ollama 
 
 ## Installing Ollama as an inference provider
 
-1. Visit [Install Ollama](https://ollama.com/) and follow the instructions to install Ollama on your machine.
-2. Choose a model from the list of models available on Ollama.  Two recommended models to get started are [codellama:7b-instruct](https://ollama.com/library/codellama:instruct) for chat and [codellama:7b-code](https://ollama.com/library/codellama:code) for fill-in-middle.  See the [Supported models page](/general/supported-models/) for more options.
+1. Visit the [Ollama installation page](https://ollama.com/) and follow the instructions to install Ollama on your machine.
+2. Download a model to use with twinny. A good general-purpose model to start with is `codellama:7b-instruct`. You can run the following command in your terminal:
+
+```sh
+ollama pull codellama:7b-instruct
+```
+
+To run this model, or another of your choice (see the [Supported Models page](/general/supported-models/) for more options), use:
+
+```sh
+ollama run your-chosen-model-name
+```
+
+For example, to run `codellama:7b-instruct`:
 
 ```sh
 ollama run codellama:7b-instruct
-ollama run codellama:7b-code
 ```
 
-Once both the extension and Ollama are installed you can start using twinny.
+Make sure the model is running in Ollama before proceeding.
 
-1. Open VS code (if already open a restart might be needed after install) and look for the twinny icon in the side panel.
+## Using twinny
 
-You should also see the 🤖 icon indicating that twinny is ready to use. The icon will change to a spinner when twinny is making a call to the inference provider.
+Once both the extension and an Ollama model are running, you can start using twinny:
+
+1. Open VS Code. If it was already open during the extension installation, a restart might be necessary.
+2. Look for the twinny icon in the side panel.
+
+You should also see the 🤖 icon in the status bar, indicating that twinny is ready. This icon will change to a spinner when twinny is communicating with the inference provider.

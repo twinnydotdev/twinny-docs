@@ -1,12 +1,16 @@
 ---
-title: Autocomplete 
-description: Autocomplete  
+title: Code Completion (Fill-in-the-Middle)
+description: Learn how to use twinny for code completion (fill-in-the-middle).
 ---
 
-To use twinny to autocomplete a code snippet, just start typing in the editor and twinny will autocomplete for you. It's very similar to how Github Copilot works.
+twinny offers code completion to help you write code more efficiently. As you type, twinny will automatically suggest completions, similar to GitHub Copilot.
 
-If you prefer to trigger code completion manually, turn off automatic inline code completion in the Settings menu which can be found at the top of the twinny side panel and then use the keyboard shortcut `ALT+\` to trigger code completion.
+If you prefer to trigger code completion manually:
+1. Disable "Automatic Inline Code Completion" in the twinny settings (accessible from the top of the twinny side panel).
+2. Use the keyboard shortcut `Alt+\` to request a completion.
 
-Github Copilot and twinny share the same keyboard shortcuts, so they may interfere with each other. Please enable or disable them if required.
+**Shortcut Conflicts:**
 
-See the [Supported models page](/twinny-docs/general/supported-models/) for supported models for fill-in-middle completions.
+twinny uses the same default keyboard shortcut (`Alt+\`) for manual code completion as GitHub Copilot. If you have both extensions enabled with this shortcut, it can lead to conflicts. To resolve this, you may need to disable this shortcut in one of the extensions or reconfigure it in your VS Code keyboard shortcut settings (e.g., assign a different shortcut to twinny's "Trigger Completion" command).
+
+For more information on models that support the fill-in-the-middle technique, see the [Supported Models page](/general/supported-models/).

@@ -1,68 +1,68 @@
 ---
-title: Supported models
-description: A list of supported models for twinny.
+title: Supported Models
+description: A list of AI models compatible with twinny for different features.
 ---
 
-twinny is a configurable extension/interface which means many models are technically supported. However, not all models work well with twinny in certain scenarios.  The following is a list of the models that have been tested and found to work well with twinny.  If you find a model that works but is not listed here, please let us know so we can add it to the list or open a pull request to add it.
+twinny is a configurable extension, meaning many AI models are technically supported. However, not all models perform optimally with twinny in every scenario. This page lists models that have been tested and are recommended for specific features.
 
-### Chat
+If you discover a model that works well with twinny but isn't listed here, please [open an issue or pull request](https://github.com/rjmacarthy/twinny/issues) to suggest its addition.
 
-In theory any chat model which is trained for instructing will work with twinny.  The following are some example of models recommended for chat.
+### Chat Models
+
+Most chat models trained for instruction-following should work with twinny. Here are some recommended examples:
 
 
 - [`llama3.1`](https://ollama.com/library/llama3.1)
 - [`codellama:7b-instruct`](https://ollama.com/library/codellama:instruct)
 - [`phind-codellama`](https://ollama.com/library/phind-codellama)
 - [`mistral`](https://ollama.com/library/mistral)
-- [`qwen2.5-coder`](https://ollama.com/library/qwen2.5-coder:7b-instruct)
+- [`qwen2.5-coder:7b-instruct`](https://ollama.com/library/qwen2.5-coder:7b-instruct)
 - [`codestral`](https://ollama.com/library/codestral)
 
-### Fill-in-middle
+### Code Completion (Fill-in-the-Middle) Models
 
-Only certain models support fill in the middle due to their training data.  The following are some example of models recommended for fill in the middle.  If you find a model that works but is not listed here, please let us know so we can add it to the list or open a pull request to add it.
+Only certain models are trained to support the fill-in-the-middle technique effectively. The following are examples of models recommended for this type of code completion. If you find another model that works well, please let us know.
 
-#### Qwen2.5-coder models
+#### Qwen2.5-coder Models
 
 - [`qwen2.5-coder:7b-base`](https://ollama.com/library/qwen2.5-coder:7b-base)
 
-#### Codellama models
+#### Codellama Models
 
-`code` versions of codellama models.
+Use the `code` suffixed versions of Codellama models.
 
 - [`codellama:code`](https://ollama.com/library/codellama:code)
 - [`codellama:13b-code`](https://ollama.com/library/codellama:13b-code)
-  
-Note: The _34b_ version of codellama does not work well with fill in the middle.
 
-#### Deepseek Coder models
+Note: The `34b` version of Codellama (e.g., `codellama:34b-code`) does not perform well for fill-in-the-middle tasks.
 
-`base` versions of deepseek-coder models.
+#### Deepseek Coder Models
+
+Use the `base` versions of Deepseek Coder models.
 
 - [`deepseek-coder:base`](https://ollama.com/library/deepseek-coder:base)
 
-Note: Models which are not base versions do not work well with fill in the middle.
+Note: Models that are not `base` versions (e.g., `instruct` versions) do not work well for fill-in-the-middle.
 
-#### Starcoder models
+#### Starcoder Models
 
-`base` versions of starcoder models. The default and base models are the same.
+Use the `base` versions of Starcoder models. The default Ollama tags for Starcoder usually point to the `base` versions.
 
 - [`starcoder`](https://ollama.com/library/starcoder)
-- [`starcoder2`](https://ollama.com/library/starcoder2)
+- [`starcoder2`](https://ollama.com/library/starcoder2) (e.g., [`starcoder2:7b`](https://ollama.com/library/starcoder2:7b))
 
-Note: Starcoder2 doesn't always stop when it is finished.  Lowering the temperature and upping the repeat penalty helps with this issue.
+Note: `starcoder2` may sometimes fail to stop generating text appropriately. Lowering the temperature and increasing the repeat penalty settings can help mitigate this. For potentially better results with Starcoder2, consider using a specific size like [`starcoder2:7b`](https://ollama.com/library/starcoder2:7b).
 
-Use [Starcoder2 7b](https://ollama.com/library/starcoder2:7b) for best results.
+#### Stablecode Models
 
-#### Stablecode models
-
-`code` versions of stablecode models.
+Use the `code` suffixed versions of Stablecode models.
 
 - [`stable-code:3b-code`](https://ollama.com/library/stable-code:3b-code)
 
-#### Codegemma models
+#### Codegemma Models
 
-`code` versions of codegemma models.
+Use the `code` suffixed versions of Codegemma models.
 
-- [`codegemma`](https://ollama.com/library/codegemma:7b-code)
+- [`codegemma:7b-code`](https://ollama.com/library/codegemma:7b-code)
 
-Note: CodeGemma doesn't always stop when it is finished.  Lowering the temperature and upping the repeat penalty helps with this issue.
+Note: `codegemma` may also sometimes fail to stop generating text appropriately. Lowering the temperature and increasing the repeat penalty settings can help.
