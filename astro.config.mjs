@@ -6,10 +6,6 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
 	site: 'https://twinnydotdev.github.io',
 	base: '/twinny-docs',
-	server: {
-    host: true,
-    port: 3008
-  },
 	integrations: [
 		starlight({
 			title: 'twinny',
