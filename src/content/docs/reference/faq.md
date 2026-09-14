@@ -5,7 +5,7 @@ description: Short answers to common questions about twinny.
 
 ### Is twinny free?
 
-Yes. It is open source under the MIT licence, with no account and no paid tier. Running a hosted API through it costs whatever that vendor charges.
+Yes. The extension is open source under the MIT licence, with no account and nothing to pay. Running a hosted API through it costs whatever that vendor charges. Teams that run a shared [gateway](/twinny-docs/teams/overview/) get five developers free and buy [seats](/twinny-docs/teams/licensing/) beyond that.
 
 ### Does my code leave my machine?
 

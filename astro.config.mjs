@@ -84,6 +84,15 @@ export default defineConfig({
 					],
 				},
 				{
+					...t('Teams', '团队'),
+					items: [
+						page('Overview', '概述', '/teams/overview'),
+						page('Run a gateway', '运行网关', '/teams/gateway'),
+						page('Connect to your team', '连接到团队', '/teams/connect'),
+						page('Licensing and seats', '许可与席位', '/teams/licensing'),
+					],
+				},
+				{
 					...t('Reference', '参考'),
 					items: [
 						page('Settings', '设置', '/reference/settings'),
