@@ -1,6 +1,6 @@
 ---
 title: Welcome to twinny
-description: The free and private AI extension for Visual Studio Code. Auto-complete suggestions, chat with AI and more.
+description: The free and private AI extension for Visual Studio Code. Code completion, inline edits, chat, code review and more, with the model server of your choice.
 template: splash
 hero:
   title: |
@@ -8,48 +8,70 @@ hero:
   image:
     file: ../../assets/twinny.svg
   tagline: |
-    Your free and private AI assistant for VS Code. Get auto-complete suggestions, chat with AI, and more.
+    Your free and private AI assistant for VS Code. Code completion, inline edits and chat, powered by a model server you choose: on your machine, on another of your devices, or hosted.
   actions:
-    - text: Getting Started
-      link: /twinny-docs/general/quick-start
+    - text: Get started
+      link: /twinny-docs/getting-started/quick-start
       icon: right-arrow
+      variant: primary
+    - text: Install from the Marketplace
+      link: https://marketplace.visualstudio.com/items?itemName=rjmacarthy.twinny
+      icon: external
       variant: secondary
 ---
 
 import { Card, CardGrid, LinkCard } from "@astrojs/starlight/components";
 
-## Learn More
+## Start here
 
 <CardGrid stagger>
   <LinkCard
-    title="Getting Started"
-    description="A quick start guide for using twinny"
-    href="/twinny-docs/general/quick-start"
+    title="Quick start"
+    description="Install the extension and connect it to a local model server in a few minutes"
+    href="/twinny-docs/getting-started/quick-start"
   />
   <LinkCard
-    title="Inference Providers"
-    href="/twinny-docs/general/providers"
-    description="Learn how to use an inference provider with twinny"
+    title="Choosing a model server"
+    href="/twinny-docs/getting-started/choosing-a-server"
+    description="Local, hosted or another of your devices, and what hardware runs which models"
   ></LinkCard>
   <LinkCard
-    title="Supported Models"
-    description="Learn about the supported AI models"
-    href="/twinny-docs/general/supported-models"
+    title="Providers"
+    description="Ollama, LM Studio, llama.cpp, any OpenAI-compatible server, or a hosted API"
+    href="/twinny-docs/providers/overview"
   ></LinkCard>
   <LinkCard
-    title="Symmetry"
-    description="The distributed AI inference network"
-    href="/twinny-docs/general/symmetry"
+    title="Troubleshooting"
+    description="What each error means and how to fix it"
+    href="/twinny-docs/getting-started/troubleshooting"
   ></LinkCard>
 </CardGrid>
 
-## Main Features
+## What twinny does
 
 <CardGrid stagger>
-  <Card title="Code Completion" icon="seti:json">
-    Get intelligent code completion suggestions.
+  <Card title="Code completion" icon="seti:json">
+    Fill-in-the-middle suggestions as you type, with context from open files, recent edits and IntelliSense. Press Tab to accept.
   </Card>
-  <Card title="Chat with AI" icon="pencil">
-    Chat with your personal AI to get answers and generate code.
+  <Card title="Inline edit" icon="pencil">
+    Press Ctrl+I, describe a change, and review it as a diff in the editor. Accept, reject, or refine.
+  </Card>
+  <Card title="Chat" icon="comment">
+    Ask about your code with files, symbols, problems, git changes and terminal output attached with @.
+  </Card>
+  <Card title="Workspace index" icon="magnifier">
+    Embed the workspace so chat can find the code a question is about, ranked by a local reranker.
+  </Card>
+  <Card title="Code review and commits" icon="github">
+    Review the working tree, a branch or a GitHub pull request, and write commit messages.
+  </Card>
+  <Card title="Terminal" icon="laptop">
+    Write a command from a description, or fix the last error with the output attached.
+  </Card>
+  <Card title="Devices" icon="random">
+    Use the GPU in another of your computers over an encrypted peer-to-peer link. No account, no relay.
+  </Card>
+  <Card title="Private by default" icon="approve-check">
+    Everything runs against a server you control. No telemetry, no sign-in, MIT licensed.
   </Card>
 </CardGrid>

@@ -1,6 +1,6 @@
 ---
-title: 欢迎来到 twinny
-description: Visual Studio Code 的免费私有 AI 扩展。有自动补全代码、与 AI 对话等功能。
+title: 欢迎使用 twinny
+description: 免费且私密的 Visual Studio Code AI 扩展。代码补全、内联编辑、对话、代码审查等，使用你自己选择的模型服务器。
 template: splash
 hero:
   title: |
@@ -8,48 +8,70 @@ hero:
   image:
     file: ../../../assets/twinny.svg
   tagline: |
-    Visual Studio Code 的免费私有 AI 扩展。有自动补全代码、与 AI 对话等功能。
+    你的免费、私密的 VS Code AI 助手。代码补全、内联编辑与对话，由你选择的模型服务器驱动：本机、你的另一台设备，或托管 API。
   actions:
     - text: 开始使用
-      link: /zh-cn/general/quick-start
+      link: /twinny-docs/zh-cn/getting-started/quick-start
       icon: right-arrow
+      variant: primary
+    - text: 从应用市场安装
+      link: https://marketplace.visualstudio.com/items?itemName=rjmacarthy.twinny
+      icon: external
       variant: secondary
 ---
 
 import { Card, CardGrid, LinkCard } from "@astrojs/starlight/components";
 
-## 了解更多
+## 从这里开始
 
 <CardGrid stagger>
   <LinkCard
     title="快速开始"
-    description="一个针对使用 twinny 的快速入门指南"
-    href="/zh-cn/general/quick-start"
+    description="几分钟内安装扩展并连接到本地模型服务器"
+    href="/twinny-docs/zh-cn/getting-started/quick-start"
   />
   <LinkCard
+    title="选择模型服务器"
+    href="/twinny-docs/zh-cn/getting-started/choosing-a-server"
+    description="本地、托管或你的另一台设备，以及什么硬件能跑什么模型"
+  ></LinkCard>
+  <LinkCard
     title="推理提供者"
-    description="了解如何在 twinny 中使用推理提供者"
-    href="/zh-cn/general/providers"
+    description="Ollama、LM Studio、llama.cpp、任何 OpenAI 兼容服务器，或托管 API"
+    href="/twinny-docs/zh-cn/providers/overview"
   ></LinkCard>
   <LinkCard
-    title="支持的模型"
-    description="了解 twinny 支持的 AI 模型"
-    href="/zh-cn/general/supported-models"
-  ></LinkCard>
-  <LinkCard
-    title="Symmetry"
-    description="去中心化的 AI 推理网络"
-    href="/zh-cn/general/symmetry"
+    title="故障排除"
+    description="每条错误的含义和修复方法"
+    href="/twinny-docs/zh-cn/getting-started/troubleshooting"
   ></LinkCard>
 </CardGrid>
 
-## 主要功能
+## twinny 能做什么
 
 <CardGrid stagger>
   <Card title="代码补全" icon="seti:json">
-    twinny 为你的代码提供自动补全建议
+    边输入边获得填空式（fill-in-the-middle）建议，结合打开的文件、最近的编辑和 IntelliSense 上下文。按 Tab 接受。
   </Card>
-  <Card title="Chat with AI" icon="pencil">
-    twinny 提供一个聊天界面来与私人 AI 互动
+  <Card title="内联编辑" icon="pencil">
+    按 Ctrl+I 描述修改，在编辑器中以 diff 形式审阅。接受、拒绝或微调。
+  </Card>
+  <Card title="对话" icon="comment">
+    用 @ 附加文件、符号、问题、git 变更和终端输出，就你的代码提问。
+  </Card>
+  <Card title="工作区索引" icon="magnifier">
+    为工作区建立嵌入索引，让对话找到问题相关的代码，由本地重排序器排序。
+  </Card>
+  <Card title="代码审查与提交" icon="github">
+    审查工作区、分支或 GitHub 拉取请求，并撰写提交信息。
+  </Card>
+  <Card title="终端" icon="laptop">
+    根据描述编写命令，或附上输出修复最后一个错误。
+  </Card>
+  <Card title="设备" icon="random">
+    通过加密的点对点连接使用你另一台电脑上的 GPU。无需账号，没有中继。
+  </Card>
+  <Card title="默认私密" icon="approve-check">
+    一切都运行在你控制的服务器上。没有遥测，无需登录，MIT 许可证。
   </Card>
 </CardGrid>
