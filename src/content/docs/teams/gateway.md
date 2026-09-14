@@ -56,13 +56,15 @@ To reach the gateway from other machines, set `"listen": { "host": "0.0.0.0" }` 
 
 ## 4. Add developers
 
-On the admin page, **Keys → name → create key**, or:
+Nothing needs to be sent over chat. Alice opens **Connect to team** in the twinny sidebar, enters the gateway URL and chooses **Request a key**. She reads you the code VS Code shows her. It appears under **Sign-in requests** on the admin page with her suggested name and machine; you type the key name and **approve**. Her VS Code collects the key by itself and runs the connection check. Codes last ten minutes, and approve only a code someone has read to you.
+
+You can also make keys yourself, on the admin page (**Keys → name → create key**) or:
 
 ```sh
 npx twinny-server keys create alice
 ```
 
-Send Alice the key over a channel you trust; it is a password. She connects from the twinny sidebar, see [Connect to your team](/twinny-docs/teams/connect/). Set the team's default models on the admin page under **Providers & models** so that connecting configures chat, autocomplete and embeddings for her in one step.
+and send the key over a channel you trust; it is a password. Either way, see [Connect to your team](/twinny-docs/teams/connect/) for Alice's side. Set the team's default models on the admin page under **Providers & models** so that connecting configures chat, autocomplete and embeddings for her in one step.
 
 One key per person. Usage is attributed per key, so a shared key defeats the point. Revoking a key (`keys revoke alice`, or **revoke** on the page) takes effect within a second, no restart.
 

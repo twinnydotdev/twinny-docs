@@ -1,21 +1,23 @@
 ---
 title: Connect to your team
-description: Use your team's gateway from VS Code with the address and the personal key your admin gave you.
+description: "Use your team's gateway from VS Code: enter the address, then paste a key or request one with a short code."
 ---
 
-You need two things from whoever runs your team's gateway: its address (such as `https://ai.example.com`) and your personal key (`tsk_…`). The key is yours alone; usage is reported per key, so lending it makes someone else's work show up as yours.
+You need the gateway's address from whoever runs it (such as `https://ai.example.com`). Your personal key (`tsk_…`) you can either be given, or request from inside VS Code. The key is yours alone; usage is reported per key, so lending it makes someone else's work show up as yours.
 
 ## Connect
 
 1. Open the twinny sidebar and go to **Providers**.
 2. Under **Using Twinny with your team?** choose **Connect to team**.
-3. Enter the gateway URL and your key, then **Check connection**.
-
-twinny asks the gateway who you are and tests each model your admin has set as the team default for chat, autocomplete and embeddings. Usually under 25 seconds. You see your name as the gateway knows it, and for each feature whether the model answered and how fast.
-
-4. Choose **Connect**. twinny creates one provider per feature the admin configured, makes them active, and stores your key in VS Code's secret storage. Nothing about your key is written to settings or exported with your provider list.
+3. Enter the gateway URL. Then either paste your key and **Check connection**, or choose **Request a key** (below).
+4. twinny asks the gateway who you are and tests each model your admin has set as the team default for chat, autocomplete and embeddings. Usually under 25 seconds. You see your name as the gateway knows it, and for each feature whether the model answered and how fast.
+5. Choose **Connect**. twinny creates one provider per feature the admin configured, makes them active, and stores your key in VS Code's secret storage. Nothing about your key is written to settings or exported with your provider list.
 
 Any providers you already had are kept; you can switch back to them at any time from the provider list.
+
+### Requesting a key
+
+**Request a key** shows a short code, such as `WXYZ-2345`. Read it to your gateway admin, in person or on a call. They see the request on the gateway's admin page with the name and machine your VS Code suggested, type your key name, and approve it. Your key arrives in VS Code within a few seconds, goes straight into secret storage, and the connection check runs by itself. The code is good for ten minutes and cannot be turned into a key by anyone but the admin.
 
 ## What happens to your code
 
@@ -23,7 +25,8 @@ Prompts and the code around your cursor go to the gateway and its backend, on yo
 
 ## Messages you may see
 
-- **"This gateway key was revoked on …"**: ask your admin for a new key and connect again.
+- **"This gateway key was revoked on …"**: connect again with **Request a key**, or ask your admin for a new one.
+- **"Your admin denied the sign-in request"** or **"The sign-in code expired"**: ask, then request again. Codes last ten minutes.
 - **"This gateway key has no seat"**: the gateway has more keys than its plan allows. Your admin needs to add seats or revoke unused keys; nothing to do on your side.
 - **"is rate limiting requests"**: the gateway is busy, or your key hit its own limit. It clears by itself within a minute.
 - **"Could not connect"**: the gateway is unreachable from your machine. Check the address, VPN or tunnel, and that `https://<gateway>/healthz` answers from a browser.
