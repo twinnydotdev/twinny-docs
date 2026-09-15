@@ -10,7 +10,7 @@ You need the gateway's address from whoever runs it (such as `https://ai.example
 1. Open the twinny sidebar and go to **Providers**.
 2. Under **Using Twinny with your team?** choose **Connect to team**.
 3. Enter the gateway URL. Then either paste your key and **Check connection**, or choose **Request a key** (below).
-4. twinny asks the gateway who you are and tests each model your admin has set as the team default for chat, autocomplete and embeddings. Usually under 25 seconds. You see your name as the gateway knows it, and for each feature whether the model answered and how fast.
+4. twinny asks the gateway who you are and tests each model your admin has set as the team default for chat, autocomplete and embeddings. A cold model can take up to 20 seconds each. You see your name as the gateway knows it, and for each feature whether the model answered and how fast. A feature that did not answer shows "Not verified" and connects anyway, so a model your admin is still loading does not send you away.
 5. Choose **Connect**. twinny creates one provider per feature the admin configured, makes them active, and stores your key in VS Code's secret storage. Nothing about your key is written to settings or exported with your provider list.
 
 Any providers you already had are kept; you can switch back to them at any time from the provider list.

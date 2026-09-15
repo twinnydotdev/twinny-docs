@@ -56,7 +56,7 @@ To reach the gateway from other machines, set `"listen": { "host": "0.0.0.0" }` 
 
 ## 4. Add developers
 
-Nothing needs to be sent over chat. Alice opens **Connect to team** in the twinny sidebar, enters the gateway URL and chooses **Request a key**. She reads you the code VS Code shows her. It appears under **Sign-in requests** on the admin page with her suggested name and machine; you type the key name and **approve**. Her VS Code collects the key by itself and runs the connection check. Codes last ten minutes, and approve only a code someone has read to you.
+Nothing needs to be sent over chat. Alice opens **Connect to team** in the twinny sidebar, enters the gateway URL and chooses **Request a key**. She reads you the code VS Code shows her. It appears under **People → Sign-in requests** on the admin page with her suggested name and machine; you type the key name and **approve**. Her VS Code collects the key by itself and runs the connection check. Codes last ten minutes, and approve only a code someone has read to you.
 
 You can also make keys yourself, on the admin page (**Keys → name → create key**) or:
 
@@ -75,11 +75,25 @@ One key per person. Usage is attributed per key, so a shared key defeats the poi
 | See who is using what | The admin page, or `twinny-server usage --since 7d` |
 | Rotate a key | Revoke it, create one with the same name, send it over |
 | Change models or backends | Admin page, **Providers & models**; applies live |
+| Set what developers may use | Admin page, **Policy**; needs a licence with team policy |
 | Change limits or the listen address | Edit the file, restart |
-| Check the plan and seats | Admin page, **Plan and licence**, or `twinny-server license` |
+| Check the plan and seats | Admin page, **Plan & licence**, or `twinny-server license` |
 | Run it as a service | A systemd unit example is in [docs/gateway.md](https://github.com/twinnydotdev/twinny/blob/main/docs/gateway.md#running-it-as-a-service) |
 
 The free plan allows five active keys. When the sixth developer arrives, creating the key is refused with the reason, and [a licence](/twinny-docs/teams/licensing/) raises the limit.
+
+## Docker instead
+
+`packages/twinny-server` in the repository has a `docker-compose.yml` that runs Ollama and the gateway together, with the gateway published on `127.0.0.1:8765`:
+
+```sh
+docker compose run --rm twinny-server init /data/twinny.gateway.json --host 0.0.0.0 --ollama ollama
+docker compose run --rm ollama pull qwen2.5-coder:7b
+docker compose run --rm twinny-server keys create you --admin --config /data/twinny.gateway.json
+docker compose up -d
+```
+
+The image is `ghcr.io/twinnydotdev/twinny-server`. Keys, usage and the licence live in a volume, and every `docker compose run --rm twinny-server …` command (keys, usage, license) shares it with the running gateway. A GPU needs the NVIDIA Container Toolkit and the commented block in the compose file.
 
 ## Files on disk
 

@@ -14,7 +14,7 @@ A seat is an active access key on the gateway. Every developer has their own key
 | Free | 5 | permanent |
 | Team | as bought | one year, renewable |
 
-Everything the gateway does is in both plans: the admin page, usage per developer, key management, live configuration. The licence changes one number.
+Everything the gateway does is in both plans: the admin page, usage per developer, key management, live configuration, sign-in with a code. The licence changes the seat count and switches on [team policy](/twinny-docs/teams/policy/).
 
 ## Getting a licence
 

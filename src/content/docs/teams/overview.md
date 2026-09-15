@@ -27,6 +27,7 @@ twinny is free and open source for individuals, and stays that way. Teams get on
 | --- | --- | --- |
 | Developers (active keys) | up to 5 | as many seats as you buy |
 | Everything above | yes | yes |
+| [Team policy](/twinny-docs/teams/policy/): allowed providers, locked defaults | no | yes |
 | Runs where | your machine | your machine |
 | Cost | nothing, forever | per seat, per year |
 
