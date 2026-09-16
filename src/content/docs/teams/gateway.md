@@ -3,7 +3,7 @@ title: Run a gateway
 description: Set up twinny-server on the machine with the models, make keys for your developers, and open the admin page.
 ---
 
-Everything on this page runs on the machine with the models. It needs Node 18 or newer and a backend such as Ollama already running there.
+Everything on this page runs on the machine with the models. It needs Node 18 or newer and a model server already running there: Ollama, LM Studio, llama.cpp, QVAC, Open WebUI, LiteLLM or any OpenAI-compatible server.
 
 ## 1. Start it
 
@@ -11,7 +11,7 @@ Everything on this page runs on the machine with the models. It needs Node 18 or
 npx twinny-server quickstart
 ```
 
-That does three things: writes `./twinny.gateway.json` if there is none, makes an admin key for you (printed once; keep it), and serves. When Ollama is running on the machine, quickstart asks it which models are pulled and fills the aliases with real names; if nothing suitable is pulled yet, the aliases get placeholders to change. The starter serves one chat and autocomplete alias (`coder`) and one embedding alias (`embed`):
+That does three things: writes `./twinny.gateway.json` if there is none, makes an admin key for you (printed once; keep it), and serves. Quickstart looks for a model server on the usual local ports (or the one you name with `--backend [kind=]host[:port]`, such as `lmstudio=10.0.0.5` or `http://gpu-box:8000`), asks it which models it has, and on a terminal lets you pick a chat, an autocomplete and an embedding model from the list (`--yes` takes the recommendations). If nothing answers, the aliases get placeholders to change on the admin page. The starter serves one chat and autocomplete alias (`coder`) and one embedding alias (`embed`):
 
 ```sh
 ollama pull qwen2.5-coder:7b
