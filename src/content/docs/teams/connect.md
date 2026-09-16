@@ -21,7 +21,7 @@ Any providers you already had are kept; you can switch back to them at any time 
 
 ## What happens to your code
 
-Prompts and the code around your cursor go to the gateway and its backend, on your team's hardware, and nowhere else. The gateway records which model you used, how long it took and token counts, never the content. See [Status bar, logs and privacy](/twinny-docs/features/status-and-logs/) for what twinny itself keeps.
+Prompts and the code around your cursor go to the gateway and its backend, on your team's hardware, and nowhere else. The gateway records which model you used, how long it took and token counts. It keeps the content of your requests only if your team has switched recording on, and then it says so on the connect screen and on the Providers tab. See [Status bar, logs and privacy](/twinny-docs/features/status-and-logs/) for what twinny itself keeps.
 
 ## Messages you may see
 

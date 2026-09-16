@@ -9,16 +9,17 @@ The twinny extension is MIT licensed and free for everyone. So is the gateway, `
 
 A seat is an active access key on the gateway. Every developer has their own key, so seats are developers. Revoked keys do not count, so rotating a key or offboarding someone frees their seat at once.
 
-| Plan | Seats | Term |
-| --- | --- | --- |
-| Free | 5 | permanent |
-| Team | as bought | one year, renewable |
+| Plan | Seats | Price | Term | Covers |
+| --- | --- | --- | --- | --- |
+| Free | 5 | nothing, forever | permanent | one gateway |
+| Team | as bought | $6 per seat per month, billed yearly ($72 per seat per year) | one year, renewable | one gateway per licence |
+| Enterprise | from 50 | $10 per seat per month, billed yearly | one year, renewable | the organisation: any number of gateways |
 
-Everything the gateway does is in both plans: the admin page, usage per developer, key management, live configuration, sign-in with a code. The licence changes the seat count and switches on [team policy](/twinny-docs/teams/policy/).
+Everything the gateway does is in every plan: the admin page, usage per developer, key management, live configuration, sign-in with a code, team GPU pooling. The free plan is not a trial. A licence changes the seat count and switches on [team policy](/twinny-docs/teams/policy/) and [recording](/twinny-docs/teams/recording/). Team comes with email support; Enterprise with priority support from a named contact, invoice or purchase-order billing, and help with security questionnaires and procurement paperwork.
 
 ## Getting a licence
 
-Priced per seat, per year. To buy or to ask about a larger deployment, message [@twinnydotdev](https://x.com/twinnydotdev) or open a discussion on [GitHub](https://github.com/twinnydotdev/twinny/discussions) with your organisation name and the number of seats. You receive a licence token, a single line beginning `twl1.`, by email.
+To buy, message [@twinnydotdev](https://x.com/twinnydotdev) or open a discussion on [GitHub](https://github.com/twinnydotdev/twinny/discussions) with your organisation name and the number of seats. You receive a licence token, a single line beginning `twl1.`, by email within one business day. The token carries your organisation, the seat count, the dates and the features it switches on; an Enterprise token covers the organisation, so the same one is installed on every gateway you run.
 
 ## Installing it
 
@@ -43,7 +44,7 @@ Plan: Acme Ltd, 12 of 25 seats used, licence until 2027-09-14
 
 ## How it is checked
 
-The token carries your organisation name, the seat count and the dates, signed by twinny. The gateway checks the signature against a public key built into `twinny-server`. That is the whole check: no account, no activation server, no call home, and no usage reported to anyone. The gateway works exactly the same on a network with no internet access.
+The token carries your organisation name, the seat count, the dates and the features, signed by twinny. The gateway checks the signature against a public key built into `twinny-server`. That is the whole check: no account, no activation server, no call home, and no usage reported to anyone. The gateway works exactly the same on a network with no internet access.
 
 ## When it lapses
 
@@ -59,6 +60,6 @@ Renewing is installing a new token. Your licence id stays the same.
 
 **Does a seat count keys or people?** Keys. One key per person is the intent, and the admin page makes that easy, but the gateway does not know or care who is behind a key.
 
-**What about several gateways?** Each gateway holds its own licence. Buy seats per gateway, or ask about a licence for the organisation.
+**What about several gateways?** A Team licence is per gateway: buy seats for each. An Enterprise licence covers the organisation, so one token goes on every gateway.
 
 **Is the licence check in the open source code?** Yes. The verification is in `src/licensing` in the repository; the only private part is the key that signs tokens.

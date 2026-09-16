@@ -5,54 +5,98 @@ description: Set up twinny-server on the machine with the models, make keys for 
 
 Everything on this page runs on the machine with the models. It needs Node 18 or newer and a backend such as Ollama already running there.
 
-## 1. Install and configure
+## 1. Start it
 
 ```sh
-npx twinny-server init                    # writes ./twinny.gateway.json
+npx twinny-server quickstart
 ```
 
-Edit the file so each alias names a model you have pulled. The starter serves one chat and autocomplete alias (`coder`) and one embedding alias (`embed`) from an Ollama on the same machine:
+That does three things: writes `./twinny.gateway.json` if there is none, makes an admin key for you (printed once; keep it), and serves. When Ollama is running on the machine, quickstart asks it which models are pulled and fills the aliases with real names; if nothing suitable is pulled yet, the aliases get placeholders to change. The starter serves one chat and autocomplete alias (`coder`) and one embedding alias (`embed`):
 
 ```sh
 ollama pull qwen2.5-coder:7b
 ollama pull nomic-embed-text
 ```
 
-Guided setup for Ollama or QVAC checks the backend and writes the aliases for you:
-
-```sh
-npx twinny-server setup ollama --model qwen2.5-coder:7b --capability fim
-```
-
-## 2. Make your admin key
-
-```sh
-npx twinny-server keys create you --admin
-```
-
-The key (`tsk_…`) is printed once and only its hash is stored. Keep it somewhere safe: it opens the admin page and makes the other keys.
-
-## 3. Start the gateway
-
-```sh
-npx twinny-server serve --config ./twinny.gateway.json
-```
+The banner shows where it listens and the admin page address:
 
 ```
 Twinny gateway listening on http://127.0.0.1:8765
   protocol: twinny/v1 at /twinny/v1
   models:   2 aliases (coder: fim/chat, embed: embeddings)
-  limits:   2 active, 120s deadline, 5s grace
+  limits:   4 active, 120s deadline, 5s grace
   health:   http://127.0.0.1:8765/healthz
+  admin:    http://127.0.0.1:8765/admin (sign in with an admin key)
   access:   1 active key
   plan:     Free plan, 1 of 5 seats used
   usage:    /home/you/.twinny/server/usage (kept 30 days)
   backend:  local-ollama answers (12 ms)
 ```
 
-Open `http://127.0.0.1:8765/admin`, sign in with the admin key, and check the **Backends** panel says "answering".
+Open `http://127.0.0.1:8765/admin`, sign in with the admin key, and check the **Backends** panel says "answering". To change a model, open **Providers & models**: it lists each backend's models to pick from, and saves apply live.
 
-To reach the gateway from other machines, set `"listen": { "host": "0.0.0.0" }` and put HTTPS in front of it: a reverse proxy (Caddy, nginx, Traefik) or a tunnel (Tailscale, WireGuard, SSH). Anything but loopback is exposed to that network. The gateway does not manage certificates.
+### The same, step by step
+
+```sh
+npx twinny-server init                      # writes ./twinny.gateway.json
+# edit the file: set each alias's "model" to one you have pulled
+npx twinny-server keys create you --admin   # shown once; opens the admin page
+npx twinny-server serve --config ./twinny.gateway.json
+```
+
+## 2. Reach it from other machines (HTTPS)
+
+Quickstart listens on `127.0.0.1`, so only this machine can reach it. To serve a team, expose it one of two ways. Anything but loopback is exposed to that network, and the gateway does not manage certificates itself.
+
+The twinny extension accepts plain `http://` gateway URLs, so inside a VPN or tailnet that is enough. Use HTTPS for anything reachable beyond it.
+
+### Caddy: a domain with automatic HTTPS
+
+Leave the gateway on `127.0.0.1` and put [Caddy](https://caddyserver.com/) in front; it gets and renews the certificate itself. A `Caddyfile`:
+
+```
+ai.example.com {
+    reverse_proxy 127.0.0.1:8765
+}
+```
+
+```sh
+caddy run
+```
+
+Developers use `https://ai.example.com`. Only Caddy is exposed; the gateway keeps listening on loopback.
+
+### Tailscale: private, no domain
+
+Every machine on your [tailnet](https://tailscale.com/) can reach the gateway by name, with nothing open to the internet.
+
+```sh
+tailscale up
+```
+
+In `twinny.gateway.json`, listen on the machine's Tailscale address (from `tailscale ip -4`), or on every interface:
+
+```json
+"listen": { "host": "100.101.102.103", "port": 8765 }
+```
+
+Restart the gateway. Developers on the tailnet use `http://<machine-name>:8765`. For HTTPS with a certificate from the tailnet:
+
+```sh
+tailscale serve 8765
+```
+
+and they use `https://<machine-name>.<tailnet>.ts.net` instead.
+
+## 3. Make more admins
+
+The key quickstart printed is an admin key. For a second admin, on the admin page choose **new key** and tick **admin**, or:
+
+```sh
+npx twinny-server keys create ops --admin
+```
+
+Keys (`tsk_…`) are printed once and only their hash is stored.
 
 ## 4. Add developers
 
@@ -102,6 +146,7 @@ The image is `ghcr.io/twinnydotdev/twinny-server`. Keys, usage and the licence l
 | Configuration | wherever you put `twinny.gateway.json` |
 | Keys (hashes only) | `~/.twinny/server/keys.json` |
 | Usage (one line per request, no content) | `~/.twinny/server/usage/YYYY-MM-DD.jsonl` |
+| Recordings (content, only with [recording](/twinny-docs/teams/recording/) on) | `~/.twinny/server/recordings/` |
 | Licence token | `~/.twinny/server/license` |
 
 Back up the configuration, the keys file and the licence. Nothing else is written anywhere, and nothing leaves the machine.

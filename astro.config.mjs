@@ -90,6 +90,7 @@ export default defineConfig({
 						page('Run a gateway', '运行网关', '/teams/gateway'),
 						page('Connect to your team', '连接到团队', '/teams/connect'),
 						page('Team policy', '团队策略', '/teams/policy'),
+						page('Recording', '记录', '/teams/recording'),
 						page('Licensing and seats', '许可与席位', '/teams/licensing'),
 					],
 				},
