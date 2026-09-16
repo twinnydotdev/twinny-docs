@@ -100,7 +100,7 @@ Keys (`tsk_…`) are printed once and only their hash is stored.
 
 ## 4. Add developers
 
-Send Alice an invite link. On the admin page under **People → Invite**, type her name and choose **make invite link**; copy the link or the ready-made message and send it to her. When she opens it, VS Code makes her key under that name, keeps it in secret storage and shows her the team's models to confirm. The link opens once and expires after seven days, and an unopened invite holds no seat. From a terminal instead:
+Send Alice an invite link. On the admin page under **People → Invite**, type her name, check that the address next to it is the one developers reach the gateway at (not `localhost`), and choose **make invite link**; copy the link or the ready-made message and send it to her. When she opens it, VS Code makes her key under that name, keeps it in secret storage and shows her the team's models to confirm. The link opens once and expires after seven days, and an unopened invite holds no seat. From a terminal instead:
 
 ```sh
 npx twinny-server invites create alice --url https://ai.example.com
