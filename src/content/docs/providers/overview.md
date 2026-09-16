@@ -78,14 +78,6 @@ Hosted chat goes through a fixed public endpoint, so hostname, port and path are
 
 The form validates as you type. **Test provider** sends a small request for the provider's job and shows either success or the error the server returned, with the URL it called.
 
-## Check setup
-
-**Check setup** at the top of the tab tests the active provider of each type:
-
-- **Working**: the server answered.
-- **Failing**: it did not, or returned an error. **Open provider** jumps to the form.
-- **Not set**: nothing is configured for that job. Chat and autocomplete are needed for the panel and inline suggestions; embeddings are optional.
-
 ## Managing providers
 
 - **Use this provider** makes it the active one for its type.

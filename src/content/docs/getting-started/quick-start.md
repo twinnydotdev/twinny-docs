@@ -42,7 +42,7 @@ If nothing answers (Ollama not running yet, or a non-default port), twinny says 
 
 ## 4. Check it works
 
-Open the twinny sidebar from the activity bar and go to the Providers tab (robot icon). Press **Check setup**. Each job reports *Working*, *Failing* or *Not set*; a failing one has an **Open provider** link that takes you to the form, where **Test provider** shows the exact error.
+Open the twinny sidebar from the activity bar and go to the Providers tab (robot icon). Each section shows the active provider for chat, autocomplete and embeddings; an empty section means nothing is set for that job. **Test provider** on a provider's card sends a small request and shows either success or the exact error the server returned.
 
 The status bar shows `</>` when twinny is idle and a spinner while it is generating. Click it for quick actions.
 

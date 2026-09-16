@@ -5,9 +5,8 @@ description: What each error means, where to look, and how to fix the common pro
 
 ## First, look here
 
-1. **Check setup** at the top of the Providers tab tests each job and names the failing provider.
-2. **Test provider** on the provider form shows the exact error the server returned.
-3. The **Twinny** output channel (**Twinny - Show logs**, or the status bar menu) has one line per request with the model, timing and stop reason. Set the channel's log level to *Debug* to see the full prompt and reply. API keys are redacted.
+1. **Test provider** on the provider's card in the Providers tab shows the exact error the server returned.
+2. The **Twinny** output channel (**Twinny - Show logs**, or the status bar menu) has one line per request with the model, timing and stop reason. Set the channel's log level to *Debug* to see the full prompt and reply. API keys are redacted.
 
 ## Error messages
 
@@ -30,7 +29,7 @@ Errors surface as notifications and in the chat. Each one names the provider and
 
 **No suggestions at all.**
 - Check the status bar: `</> off` means auto-suggest is off. Click it to turn on, or press `Alt+\`.
-- Is an autocomplete provider set? *Check setup* says *Not set* if not.
+- Is an autocomplete provider set? The Autocomplete section of the Providers tab is empty if not.
 - Is the language enabled? See `twinny.enabledLanguages`.
 - Output panes, search results and the terminal never get suggestions.
 - Another extension may own inline suggestions. Disable Copilot or similar to test.

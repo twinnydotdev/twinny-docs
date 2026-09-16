@@ -151,8 +151,9 @@ The image is `ghcr.io/twinnydotdev/twinny-server`. Keys, usage and the licence l
 | --- | --- |
 | Configuration | wherever you put `twinny.gateway.json` |
 | Keys (hashes only) | `~/.twinny/server/keys.json` |
+| Invite links (hashed secrets and redemption state) | `invites.json` beside the keys file |
 | Usage (one line per request, no content) | `~/.twinny/server/usage/YYYY-MM-DD.jsonl` |
 | Recordings (content, only with [recording](/twinny-docs/teams/recording/) on) | `~/.twinny/server/recordings/` |
 | Licence token | `~/.twinny/server/license` |
 
-Back up the configuration, the keys file and the licence. Nothing else is written anywhere, and nothing leaves the machine.
+Back up the configuration, keys, invites and licence. Include usage and recordings according to your retention needs; recordings contain source code and conversations. The gateway sends inference requests to the backends you configure, including hosted providers if you choose them. It does not send usage or licence checks to Twinny.

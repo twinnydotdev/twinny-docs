@@ -15,11 +15,11 @@ A seat is an active access key on the gateway. Every developer has their own key
 | Team | as bought | $6 per seat per month, billed yearly ($72 per seat per year) | one year, renewable | one gateway per licence |
 | Enterprise | from 50 | $10 per seat per month, billed yearly | one year, renewable | the organisation: any number of gateways |
 
-Everything the gateway does is in every plan: the admin page, usage per developer, key management, live configuration, sign-in with a code, team GPU pooling. The free plan is not a trial. A licence changes the seat count and switches on [team policy](/twinny-docs/teams/policy/) and [recording](/twinny-docs/teams/recording/). Team comes with email support; Enterprise with priority support from a named contact, invoice or purchase-order billing, and help with security questionnaires and procurement paperwork.
+Every plan includes the admin page, usage per developer, key management, live configuration, sign-in with a code, team GPU pooling. The free plan is not a trial. A licence changes the seat count and switches on [team policy](/twinny-docs/teams/policy/) and [recording](/twinny-docs/teams/recording/). Team comes with email support; Enterprise with priority support from a named contact, invoice or purchase-order billing, and help with security questionnaires and procurement paperwork.
 
 ## Getting a licence
 
-**Team:** [buy seats](https://buy.stripe.com/eVq00igUndD80qW6AR7Zu00) by card. Choose the number of seats, enter your organisation name, and pay; the page that follows shows your licence token, a single line beginning `twl1.`, and a copy goes to the email you paid with. The subscription renews yearly and the same token is reissued with new dates; cancelling stops the renewal and the licence runs to its expiry.
+**Team:** [buy seats](https://buy.stripe.com/eVq00igUndD80qW6AR7Zu00) by card. Choose the number of seats, enter your organisation name, and pay; the page that follows shows your licence token, a single line beginning `twl1.`, and a copy goes to the email you paid with. The subscription renews yearly and a new token is issued for the same licence id; cancelling stops the renewal and the licence runs to its expiry.
 
 **Enterprise:** message [@twinnydotdev](https://x.com/twinnydotdev) or open a discussion on [GitHub](https://github.com/twinnydotdev/twinny/discussions) with your organisation name and the number of seats. You receive a token by email within one business day, with an invoice or against a purchase order.
 
@@ -53,10 +53,10 @@ The token carries your organisation name, the seat count, the dates and the feat
 ## When it lapses
 
 - **30 days before expiry** the admin page, the startup banner and the log say so.
-- **After expiry** there are 14 days of grace during which the licensed seat count still applies.
-- **After the grace** the free plan applies. Existing keys are not deleted: the five oldest keep their seats, and the rest are refused with "This gateway key has no seat" until the licence is renewed or keys are revoked. The admin key made on day one is the oldest, so an operator is never locked out of their own gateway.
+- **After expiry** there are 14 days of grace during which the licensed seat count, policy and recording still apply.
+- **After the grace** the free plan applies and paid policy and recording are disabled. Existing keys are not deleted: the five oldest keep their seats, and the rest are refused with "This gateway key has no seat" until the licence is renewed or keys are revoked. The admin key made on day one is the oldest, so an operator is never locked out of their own gateway.
 
-Renewing is installing a new token. Your licence id stays the same.
+After each renewal, copy the new token from your licence page or renewal email and install it on the gateway. Your licence id stays the same. The gateway checks licences offline, so it does not fetch renewal tokens automatically.
 
 ## Questions
 
