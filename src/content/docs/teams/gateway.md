@@ -137,8 +137,11 @@ The free plan allows five active keys. When the sixth developer arrives, creatin
 `packages/twinny-server` in the repository has a `docker-compose.yml` that runs Ollama and the gateway together, with the gateway published on `127.0.0.1:8765`:
 
 ```sh
+docker compose up -d ollama
+docker compose exec ollama ollama pull qwen2.5-coder:7b
+docker compose exec ollama ollama pull codellama:7b-code
+docker compose exec ollama ollama pull nomic-embed-text
 docker compose run --rm twinny-server init /data/twinny.gateway.json --host 0.0.0.0 --ollama ollama
-docker compose run --rm ollama pull qwen2.5-coder:7b
 docker compose run --rm twinny-server keys create you --admin --config /data/twinny.gateway.json
 docker compose up -d
 ```
