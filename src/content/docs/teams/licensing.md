@@ -19,7 +19,11 @@ Everything the gateway does is in every plan: the admin page, usage per develope
 
 ## Getting a licence
 
-To buy, message [@twinnydotdev](https://x.com/twinnydotdev) or open a discussion on [GitHub](https://github.com/twinnydotdev/twinny/discussions) with your organisation name and the number of seats. You receive a licence token, a single line beginning `twl1.`, by email within one business day. The token carries your organisation, the seat count, the dates and the features it switches on; an Enterprise token covers the organisation, so the same one is installed on every gateway you run.
+**Team:** [buy seats](https://buy.stripe.com/eVq00igUndD80qW6AR7Zu00) by card. Choose the number of seats, enter your organisation name, and pay; the page that follows shows your licence token, a single line beginning `twl1.`, and a copy goes to the email you paid with. The subscription renews yearly and the same token is reissued with new dates; cancelling stops the renewal and the licence runs to its expiry.
+
+**Enterprise:** message [@twinnydotdev](https://x.com/twinnydotdev) or open a discussion on [GitHub](https://github.com/twinnydotdev/twinny/discussions) with your organisation name and the number of seats. You receive a token by email within one business day, with an invoice or against a purchase order.
+
+The token carries your organisation, the seat count, the dates and the features it switches on; an Enterprise token covers the organisation, so the same one is installed on every gateway you run.
 
 ## Installing it
 
