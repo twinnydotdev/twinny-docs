@@ -21,7 +21,7 @@ ollama pull nomic-embed-text
 The banner shows where it listens and the admin page address:
 
 ```
-Twinny gateway listening on http://127.0.0.1:8765
+Twinny gateway 4.0.18 listening on http://127.0.0.1:8765
   protocol: twinny/v1 at /twinny/v1
   models:   2 aliases (coder: fim/chat, embed: embeddings)
   limits:   4 active, 120s deadline, 5s grace
