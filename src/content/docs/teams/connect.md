@@ -1,17 +1,21 @@
 ---
 title: Connect to your team
-description: "Use your team's gateway from VS Code: enter the address, then paste a key or request one with a short code."
+description: "Use your team's gateway from VS Code: open the invite link, or enter the address and paste or request a key."
 ---
 
-You need the gateway's address from whoever runs it (such as `https://ai.example.com`). Your personal key (`tsk_…`) you can either be given, or request from inside VS Code. The key is yours alone; usage is reported per key, so lending it makes someone else's work show up as yours.
+The easiest way in is an invite link from your admin. Failing that, you need the gateway's address (such as `https://ai.example.com`) and a personal key (`tsk_…`), which you can be given or request from inside VS Code. The key is yours alone; usage is reported per key, so lending it makes someone else's work show up as yours.
 
-## Connect
+## With an invite link
+
+Install twinny, then open the link your admin sent. It looks like `vscode://rjmacarthy.twinny/join?…` and opens VS Code on the twinny sidebar. Your key is made and stored in secret storage as the link opens, and you see the team's default models for chat, autocomplete and embeddings. Choose **Connect** and you are done. The link opens once; if it says it was used or expired, ask your admin for another. On Cursor or VSCodium, replace `vscode://` with `cursor://` or `vscodium://`.
+
+## With the address and a key
 
 1. Open the twinny sidebar and go to **Providers**.
-2. Under **Using Twinny with your team?** choose **Connect to team**.
+2. Under **Using Twinny with your team?** choose **Connect to team**. On a fresh install the welcome screen has the same button under **Joining a team?**
 3. Enter the gateway URL. Then either paste your key and **Check connection**, or choose **Request a key** (below).
-4. twinny asks the gateway who you are and tests each model your admin has set as the team default for chat, autocomplete and embeddings. A cold model can take up to 20 seconds each. You see your name as the gateway knows it, and for each feature whether the model answered and how fast. A feature that did not answer shows "Not verified" and connects anyway, so a model your admin is still loading does not send you away.
-5. Choose **Connect**. twinny creates one provider per feature the admin configured, makes them active, and stores your key in VS Code's secret storage. Nothing about your key is written to settings or exported with your provider list.
+4. twinny asks the gateway who you are and reads the models your admin has set as the team default for chat, autocomplete and embeddings. Nothing is sent to the models, so this takes a moment even when a model is still loading. You see your name as the gateway knows it and the alias for each feature.
+5. Choose **Connect**. twinny creates one provider per feature the admin configured, makes them active, and stores your key in VS Code's secret storage. Nothing about your key is written to settings or exported with your provider list. To try a model, use **Test Provider** on its card afterwards.
 
 Any providers you already had are kept; you can switch back to them at any time from the provider list.
 

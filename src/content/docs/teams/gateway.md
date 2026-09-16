@@ -100,7 +100,13 @@ Keys (`tsk_…`) are printed once and only their hash is stored.
 
 ## 4. Add developers
 
-Nothing needs to be sent over chat. Alice opens **Connect to team** in the twinny sidebar, enters the gateway URL and chooses **Request a key**. She reads you the code VS Code shows her. It appears under **People → Sign-in requests** on the admin page with her suggested name and machine; you type the key name and **approve**. Her VS Code collects the key by itself and runs the connection check. Codes last ten minutes, and approve only a code someone has read to you.
+Send Alice an invite link. On the admin page under **People → Invite**, type her name and choose **make invite link**; copy the link or the ready-made message and send it to her. When she opens it, VS Code makes her key under that name, keeps it in secret storage and shows her the team's models to confirm. The link opens once and expires after seven days, and an unopened invite holds no seat. From a terminal instead:
+
+```sh
+npx twinny-server invites create alice --url https://ai.example.com
+```
+
+If you are both at a keyboard, she can sign in without a link: **Connect to team** in the twinny sidebar, the gateway URL, then **Request a key**. She reads you the code VS Code shows her. It appears under **People → Sign-in requests** on the admin page with her suggested name and machine; you type the key name and **approve**. Her VS Code collects the key by itself. Codes last ten minutes, and approve only a code someone has read to you.
 
 You can also make keys yourself, on the admin page (**Keys → name → create key**) or:
 
