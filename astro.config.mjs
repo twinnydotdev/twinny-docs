@@ -91,6 +91,7 @@ export default defineConfig({
 						page('Connect to your team', '连接到团队', '/teams/connect'),
 						page('Team policy', '团队策略', '/teams/policy'),
 						page('Recording', '记录', '/teams/recording'),
+						page('Plugins', '插件', '/teams/plugins'),
 						page('Licensing and seats', '许可与席位', '/teams/licensing'),
 					],
 				},

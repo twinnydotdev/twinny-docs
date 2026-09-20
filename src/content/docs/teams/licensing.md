@@ -15,7 +15,7 @@ A seat is an active access key on the gateway. Every developer has their own key
 | Team | the free 5, plus what you buy | $6 per extra seat per month, billed yearly ($72 per extra seat per year) | one year, renewable | one gateway per licence |
 | Enterprise | from 50 | $10 per seat per month, billed yearly | one year, renewable | the organisation: any number of gateways |
 
-Every plan includes the admin page, usage per developer, key management, live configuration, sign-in with a code, team GPU pooling. The free plan is not a trial. A licence changes the seat count and switches on [team policy](/twinny-docs/teams/policy/) and [recording](/twinny-docs/teams/recording/). Team comes with email support; Enterprise with priority support from a named contact, invoice or purchase-order billing, and help with security questionnaires and procurement paperwork.
+Every plan includes the admin page, usage per developer, key management, live configuration, sign-in with a code, team GPU pooling. The free plan is not a trial. A licence changes the seat count and switches on [team policy](/twinny-docs/teams/policy/), [recording](/twinny-docs/teams/recording/) and [plugins](/twinny-docs/teams/plugins/): GitHub and GitLab pull requests listed on the admin page and reviewed by your own models. Team comes with email support; Enterprise with priority support from a named contact, invoice or purchase-order billing, and help with security questionnaires and procurement paperwork.
 
 ## Getting a licence
 
@@ -53,8 +53,8 @@ The token carries your organisation name, the seat count, the dates and the feat
 ## When it lapses
 
 - **30 days before expiry** the admin page, the startup banner and the log say so.
-- **After expiry** there are 14 days of grace during which the licensed seat count, policy and recording still apply.
-- **After the grace** the free plan applies and paid policy and recording are disabled. Existing keys are not deleted: the five oldest keep their seats, and the rest are refused with "This gateway key has no seat" until the licence is renewed or keys are revoked. The admin key made on day one is the oldest, so an operator is never locked out of their own gateway.
+- **After expiry** there are 14 days of grace during which the licensed seat count, policy, recording and plugins still apply.
+- **After the grace** the free plan applies and paid policy, recording and plugins are disabled. Existing keys are not deleted: the five oldest keep their seats, and the rest are refused with "This gateway key has no seat" until the licence is renewed or keys are revoked. The admin key made on day one is the oldest, so an operator is never locked out of their own gateway.
 
 After each renewal, copy the new token from your licence page or renewal email and install it on the gateway. Your licence id stays the same. The gateway checks licences offline, so it does not fetch renewal tokens automatically.
 
