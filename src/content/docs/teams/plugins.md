@@ -5,7 +5,7 @@ description: GitHub and GitLab pull requests on the admin page, reviewed by the 
 
 Plugins are features the gateway ships with but that are not the gateway: switched off until an admin turns them on, each with its own files, its own routes and its own page. **Plugins → Store** on the admin page lists what your build carries. They are a licence feature. See [Licensing and seats](/twinny-docs/teams/licensing/).
 
-Eight come bundled today: **GitHub**, **GitLab**, **Gitea / Forgejo** and **Bitbucket** for pull requests; **Slack**, **Discord** and **Microsoft Teams** for notifications; and **Backups**. The forges all do the same thing for their host.
+Ten come bundled today: **GitHub**, **GitLab**, **Gitea / Forgejo** and **Bitbucket** for pull requests; **Slack**, **Discord** and **Microsoft Teams** for notifications; **SSO sign-in** with your identity provider; **Shared context**, one index of your repositories for every developer's chat; and **Backups**. The forges all do the same thing for their host.
 
 ## Open pull requests, in one place
 
@@ -27,6 +27,14 @@ A pull's page has **review now**. The gateway sends the description and diffs to
 Tick **auto-review** on a repository and its new and updated pulls are reviewed in the background: one at a time, newest first, never drafts, and only while no developer request is running, so completions and chats are never slowed down. Reviews are routed like any other request and appear in usage under `plugin:github` or `plugin:gitlab`, so the Usage page shows what they cost.
 
 The prompt is kept small for local models: at most 24k characters of description and diff, with larger patches named but left out, and at most 1,500 tokens back. Pick the review model on the plugin's page; the first chat alias is used until you do.
+
+## SSO sign-in
+
+Developers sign in with your identity provider (Okta, Entra ID, Google Workspace, Keycloak, any OpenID Connect provider) at `https://<gateway>/twinny/v1/plugins/oidc/start` and VS Code opens connected with a key of their own; no invites, no codes read out. Restrict sign-in to your email domains, name the emails that become admins, and see recent sign-ins on the plugin's page. Signing in again refreshes the person's key and revokes the old one, so it doubles as lost-key recovery. Every sign-in lands in the audit log.
+
+## Shared context
+
+One index of your repositories, built on the gateway with an embeddings model it serves. Add repositories by clone URL; they are cloned shallow, chunked and embedded, and re-indexed on a schedule while the models are idle, embedding only what changed. Connected developers' chats merge hits from it into the relevant code they already gather from their own workspace, so a question about a service nobody has cloned still finds the right file.
 
 ## Backups
 
