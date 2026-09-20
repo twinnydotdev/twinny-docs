@@ -5,7 +5,7 @@ description: GitHub and GitLab pull requests on the admin page, reviewed by the 
 
 Plugins are features the gateway ships with but that are not the gateway: switched off until an admin turns them on, each with its own files, its own routes and its own page. **Plugins → Store** on the admin page lists what your build carries. They are a licence feature. See [Licensing and seats](/twinny-docs/teams/licensing/).
 
-Two come bundled today: **GitHub** and **GitLab**. Both do the same thing for their host.
+Three come bundled today: **GitHub**, **GitLab** and **Backups**. The first two do the same thing for their host.
 
 ## Open pull requests, in one place
 
@@ -25,6 +25,12 @@ A pull's page has **review now**. The gateway sends the description and diffs to
 Tick **auto-review** on a repository and its new and updated pulls are reviewed in the background: one at a time, newest first, never drafts, and only while no developer request is running, so completions and chats are never slowed down. Reviews are routed like any other request and appear in usage under `plugin:github` or `plugin:gitlab`, so the Usage page shows what they cost.
 
 The prompt is kept small for local models: at most 24k characters of description and diff, with larger patches named but left out, and at most 1,500 tokens back. Pick the review model on the plugin's page; the first chat alias is used until you do.
+
+## Backups
+
+A nightly copy of what the gateway would miss (the configuration, keys, licence, invites, plugins and their files, usage; recordings if asked) to a directory on the server or to any S3-compatible bucket, with the last N kept. Set a passphrase and every archive is encrypted before it leaves the machine. **Test destination** checks the bucket or directory is writable; **back up now** makes one at once.
+
+Restoring is done from the shell with the gateway stopped: `twinny-server backup restore <archive> --config <file>` prints what would be written where, and `--yes` does it. Archives are ordinary gzipped tar files (with a manifest whose hashes are checked) when not encrypted, so they open with `tar` too.
 
 ## Without a licence
 
