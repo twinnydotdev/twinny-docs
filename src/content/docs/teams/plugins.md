@@ -5,7 +5,7 @@ description: GitHub and GitLab pull requests on the admin page, reviewed by the 
 
 Plugins are features the gateway ships with but that are not the gateway: switched off until an admin turns them on, each with its own files, its own routes and its own page. **Plugins → Store** on the admin page lists what your build carries. They are a licence feature. See [Licensing and seats](/twinny-docs/teams/licensing/).
 
-Three come bundled today: **GitHub**, **GitLab** and **Backups**. The first two do the same thing for their host.
+Four come bundled today: **GitHub**, **GitLab**, **Backups** and **Slack**. The first two do the same thing for their host.
 
 ## Open pull requests, in one place
 
@@ -31,6 +31,10 @@ The prompt is kept small for local models: at most 24k characters of description
 A nightly copy of what the gateway would miss (the configuration, keys, licence, invites, plugins and their files, usage; recordings if asked) to a directory on the server or to any S3-compatible bucket, with the last N kept. Set a passphrase and every archive is encrypted before it leaves the machine. **Test destination** checks the bucket or directory is writable; **back up now** makes one at once.
 
 Restoring is done from the shell with the gateway stopped: `twinny-server backup restore <archive> --config <file>` prints what would be written where, and `--yes` does it. Archives are ordinary gzipped tar files (with a manifest whose hashes are checked) when not encrypted, so they open with `tar` too.
+
+## Slack
+
+Post what the other plugins report to the channels you choose, through Slack incoming webhooks (Mattermost and Rocket.Chat take the same messages): a review finished or asked for changes, a pull opened, checks failed, a backup was made or failed, a backend went down or came back. One webhook per channel, each picking its events, with a **test** button and a log of recent deliveries. Webhook URLs are kept on the server and never shown again.
 
 ## Without a licence
 
