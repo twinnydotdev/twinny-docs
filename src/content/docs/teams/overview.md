@@ -19,7 +19,8 @@ twinny is free and open source for individuals, and stays that way. Teams get on
 - **A key per developer.** Keys are created and revoked on the admin page or the command line, take effect without a restart, and are stored as hashes.
 - **Usage per person and per model.** Requests, failures and token counts, kept for as long as you choose. Content is kept only if you switch on [recording](/twinny-docs/teams/recording/), which every developer is told about.
 - **One connection for the team.** A developer pastes the gateway address and their key once; the admin's default models for chat, autocomplete and embeddings are applied for them.
-- **Admin page.** Backend health, usage charts, keys, providers and models, and the plan, from a browser.
+- **Admin page.** Backend health, usage charts, keys, providers and models, plugins, and the plan, from a browser.
+- **An audit trail.** Every admin change goes to a hash-chained [audit log](/twinny-docs/teams/operations/#audit-log) you can verify and export; admin keys can be read-only; `/metrics` serves Prometheus.
 
 ## Plans
 
@@ -27,15 +28,15 @@ twinny is free and open source for individuals, and stays that way. Teams get on
 | --- | --- | --- | --- |
 | Developers (active keys) | up to 5 | the free 5, plus the seats you buy | from 50 |
 | Everything above | yes | yes | yes |
-| [Team policy](/twinny-docs/teams/policy/): allowed providers, locked defaults | no | yes | yes |
+| [Team policy](/twinny-docs/teams/policy/): team-only providers, locked defaults, routing rules, a team system prompt | no | yes | yes |
 | [Recording](/twinny-docs/teams/recording/): keep chat, autocomplete and embedding content; review it; export training data | no | yes | yes |
-| [Plugins](/twinny-docs/teams/plugins/): GitHub and GitLab pull requests on the admin page, reviewed by your own models | no | yes | yes |
+| [Plugins](/twinny-docs/teams/plugins/): pull requests and issues from GitHub, GitLab, Gitea and Bitbucket reviewed by your own models; Slack, Discord and Teams notifications; SSO sign-in; shared context; backups | no | yes | yes |
 | Gateways covered | one | one per licence | any number, one organisation licence |
 | Support | community (GitHub discussions) | email | priority, with a named contact |
 | Runs where | your machine | your machine | your machines |
 | Cost | nothing, forever | $6 per seat beyond the free 5, per month, billed yearly | $10 per seat per month, billed yearly |
 
-A **seat** is an active key. The free plan is not a trial: a team of five runs the gateway with no licence, indefinitely, with everything the gateway does: the admin page, usage per developer, keys, sign-in codes, team GPU pooling and live provider configuration. Beyond five, a licence token from twinny raises the seat count and switches on policy, recording and plugins. The token is installed once and checked locally; the gateway never phones home. Enterprise adds one licence for the whole organisation, invoice or purchase-order billing, and help with security questionnaires and procurement paperwork. See [Licensing and seats](/twinny-docs/teams/licensing/).
+A **seat** is an active key. The free plan is not a trial: a team of five runs the gateway with no licence, indefinitely, with everything the gateway does: the admin page, usage per developer, keys, invite links, team GPU pooling, live provider configuration, the audit log and metrics. Beyond five, a licence token from twinny raises the seat count and switches on policy, recording and plugins. The token is installed once and checked locally; the gateway never phones home. Enterprise adds one licence for the whole organisation, invoice or purchase-order billing, and help with security questionnaires and procurement paperwork. See [Licensing and seats](/twinny-docs/teams/licensing/).
 
 ## Where to start
 

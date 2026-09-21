@@ -1,6 +1,6 @@
 ---
 title: Plugins
-description: GitHub and GitLab pull requests on the admin page, reviewed by the models your gateway already serves. A licence feature.
+description: Pull requests and issues from GitHub, GitLab, Gitea and Bitbucket reviewed by your own models, Slack, Discord and Teams notifications, SSO sign-in, shared context and backups. A licence feature.
 ---
 
 Plugins are features the gateway ships with but that are not the gateway: switched off until an admin turns them on, each with its own files, its own routes and its own page. **Plugins → Store** on the admin page lists what your build carries. They are a licence feature. See [Licensing and seats](/twinny-docs/teams/licensing/).
@@ -9,7 +9,9 @@ Ten come bundled today: **GitHub**, **GitLab**, **Gitea / Forgejo** and **Bitbuc
 
 ## Open pull requests, in one place
 
-Watch the repositories your team works in and the admin page shows every open pull request (merge request on GitLab) across them: checks passing or failing, mergeable or in conflict, approved or waiting for review, drafts marked. Filter by state, by repository or by text; open one to read its description and its diffs, highlighted like an editor shows them. The list syncs every five minutes and on **sync now**.
+Watch the repositories your team works in and the admin page shows every open pull request (merge request on GitLab) across them: checks passing or failing, mergeable or in conflict, approved or waiting for review. Every pull carries its approvals as the host reports them: who approved, who asked for changes, who is still asked, and how many the base branch requires. The page learns who you are from the token (or a name set under the host's settings) and marks your part in each pull, so a **waiting for me** view lists the pulls by others that still need your approval. Drafts stay out of the list until a toggle at the end of the filter row brings them in.
+
+The toolbar is the same on every forge: one-click views with live counts, selects for repository, author, label, target branch and activity, a search, an order-by select and sortable column headers, all remembered per host in your browser. Each row links to the pull on the host; open one here to read its description and its diffs, highlighted like an editor shows them. The list syncs every five minutes and on **sync now**.
 
 To watch a repository, give it as `owner/name` and a token that can read it:
 

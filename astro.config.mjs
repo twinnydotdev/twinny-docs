@@ -92,12 +92,14 @@ export default defineConfig({
 						page('Team policy', '团队策略', '/teams/policy'),
 						page('Recording', '记录', '/teams/recording'),
 						page('Plugins', '插件', '/teams/plugins'),
+						page('Operations', '运维', '/teams/operations'),
 						page('Licensing and seats', '许可与席位', '/teams/licensing'),
 					],
 				},
 				{
 					...t('Reference', '参考'),
 					items: [
+						page("What's new", '更新内容', '/reference/whats-new'),
 						page('Settings', '设置', '/reference/settings'),
 						page('Commands', '命令', '/reference/commands'),
 						page('Keyboard shortcuts', '键盘快捷键', '/reference/keyboard-shortcuts'),

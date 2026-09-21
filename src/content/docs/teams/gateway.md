@@ -128,6 +128,9 @@ One key per person. Usage is attributed per key, so a shared key defeats the poi
 | Set what developers may use | Admin page, **Policy**; needs a licence with team policy |
 | Change limits or the listen address | Edit the file, restart |
 | Check the plan and seats | Admin page, **Plan & licence**, or `twinny-server license` |
+| See what changed and who changed it | Admin page, **Team → Audit log**; see [Operations](/twinny-docs/teams/operations/) |
+| Watch it from Prometheus | Scrape `/metrics` with a read-only admin key |
+| Switch on pull-request reviews, Slack, SSO, backups | Admin page, **Plugins → Store**; see [Plugins](/twinny-docs/teams/plugins/) |
 | Run it as a service | A systemd unit example is in [docs/gateway.md](https://github.com/twinnydotdev/twinny/blob/main/docs/gateway.md#running-it-as-a-service) |
 
 The free plan allows five active keys. When the sixth developer arrives, creating the key is refused with the reason, and [a licence](/twinny-docs/teams/licensing/) raises the limit.
@@ -148,6 +151,19 @@ docker compose up -d
 
 The image is `ghcr.io/twinnydotdev/twinny-server`. Keys, usage and the licence live in a volume, and every `docker compose run --rm twinny-server …` command (keys, usage, license) shares it with the running gateway. A GPU needs the NVIDIA Container Toolkit and the commented block in the compose file.
 
+## Kubernetes
+
+`deploy/helm/twinny-server` in the repository is a Helm chart: one pod, one volume, the configuration from `values.yaml` copied onto the volume so the admin page can edit it, an optional Ingress with TLS, and a ServiceMonitor for the Prometheus operator scraping `/metrics`.
+
+```sh
+helm install twinny ./deploy/helm/twinny-server \
+  --set config.providers.local.apiHostname=ollama.models.svc.cluster.local \
+  --set ingress.enabled=true --set ingress.host=twinny.example.com --set ingress.tls.enabled=true
+kubectl exec deploy/twinny-twinny-server -- node /app/cli.js keys create you --admin --config /data/twinny.gateway.json
+```
+
+Keep one replica: keys, usage and plugin files live on the one volume.
+
 ## Files on disk
 
 | What | Where |
@@ -158,5 +174,8 @@ The image is `ghcr.io/twinnydotdev/twinny-server`. Keys, usage and the licence l
 | Usage (one line per request, no content) | `~/.twinny/server/usage/YYYY-MM-DD.jsonl` |
 | Recordings (content, only with [recording](/twinny-docs/teams/recording/) on) | `~/.twinny/server/recordings/` |
 | Licence token | `~/.twinny/server/license` |
+| Audit log | `~/.twinny/server/audit/YYYY-MM.jsonl` |
+| Plugins (which are on, and their files) | `plugins.json` and `plugins/<id>/` beside the keys file |
+| Format marker (which layout the directory follows) | `~/.twinny/server/format.json` |
 
-Back up the configuration, keys, invites and licence. Include usage and recordings according to your retention needs; recordings contain source code and conversations. The gateway sends inference requests to the backends you configure, including hosted providers if you choose them. It does not send usage or licence checks to Twinny.
+Back up the configuration, keys, invites and licence, or switch on the [Backups plugin](/twinny-docs/teams/plugins/#backups), which copies the whole directory nightly. Include usage and recordings according to your retention needs; recordings contain source code and conversations. Upgrades and the format marker are covered under [Operations](/twinny-docs/teams/operations/#upgrades-and-the-data-directory). The gateway sends inference requests to the backends you configure, including hosted providers if you choose them. It does not send usage or licence checks to Twinny.
