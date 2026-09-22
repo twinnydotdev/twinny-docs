@@ -17,6 +17,10 @@ A seat is an active access key on the gateway. Every developer has their own key
 
 Every plan includes the admin page, usage per developer, key management, live configuration, sign-in with a code, team GPU pooling. The free plan is not a trial. A licence changes the seat count and switches on [team policy](/twinny-docs/teams/policy/), [recording](/twinny-docs/teams/recording/) and [plugins](/twinny-docs/teams/plugins/): pull requests and issues from GitHub, GitLab, Gitea and Bitbucket reviewed by your own models, Slack, Discord and Teams notifications, SSO sign-in, a shared context index and backups. Team comes with email support; Enterprise with priority support from a named contact and invoice or purchase-order billing.
 
+## Trying it first
+
+[twinny.dev/#trial](https://twinny.dev/#trial) issues a **30-day Team trial** by email: 25 seats, policy, recording and plugins, no card. Install it like any token. When it expires the gateway goes back to the free plan after the usual grace; nothing is deleted, and seats bought afterwards carry on from where you were. One trial per email address; if a month is not enough, say so through the [contact form](https://twinny.dev/#contact).
+
 ## Getting a licence
 
 **Team:** [buy seats](https://buy.stripe.com/eVq00igUndD80qW6AR7Zu00) by card. Choose how many seats you need **beyond the free five** (a team of eight buys three), enter your organisation name, and pay; the page that follows shows your licence token, a single line beginning `twl1.`, and a copy goes to the email you paid with. The subscription renews yearly and a new token is issued for the same licence id; cancelling stops the renewal and the licence runs to its expiry.
@@ -60,7 +64,7 @@ After each renewal, copy the new token from your licence page or renewal email a
 
 ## Questions
 
-**Can I try more than five before buying?** Ask; a short-term token is easy to issue.
+**Can I try more than five before buying?** Yes: the [30-day trial](https://twinny.dev/#trial) is a full Team token, issued by email in a minute.
 
 **Does a seat count keys or people?** Keys. One key per person is the intent, and the admin page makes that easy, but the gateway does not know or care who is behind a key.
 

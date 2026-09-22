@@ -5,6 +5,12 @@ description: The features added to twinny in each release, with links to their p
 
 The full list of changes, fixes included, is in [CHANGELOG.md](https://github.com/twinnydotdev/twinny/blob/main/CHANGELOG.md) in the repository and on the extension's Marketplace page. This page is the short version: what you can do now that you could not before.
 
+## 4.2.1 · 22 September 2026
+
+- The Providers tab has a card for whoever has the models: the quick-start command and a link to the [gateway page](https://twinny.dev/#teams). The same link is the command *Twinny - Set up for your team*.
+- One information message, once, two weeks after first use on a machine not connected to a team, saying the gateway exists.
+- A **[30-day Team trial](/twinny-docs/teams/licensing/#trying-it-first)** with every feature, issued by email from twinny.dev, no card.
+
 ## 4.2 · September 2026
 
 All on the gateway side, for teams.

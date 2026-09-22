@@ -42,6 +42,6 @@ A **seat** is an active key. The free plan is not a trial: a team of five runs t
 
 1. [Run a gateway](/twinny-docs/teams/gateway/) on the machine with the models. Ten minutes.
 2. Send each developer an invite link from the admin page; opening it in VS Code [connects them to the team](/twinny-docs/teams/connect/) with nothing to paste.
-3. Past five developers, [get a licence](/twinny-docs/teams/licensing/).
+3. Past five developers, [get a licence](/twinny-docs/teams/licensing/), or a [30-day trial](https://twinny.dev/#trial) first.
 
 The full operator reference, including configuration fields, routes, running as a service and troubleshooting, is in the repository at [docs/gateway.md](https://github.com/twinnydotdev/twinny/blob/main/docs/gateway.md).
