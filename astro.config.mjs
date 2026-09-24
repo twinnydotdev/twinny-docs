@@ -2,6 +2,13 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import tailwind from '@astrojs/tailwind';
 
+// Two deployments from one tree. GitHub Pages serves the site under /twinny-docs on github.io;
+// docs.twinny.dev serves it at the root (DOCS_SITE and DOCS_BASE set at build time). Links in the
+// content are written with the /twinny-docs prefix; docs.twinny.dev's nginx strips it with a 301.
+const SITE = process.env.DOCS_SITE ?? 'https://twinnydotdev.github.io';
+const BASE = process.env.DOCS_BASE ?? '/twinny-docs';
+const CANONICAL_SITE = 'https://docs.twinny.dev';
+
 /** Old page paths, kept alive for links out in the wild. */
 const legacyRedirects = Object.fromEntries(
 	[
@@ -14,18 +21,29 @@ const legacyRedirects = Object.fromEntries(
 		['general/symmetry', 'providers/devices'],
 		['general/support-twinny', 'reference/support'],
 	].flatMap(([from, to]) => [
-		[`/${from}`, `/twinny-docs/${to}`],
-		[`/zh-cn/${from}`, `/twinny-docs/zh-cn/${to}`],
+		[`/${from}`, `${BASE.replace(/\/$/, '')}/${to}`],
+		[`/zh-cn/${from}`, `${BASE.replace(/\/$/, '')}/zh-cn/${to}`],
 	])
 );
+
+// On github.io, send people and crawlers to the canonical home of the docs.
+const canonicalHead =
+	SITE === CANONICAL_SITE
+		? []
+		: [
+				{
+					tag: 'script',
+					content: `if(location.hostname.endsWith('github.io')){location.replace('${CANONICAL_SITE}'+location.pathname.replace(/^\\/twinny-docs/,'')+location.search+location.hash)}`,
+				},
+			];
 
 const t = (label, zh) => ({ label, translations: { 'zh-CN': zh } });
 const page = (label, zh, link) => ({ ...t(label, zh), link });
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://twinnydotdev.github.io',
-	base: '/twinny-docs',
+	site: SITE,
+	base: BASE,
 	redirects: legacyRedirects,
 	server: {
 		host: true,
@@ -44,6 +62,7 @@ export default defineConfig({
 				'x.com': 'https://x.com/twinnydotdev',
 			},
 			sidebar: [
+				{ label: 'twinny.dev', translations: { 'zh-CN': 'twinny.dev' }, link: 'https://twinny.dev', attrs: { target: '_blank', rel: 'noopener' } },
 				{
 					...t('Getting started', '入门'),
 					items: [
@@ -110,6 +129,7 @@ export default defineConfig({
 				},
 			],
 			customCss: ['./src/tailwind.css'],
+			head: canonicalHead,
 		}),
 		tailwind({ applyBaseStyles: false }),
 	],
