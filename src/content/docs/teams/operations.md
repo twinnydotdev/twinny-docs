@@ -7,7 +7,7 @@ Everything on this page is in every plan, licence or not. The operator reference
 
 ## Audit log
 
-Every change made through the admin page, the admin routes or the command line is written to `audit/YYYY-MM.jsonl` under the data directory: keys made and revoked, invites made, opened and withdrawn, sign-ins approved, configuration saves, licence changes, plugins switched on or off, and every write to a plugin's routes (the method and path, never the body). Nothing secret is written: names, actions, targets, a few short details and the caller's address.
+Every change made through the admin page, the admin routes or the command line is written to `audit/YYYY-MM.jsonl` under the data directory: keys made and revoked, invites made, opened and withdrawn, sign-ins approved, configuration saves, licence changes, plugins switched on or off, who a plugin is shared with, and every write to a plugin's routes (the method and path, never the body; a developer's writes are marked as theirs). Nothing secret is written: names, actions, targets, a few short details and the caller's address.
 
 Each line carries the SHA-256 hash of the line before it. An edited or removed line breaks the chain, and **Team → Audit log** on the admin page says whether the chain is intact and, if not, where it breaks. Filter by period, actor and kind; **export** downloads the whole log as JSON lines for whatever keeps your records.
 
