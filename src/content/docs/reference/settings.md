@@ -15,6 +15,7 @@ Open with **Open twinny settings** (the gear icon in the sidebar) or search for 
 | `twinny.enableLogging` | `true` | Writes one line per request to the **Twinny** output channel: model, timing, size and why it stopped. Set the channel's log level to *Debug* to also see prompts and replies. Warnings and errors are written even when off |
 | `twinny.githubToken` | `""` | Personal access token for listing and reviewing GitHub pull requests in private repositories |
 | `twinny.providerStorageLocation` | `globalState` | Where provider configurations live. `globalState` is VS Code's global state; `file` is a file in the extension's global storage, which survives changing remotes or containers |
+| `twinny.secretShield` | `offMachine` | Secret shield. API keys, tokens, private keys and passwords in a prompt are replaced with placeholders such as `REDACTED_GITHUB_TOKEN_1` before the request is sent, and put back wherever the reply repeats a placeholder. `offMachine` covers anything that is not on this machine: hosted APIs, a gateway, a paired device, a server elsewhere on the network. `always` adds local servers. `off` sends prompts as they are |
 
 ## Code completion
 
@@ -32,6 +33,7 @@ Open with **Open twinny settings** (the gear icon in the sidebar) or search for 
 | `twinny.fileContextEnabled` | `false` | Include snippets from neighbouring open files. Experimental; costs latency |
 | `twinny.completionCacheEnabled` | `false` | Cache suggestions for identical prompts |
 | `twinny.enableSubsequentCompletions` | `true` | Request another suggestion straight after one is accepted |
+| `twinny.warmUpModel` | `true` | Load the completion model when VS Code starts or regains focus, so the first completion does not wait for a cold model. Local model servers only (Ollama, LM Studio, llama.cpp); hosted APIs are never called |
 
 ## Chat and review
 
@@ -65,6 +67,12 @@ Used for listing models in the provider form and device cards, and for the Ollam
 | Setting | Default | Description |
 | --- | --- | --- |
 | `twinny.p2pPort` | `49737` | UDP port this computer listens on when sharing its Ollama. Allow it through the firewall, e.g. `sudo ufw allow 49737/udp`. Takes effect the next time sharing starts |
+
+## Teams
+
+| Setting | Default | Description |
+| --- | --- | --- |
+| `twinny.teamShareSlots` | `2` | How many teammates' requests this computer runs at once while it is shared with the [team](/twinny-docs/teams/overview/) (Providers → **Share this computer**). From 1 to 8. Takes effect the next time sharing starts |
 
 ## Settings chosen in the sidebar
 

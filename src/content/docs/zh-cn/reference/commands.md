@@ -35,6 +35,7 @@ description: twinny 的每个命令、出现的位置及作用。
 | **Embedding options** | 数据库 | 打开[工作区索引](/twinny-docs/zh-cn/features/workspace-index/)标签页 |
 | **Open twinny conversation history** | 时钟 | 搜索、重命名、删除会话 |
 | **Open twinny panel chat** | 全屏 | 在编辑器标签页中打开对话 |
+| **Twinny - Open conversation as Markdown** | `…` 菜单 | 在新编辑器中以 Markdown 打开整个[会话](/twinny-docs/zh-cn/features/chat/) |
 | **Start a new chat** | 加号 | 开始新会话 |
 | **Open twinny settings** | 齿轮 | 打开筛选为 twinny 的 VS Code 设置 |
 
@@ -60,7 +61,8 @@ description: twinny 的每个命令、出现的位置及作用。
 | **Twinny - Show logs** | 打开 Twinny 输出通道 |
 | **Edit twinny templates** | 打开 `~/.twinny/templates/` 文件夹 |
 | **Twinny - Status bar options** | 点击状态栏项时显示的菜单 |
+| **Twinny - Set up for your team (gateway, keys, usage)** | 在浏览器中打开 twinny.dev 上的[网关页面](https://twinny.dev/#teams) |
 
 ## 命令 id
 
-用于快捷键和 `tasks.json` 的 id 形如 `twinny.<name>`：`twinny.edit`、`twinny.acceptEdit`、`twinny.rejectEdit`、`twinny.explain`、`twinny.refactor`、`twinny.addTypes`、`twinny.generateDocs`、`twinny.addTests`、`twinny.addFileToContext`、`twinny.addSelectionToContext`、`twinny.stopGeneration`、`twinny.sidebar.focus`、`twinny.openChat`、`twinny.review`、`twinny.manageProviders`、`twinny.manageTemplates`、`twinny.embeddings`、`twinny.conversationHistory`、`twinny.openPanelChat`、`twinny.newConversation`、`twinny.settings`、`twinny.generateCommitMessage`、`twinny.terminalCommand`、`twinny.fixTerminalError`、`twinny.shareOllama`、`twinny.enable`、`twinny.disable`、`twinny.showLogs`、`twinny.templates`。
+用于快捷键和 `tasks.json` 的 id 形如 `twinny.<name>`：`twinny.edit`、`twinny.acceptEdit`、`twinny.rejectEdit`、`twinny.explain`、`twinny.refactor`、`twinny.addTypes`、`twinny.generateDocs`、`twinny.addTests`、`twinny.addFileToContext`、`twinny.addSelectionToContext`、`twinny.stopGeneration`、`twinny.sidebar.focus`、`twinny.openChat`、`twinny.review`、`twinny.manageProviders`、`twinny.manageTemplates`、`twinny.embeddings`、`twinny.conversationHistory`、`twinny.openPanelChat`、`twinny.exportConversation`、`twinny.newConversation`、`twinny.settings`、`twinny.generateCommitMessage`、`twinny.terminalCommand`、`twinny.fixTerminalError`、`twinny.shareOllama`、`twinny.enable`、`twinny.disable`、`twinny.showLogs`、`twinny.templates`、`twinny.setUpTeam`。
