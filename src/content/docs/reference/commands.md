@@ -35,6 +35,7 @@ The lightbulb (`Ctrl+.`) offers **Fix with Twinny** on errors and warnings and *
 | **Embedding options** | database | Open the [workspace index](/twinny-docs/features/workspace-index/) tab |
 | **Open twinny conversation history** | clock | Search, rename, delete conversations |
 | **Open twinny panel chat** | full screen | Open the chat in an editor tab |
+| **Twinny - Open conversation as Markdown** | `…` menu | Open the whole [conversation](/twinny-docs/features/chat/) in a new editor as Markdown |
 | **Start a new chat** | plus | Begin a fresh conversation |
 | **Open twinny settings** | gear | Open VS Code settings filtered to twinny |
 
@@ -61,7 +62,8 @@ The lightbulb (`Ctrl+.`) offers **Fix with Twinny** on errors and warnings and *
 | **Twinny - Show logs** | Open the Twinny output channel |
 | **Edit twinny templates** | Open the `~/.twinny/templates/` folder |
 | **Twinny - Status bar options** | The menu shown when you click the status bar item |
+| **Twinny - Set up for your team (gateway, keys, usage)** | Open the [gateway page](https://twinny.dev/#teams) on twinny.dev in the browser |
 
 ## Command ids
 
-For keybindings and `tasks.json`, the ids are `twinny.<name>`: `twinny.edit`, `twinny.acceptEdit`, `twinny.rejectEdit`, `twinny.explain`, `twinny.refactor`, `twinny.addTypes`, `twinny.generateDocs`, `twinny.addTests`, `twinny.addFileToContext`, `twinny.addSelectionToContext`, `twinny.stopGeneration`, `twinny.sidebar.focus`, `twinny.openChat`, `twinny.review`, `twinny.manageProviders`, `twinny.manageTemplates`, `twinny.embeddings`, `twinny.conversationHistory`, `twinny.openPanelChat`, `twinny.newConversation`, `twinny.settings`, `twinny.generateCommitMessage`, `twinny.terminalCommand`, `twinny.fixTerminalError`, `twinny.shareOllama`, `twinny.openTeamPlugins`, `twinny.enable`, `twinny.disable`, `twinny.showLogs`, `twinny.templates`.
+For keybindings and `tasks.json`, the ids are `twinny.<name>`: `twinny.edit`, `twinny.acceptEdit`, `twinny.rejectEdit`, `twinny.explain`, `twinny.refactor`, `twinny.addTypes`, `twinny.generateDocs`, `twinny.addTests`, `twinny.addFileToContext`, `twinny.addSelectionToContext`, `twinny.stopGeneration`, `twinny.sidebar.focus`, `twinny.openChat`, `twinny.review`, `twinny.manageProviders`, `twinny.manageTemplates`, `twinny.embeddings`, `twinny.conversationHistory`, `twinny.openPanelChat`, `twinny.exportConversation`, `twinny.newConversation`, `twinny.settings`, `twinny.generateCommitMessage`, `twinny.terminalCommand`, `twinny.fixTerminalError`, `twinny.shareOllama`, `twinny.openTeamPlugins`, `twinny.enable`, `twinny.disable`, `twinny.showLogs`, `twinny.templates`, `twinny.setUpTeam`.

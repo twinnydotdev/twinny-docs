@@ -15,6 +15,7 @@ description: VS Code 中 twinny 的所有设置、默认值及作用。
 | `twinny.enableLogging` | `true` | 每个请求向 **Twinny** 输出通道写一行：模型、耗时、大小和停止原因。把通道日志级别设为 *Debug* 还可看到提示和回复。关闭时仍会写入警告和错误 |
 | `twinny.githubToken` | `""` | 用于列出和审查私有仓库 GitHub 拉取请求的个人访问令牌 |
 | `twinny.providerStorageLocation` | `globalState` | 提供者配置的保存位置。`globalState` 为 VS Code 全局状态；`file` 为扩展全局存储中的文件，切换远程或容器时得以保留 |
+| `twinny.secretShield` | `offMachine` | 密钥防护。提示中的 API 密钥、令牌、私钥和密码在请求发出前被替换为 `REDACTED_GITHUB_TOKEN_1` 这样的占位符，回复中出现占位符的地方再换回原值。`offMachine` 覆盖所有不在本机的目标：托管 API、网关、已配对设备、网络中其他位置的服务器。`always` 还包括本地服务器。`off` 按原样发送提示 |
 
 ## 代码补全
 
@@ -32,6 +33,7 @@ description: VS Code 中 twinny 的所有设置、默认值及作用。
 | `twinny.fileContextEnabled` | `false` | 包含相邻打开文件的片段。实验性；增加延迟 |
 | `twinny.completionCacheEnabled` | `false` | 缓存相同提示的建议 |
 | `twinny.enableSubsequentCompletions` | `true` | 接受一条建议后立即请求下一条 |
+| `twinny.warmUpModel` | `true` | 在 VS Code 启动或重新获得焦点时加载补全模型，使第一次补全不必等待冷启动的模型。仅用于本地模型服务器（Ollama、LM Studio、llama.cpp）；从不调用托管 API |
 
 ## 对话与审查
 
@@ -65,6 +67,12 @@ description: VS Code 中 twinny 的所有设置、默认值及作用。
 | 设置 | 默认 | 说明 |
 | --- | --- | --- |
 | `twinny.p2pPort` | `49737` | 本机共享 Ollama 时监听的 UDP 端口。需在防火墙放行，例如 `sudo ufw allow 49737/udp`。下次开始共享时生效 |
+
+## 团队
+
+| 设置 | 默认 | 说明 |
+| --- | --- | --- |
+| `twinny.teamShareSlots` | `2` | 本机与[团队](/twinny-docs/zh-cn/teams/overview/)共享时（提供者 → **Share this computer**）同时运行的队友请求数。1 到 8。下次开始共享时生效 |
 
 ## 在侧边栏中选择的设置
 
