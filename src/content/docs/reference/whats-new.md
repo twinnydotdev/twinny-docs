@@ -5,6 +5,23 @@ description: The features added to twinny in each release, with links to their p
 
 The full list of changes, fixes included, is in [CHANGELOG.md](https://github.com/twinnydotdev/twinny/blob/main/CHANGELOG.md) in the repository and on the extension's Marketplace page. This page is the short version: what you can do now that you could not before.
 
+## 4.2.10 · 30 September 2026
+
+- **Works in WSL remotes.** Opening a folder through WSL failed activation with `Cannot read properties of undefined (reading 'header')`, so chat never loaded and completions did nothing. The [workspace index](/twinny-docs/features/workspace-index/)'s LanceDB module now loads when the index is first opened rather than at startup, so a native module that fails to load turns embeddings off instead of stopping the extension.
+- **No flicker while indexing.** The line naming the files being embedded keeps its place for the whole run instead of coming and going between files.
+
+## 4.2.9 · 29 September 2026
+
+- `twinny-server --version` and the gateway's `/twinny/v1` responses report the right version. The 4.2.8 package called itself 4.2.7.
+
+## 4.2.8 · 28 September 2026
+
+- **Share [plugins](/twinny-docs/teams/plugins/) with developers.** An admin shares a plugin with every developer or with the people they tick, from the plugin's card under **Plugins → Store**. A developer signs in to the gateway's page with their own key and sees only the plugins shared with them, without their settings. On GitHub, GitLab, Gitea and Bitbucket they read pulls and issues, review, ask about a review, post it as a comment, triage and apply the suggested labels; approving or requesting changes through the token stays with admins, as do repositories, tokens and the review model. The notifiers, SSO sign-in, shared context and backups are for admins only. Every change to who has what is in the [audit log](/twinny-docs/teams/operations/).
+- **Your team's plugins, one click from VS Code, signed in.** When an admin shares a plugin with you, VS Code says so once with an **Open** button, and the Providers tab lists it under **Your team's plugins**; admins get **Your gateway's page**. The page opens with a one-time code that it trades for your key within a minute, so nobody sees, copies or pastes a key. *Twinny - Open your team's plugins* in the command palette does the same; against an older gateway it falls back to putting the key on the clipboard. See [Connect to your team](/twinny-docs/teams/connect/).
+- **The page knows who you are on GitHub.** Opened from VS Code, it fills in your GitHub username from the account VS Code is signed in with, once, so pull requests waiting for your approval appear under **waiting for me**. It never replaces a name you set and is skipped on GitHub Enterprise.
+- **Approve from the pull page.** An admin approves a [pull request](/twinny-docs/teams/plugins/#open-pull-requests-in-one-place) with one button next to its checks, as the repository's token, with no review text posted. GitHub, Gitea and GitLab pin the approval to the commit the page showed.
+- **Qwen3-Coder completions through a gateway.** A chat-only [FIM](/twinny-docs/features/code-completion/#fim-templates) model's prompt now reaches `twinny-server` as the chat it was rendered from, instead of being refused.
+
 ## 4.2.7 · 24 September 2026
 
 - **The completion model is loaded before you type.** When VS Code starts or regains focus, twinny asks a local model server (Ollama, LM Studio, llama.cpp, or an OpenAI-compatible server on this machine) to load the [completion](/twinny-docs/features/code-completion/) model, so the first suggestion of the day no longer waits for it: with CodeLlama 7B on Ollama, 11 to 17 seconds became 0.06. Nothing is sent when the model was used in the last four minutes, and hosted APIs are never called. `twinny.warmUpModel` turns it off.
