@@ -26,7 +26,7 @@ Twinny gateway 4.0.18 listening on http://127.0.0.1:8765
   models:   2 aliases (coder: fim/chat, embed: embeddings)
   limits:   4 active, 120s deadline, 5s grace
   health:   http://127.0.0.1:8765/healthz
-  admin:    http://127.0.0.1:8765/admin (sign in with an admin key)
+  admin:    http://127.0.0.1:8765/admin (admin keys; a developer's key opens the plugins shared with them)
   access:   1 active key
   plan:     Free plan, 1 of 5 seats used
   usage:    /home/you/.twinny/server/usage (kept 30 days)
@@ -131,6 +131,7 @@ One key per person. Usage is attributed per key, so a shared key defeats the poi
 | See what changed and who changed it | Admin page, **Team → Audit log**; see [Operations](/twinny-docs/teams/operations/) |
 | Watch it from Prometheus | Scrape `/metrics` with a read-only admin key |
 | Switch on pull-request reviews, Slack, SSO, backups | Admin page, **Plugins → Store**; see [Plugins](/twinny-docs/teams/plugins/) |
+| Let developers review and triage pull requests | **Plugins → Store**, **share** on the plugin's card; see [Share with developers](/twinny-docs/teams/plugins/#share-with-developers) |
 | Run it as a service | A systemd unit example is in [docs/gateway.md](https://github.com/twinnydotdev/twinny/blob/main/docs/gateway.md#running-it-as-a-service) |
 
 The free plan allows five active keys. When the sixth developer arrives, creating the key is refused with the reason, and [a licence](/twinny-docs/teams/licensing/) raises the limit.

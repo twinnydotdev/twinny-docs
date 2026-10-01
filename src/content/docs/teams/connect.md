@@ -23,6 +23,12 @@ Any providers you already had are kept; you can switch back to them at any time 
 
 **Request a key** shows a short code, such as `WXYZ-2345`. Read it to your gateway admin, in person or on a call. They see the request on the gateway's admin page with the name and machine your VS Code suggested, type your key name, and approve it. Your key arrives in VS Code within a few seconds, goes straight into secret storage, and the connection check runs by itself. The code is good for ten minutes and cannot be turned into a key by anyone but the admin.
 
+## Plugins shared with you
+
+If your admin shared a gateway plugin with you, such as the GitHub or GitLab pull requests with the team's model reviews, run **Twinny - Open your team's plugins** from the command palette. It puts your team key on the clipboard and opens the gateway's page in your browser; paste the key to sign in. The key stays in that browser tab and is gone when you sign out or close it.
+
+You see only the plugins shared with you. On a pull-request plugin you can read pulls and issues, have the team's model review a pull, ask about the review, post it to the host as a comment, and triage issues. Set **You on GitHub** (or GitLab, Gitea, Bitbucket) to your username there and the **waiting for me** view lists the pulls that need your approval. Repositories and settings are your admin's. See [Plugins](/twinny-docs/teams/plugins/#share-with-developers).
+
 ## What happens to your code
 
 Prompts and the code around your cursor go to the gateway and its backend, on your team's hardware, and nowhere else. The gateway records which model you used, how long it took and token counts. It keeps the content of your requests only if your team has switched recording on, and then it says so on the connect screen and on the Providers tab. See [Status bar, logs and privacy](/twinny-docs/features/status-and-logs/) for what twinny itself keeps.

@@ -1,15 +1,15 @@
 ---
 title: Plugins
-description: Pull requests and issues from GitHub, GitLab, Gitea and Bitbucket reviewed by your own models, Slack, Discord and Teams notifications, SSO sign-in, shared context and backups. A licence feature.
+description: Pull requests and issues from GitHub, GitLab, Gitea and Bitbucket reviewed by your own models and shared with the developers you choose, Slack, Discord and Teams notifications, SSO sign-in, shared context and backups. A licence feature.
 ---
 
-Plugins are features the gateway ships with but that are not the gateway: switched off until an admin turns them on, each with its own files, its own routes and its own page. **Plugins → Store** on the admin page lists what your build carries. They are a licence feature. See [Licensing and seats](/twinny-docs/teams/licensing/).
+Plugins are features the gateway ships with but that are not the gateway: switched off until an admin turns them on, each with its own files, its own routes and its own page. **Plugins → Store** on the admin page lists what your build carries. The pull-request plugins can be [shared with developers](#share-with-developers), who then use them with their own key. They are a licence feature. See [Licensing and seats](/twinny-docs/teams/licensing/).
 
 Ten come bundled today: **GitHub**, **GitLab**, **Gitea / Forgejo** and **Bitbucket** for pull requests; **Slack**, **Discord** and **Microsoft Teams** for notifications; **SSO sign-in** with your identity provider; **Shared context**, one index of your repositories for every developer's chat; and **Backups**. The forges all do the same thing for their host.
 
 ## Open pull requests, in one place
 
-Watch the repositories your team works in and the admin page shows every open pull request (merge request on GitLab) across them: checks passing or failing, mergeable or in conflict, approved or waiting for review. Every pull carries its approvals as the host reports them: who approved, who asked for changes, who is still asked, and how many the base branch requires. The page learns who you are from the token (or a name set under the host's settings) and marks your part in each pull, so a **waiting for me** view lists the pulls by others that still need your approval. Drafts stay out of the list until a toggle at the end of the filter row brings them in.
+Watch the repositories your team works in and the admin page shows every open pull request (merge request on GitLab) across them: checks passing or failing, mergeable or in conflict, approved or waiting for review. Every pull carries its approvals as the host reports them: who approved, who asked for changes, who is still asked, and how many the base branch requires. The page learns who you are from the token (or a name set under the host's settings; a developer the plugin is shared with sets their own) and marks your part in each pull, so a **waiting for me** view lists the pulls by others that still need your approval. Drafts stay out of the list until a toggle at the end of the filter row brings them in.
 
 The toolbar is the same on every forge: one-click views with live counts, selects for repository, author, label, target branch and activity, a search, an order-by select and sortable column headers, all remembered per host in your browser. Each row links to the pull on the host; open one here to read its description and its diffs, highlighted like an editor shows them. The list syncs every five minutes and on **sync now**.
 
@@ -29,6 +29,26 @@ A pull's page has **review now**. The gateway sends the description and diffs to
 Open issues are listed too, and **triage** has a model suggest labels, a duplicate, a priority and a first reply, which you post or apply with a click (or let auto-triage suggest in the background). A finished review can be posted back to the host as a comment, a change request or an approval, with a footer naming the model; **auto-post** does that for every review without a click. Tick **auto-review** on a repository and its new and updated pulls are reviewed in the background: one at a time, newest first, never drafts, and only while no developer request is running, so completions and chats are never slowed down. Reviews are routed like any other request and appear in usage under `plugin:github` or `plugin:gitlab`, so the Usage page shows what they cost.
 
 The prompt is kept small for local models: at most 24k characters of description and diff, with larger patches named but left out, and at most 1,500 tokens back. Pick the review model on the plugin's page; the first chat alias is used until you do.
+
+## Share with developers
+
+Admins use every plugin that is on. To let developers use the pull-request plugins too, choose **share** on the plugin's card under **Plugins → Store**: **every developer** (anyone with a key of their own) or **these people**, ticked by key name. **Admins only** is the default.
+
+A developer the plugin is shared with signs in to the gateway's page (`https://<gateway>/admin`) with their own key, or runs **Twinny - Open your team's plugins** in VS Code (see [Connect to your team](/twinny-docs/teams/connect/#plugins-shared-with-you)). They see the shared plugins and nothing else of the admin page, and on each one they can do what a reviewer does:
+
+- read the open pulls and issues, and sync;
+- **review now**, ask about a review, and post it to the host as a comment;
+- **triage** an issue and post the reply and the suggested labels;
+- set their own username on the host, so **waiting for me** means them.
+
+Watching or removing repositories, tokens, auto-review and auto-post, the GitHub App, the host URL and the review model stay with admins. Slack, Discord, Teams, SSO sign-in, shared context and backups are for admins only and cannot be shared.
+
+A few things to know before you share:
+
+- **A posted review speaks as the token.** It goes to the host with the repository's token or the GitHub App, under that account, with a footer naming the model. So developers post reviews as comments only, once each, never as an approval or a change request, and apply only the labels the model suggested. The page records who asked and who posted, and the [audit log](/twinny-docs/teams/operations/#audit-log) records every write under the developer's name.
+- **Grants follow the name.** A replaced key, an invite or an SSO sign-in under the same name keeps access; a revoked key loses it at once.
+- **The shared token is nobody.** It never opens a plugin, even one shared with every developer, and neither does a demo's guest key.
+- A plugin that is switched off, or a plan without plugins, is closed to developers as it is to admins.
 
 ## SSO sign-in
 

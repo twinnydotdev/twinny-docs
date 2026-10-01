@@ -52,6 +52,7 @@ The lightbulb (`Ctrl+.`) offers **Fix with Twinny** on errors and warnings and *
 | Command | What it does |
 | --- | --- |
 | **Twinny - Share this computer's Ollama with my other devices (P2P)** | Start sharing and show a pairing code; the same as **Share** in the Devices section |
+| **Twinny - Open your team's plugins (pull requests, reviews)** | Copy your team key to the clipboard and open the gateway's page, where the [plugins shared with you](/twinny-docs/teams/connect/#plugins-shared-with-you) are |
 
 ## Extension
 
@@ -65,4 +66,4 @@ The lightbulb (`Ctrl+.`) offers **Fix with Twinny** on errors and warnings and *
 
 ## Command ids
 
-For keybindings and `tasks.json`, the ids are `twinny.<name>`: `twinny.edit`, `twinny.acceptEdit`, `twinny.rejectEdit`, `twinny.explain`, `twinny.refactor`, `twinny.addTypes`, `twinny.generateDocs`, `twinny.addTests`, `twinny.addFileToContext`, `twinny.addSelectionToContext`, `twinny.stopGeneration`, `twinny.sidebar.focus`, `twinny.openChat`, `twinny.review`, `twinny.manageProviders`, `twinny.manageTemplates`, `twinny.embeddings`, `twinny.conversationHistory`, `twinny.openPanelChat`, `twinny.exportConversation`, `twinny.newConversation`, `twinny.settings`, `twinny.generateCommitMessage`, `twinny.terminalCommand`, `twinny.fixTerminalError`, `twinny.shareOllama`, `twinny.enable`, `twinny.disable`, `twinny.showLogs`, `twinny.templates`, `twinny.setUpTeam`.
+For keybindings and `tasks.json`, the ids are `twinny.<name>`: `twinny.edit`, `twinny.acceptEdit`, `twinny.rejectEdit`, `twinny.explain`, `twinny.refactor`, `twinny.addTypes`, `twinny.generateDocs`, `twinny.addTests`, `twinny.addFileToContext`, `twinny.addSelectionToContext`, `twinny.stopGeneration`, `twinny.sidebar.focus`, `twinny.openChat`, `twinny.review`, `twinny.manageProviders`, `twinny.manageTemplates`, `twinny.embeddings`, `twinny.conversationHistory`, `twinny.openPanelChat`, `twinny.exportConversation`, `twinny.newConversation`, `twinny.settings`, `twinny.generateCommitMessage`, `twinny.terminalCommand`, `twinny.fixTerminalError`, `twinny.shareOllama`, `twinny.openTeamPlugins`, `twinny.enable`, `twinny.disable`, `twinny.showLogs`, `twinny.templates`, `twinny.setUpTeam`.
