@@ -38,10 +38,11 @@ twinny 是工作区扩展：在 Remote SSH、WSL、Dev Container 或 Codespaces 
 - 提供者中的 “localhost” 指**远程**机器。如果模型服务器跑在你的笔记本上而代码在容器里，请把提供者指向笔记本的网络地址，或在容器内运行服务器。
 - 提供者配置按 VS Code 安装保存。如果你经常切换远程环境，可把 `twinny.providerStorageLocation` 设为 `file` 让列表得以保留，或使用[导出与导入](/twinny-docs/zh-cn/providers/import-export/)。
 - 只要远程能通过 UDP 访问网络，[设备](/twinny-docs/zh-cn/providers/devices/)在远程环境中同样可用。
+- WSL 窗口需要 twinny 4.2.10 或更高版本；更早的版本在那里无法激活。
 
 ## 安装之后
 
-twinny 随 VS Code 启动而激活。首次启动时它会在本机查找模型服务器，找到则自动设置提供者；否则打开提供者标签页。请按[快速开始](/twinny-docs/zh-cn/getting-started/quick-start/)操作。
+twinny 随 VS Code 启动而激活。首次启动时它会在本机查找模型服务器，找到则自动设置提供者；否则提示一次，并附带打开提供者标签页的**选择提供者**按钮。请按[快速开始](/twinny-docs/zh-cn/getting-started/quick-start/)操作。
 
 你会看到：
 

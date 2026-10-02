@@ -3,7 +3,7 @@ title: Commands
 description: Every twinny command, where it appears, and what it does.
 ---
 
-All commands are available from the command palette (`Ctrl+Shift+P`). Many also appear in context menus, the sidebar header, or the Source Control and terminal views.
+Commands are available from the command palette (`Ctrl+Shift+P`), except **Twinny - Status bar options**, and **Accept edit** and **Reject edit**, which are listed only while an inline edit is waiting. Many also appear in context menus, the sidebar header, or the Source Control and terminal views.
 
 ## Editor
 
@@ -45,16 +45,16 @@ The lightbulb (`Ctrl+.`) offers **Fix with Twinny** on errors and warnings and *
 
 | Command | Where | What it does |
 | --- | --- | --- |
-| **Twinny - Generate commit message** | Source Control title (sparkle) | Write a [commit message](/twinny-docs/features/commit-messages/) into the commit box |
+| **Twinny - Generate commit message** | Source Control title (sparkle), Git repositories | Write a [commit message](/twinny-docs/features/commit-messages/) into the commit box |
 | **Twinny - Write a terminal command from a description** | Terminal right-click | Describe a command, confirm it, run it |
 | **Twinny - Fix the last terminal error** | Terminal right-click | Fix in the editor or ask in the chat |
 
-## Devices
+## Devices and teams
 
 | Command | What it does |
 | --- | --- |
 | **Twinny - Share this computer's Ollama with my other devices (P2P)** | Start sharing and show a pairing code; the same as **Share** in the Devices section |
-| **Twinny - Open your team's plugins (pull requests, reviews)** | Copy your team key to the clipboard and open the gateway's page, where the [plugins shared with you](/twinny-docs/teams/connect/#plugins-shared-with-you) are |
+| **Twinny - Open your team's plugins (pull requests, reviews)** | Open the gateway's page signed in with a one-time code, where the [plugins shared with you](/twinny-docs/teams/connect/#plugins-shared-with-you) are. Against a gateway older than 4.2.8 it puts your team key on the clipboard instead |
 
 ## Extension
 
@@ -62,10 +62,9 @@ The lightbulb (`Ctrl+.`) offers **Fix with Twinny** on errors and warnings and *
 | --- | --- |
 | **Enable twinny** / **Disable twinny** | Turn the extension on or off (`twinny.enabled`) |
 | **Twinny - Show logs** | Open the Twinny output channel |
-| **Edit twinny templates** | Open the `~/.twinny/templates/` folder |
-| **Twinny - Status bar options** | The menu shown when you click the status bar item |
+| **Twinny - Status bar options** | The menu shown when you click the status bar item. Not in the command palette |
 | **Twinny - Set up for your team (gateway, keys, usage)** | Open the [gateway page](https://twinny.dev/#teams) on twinny.dev in the browser |
 
 ## Command ids
 
-For keybindings and `tasks.json`, the ids are `twinny.<name>`: `twinny.edit`, `twinny.acceptEdit`, `twinny.rejectEdit`, `twinny.explain`, `twinny.refactor`, `twinny.addTypes`, `twinny.generateDocs`, `twinny.addTests`, `twinny.addFileToContext`, `twinny.addSelectionToContext`, `twinny.stopGeneration`, `twinny.sidebar.focus`, `twinny.openChat`, `twinny.review`, `twinny.manageProviders`, `twinny.manageTemplates`, `twinny.embeddings`, `twinny.conversationHistory`, `twinny.openPanelChat`, `twinny.exportConversation`, `twinny.newConversation`, `twinny.settings`, `twinny.generateCommitMessage`, `twinny.terminalCommand`, `twinny.fixTerminalError`, `twinny.shareOllama`, `twinny.openTeamPlugins`, `twinny.enable`, `twinny.disable`, `twinny.showLogs`, `twinny.templates`, `twinny.statusBarMenu`, `twinny.setUpTeam`, `twinny.showShortcuts`, `twinny.forgetAlwaysRunCommands`.
+For keybindings and `tasks.json`, the ids are `twinny.<name>`: `twinny.edit`, `twinny.acceptEdit`, `twinny.rejectEdit`, `twinny.explain`, `twinny.refactor`, `twinny.addTypes`, `twinny.generateDocs`, `twinny.addTests`, `twinny.addFileToContext`, `twinny.addSelectionToContext`, `twinny.stopGeneration`, `twinny.sidebar.focus`, `twinny.openChat`, `twinny.review`, `twinny.manageProviders`, `twinny.manageTemplates`, `twinny.embeddings`, `twinny.conversationHistory`, `twinny.openPanelChat`, `twinny.exportConversation`, `twinny.newConversation`, `twinny.settings`, `twinny.generateCommitMessage`, `twinny.terminalCommand`, `twinny.fixTerminalError`, `twinny.shareOllama`, `twinny.openTeamPlugins`, `twinny.enable`, `twinny.disable`, `twinny.showLogs`, `twinny.statusBarMenu`, `twinny.setUpTeam`, `twinny.showShortcuts`, `twinny.forgetAlwaysRunCommands`.

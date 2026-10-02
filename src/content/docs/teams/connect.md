@@ -12,7 +12,7 @@ Install twinny, then open the link your admin sent. It looks like `vscode://rjma
 ## With the address and a key
 
 1. Open the twinny sidebar and go to **Providers**.
-2. Under **Using Twinny with your team?** choose **Connect to team**. On a fresh install the welcome screen has the same button under **Joining a team?**
+2. Under **Using Twinny with your team?** choose **Connect to team**. On a fresh install the same entry is below the welcome screen.
 3. Enter the gateway URL. Then either paste your key and **Check connection**, or choose **Request a key** (below).
 4. twinny asks the gateway who you are and reads the models your admin has set as the team default for chat, autocomplete and embeddings. Nothing is sent to the models, so this takes a moment even when a model is still loading. You see your name as the gateway knows it and the alias for each feature.
 5. Choose **Connect**. twinny creates one provider per feature the admin configured, makes them active, and stores your key in VS Code's secret storage. Nothing about your key is written to settings or exported with your provider list. To try a model, use **Test Provider** on its card afterwards.
@@ -25,9 +25,11 @@ Any providers you already had are kept; you can switch back to them at any time 
 
 ## Plugins shared with you
 
-If your admin shared a gateway plugin with you, such as the GitHub or GitLab pull requests with the team's model reviews, run **Twinny - Open your team's plugins** from the command palette. It puts your team key on the clipboard and opens the gateway's page in your browser; paste the key to sign in. The key stays in that browser tab and is gone when you sign out or close it.
+If your admin shares a gateway plugin with you, such as the GitHub or GitLab pull requests with the team's model reviews, VS Code tells you once, with an **Open** button. It looks at start, when the window regains focus, and every half hour. The Providers tab then lists the plugin under **Your team's plugins**; an admin sees **Your gateway's page** there instead. **Twinny - Open your team's plugins** in the command palette does the same.
 
-You see only the plugins shared with you. On a pull-request plugin you can read pulls and issues, have the team's model review a pull, ask about the review, post it to the host as a comment, and triage issues. Set **You on GitHub** (or GitLab, Gitea, Bitbucket) to your username there and the **waiting for me** view lists the pulls that need your approval. Repositories and settings are your admin's. See [Plugins](/twinny-docs/teams/plugins/#share-with-developers).
+Opening it signs you in to the gateway's page in your browser without showing your key. VS Code asks the gateway for a one-time code with your key and opens the page with the code in the address's fragment, which the browser never sends to a server; the page trades it for your key once, within a minute, and wipes it from the address bar. If you joined by invite, you need nothing from your admin. Against a gateway older than 4.2.8 the key goes on the clipboard instead, to paste into the page. A connection with the team's shared token, not a key of your own, cannot open the page.
+
+You see only the plugins shared with you. On a pull-request plugin you can read pulls and issues, have the team's model review a pull, ask about the review, post it to the host as a comment, and triage issues. Your username on the host gives the pulls that need your approval a **waiting for me** view: opened from VS Code, the GitHub page takes it once from the GitHub account VS Code is signed in with (not on GitHub Enterprise); otherwise the page asks **Who are you on GitHub?** (or GitLab, Gitea, Bitbucket) at the top until you answer. Change it later under **You on GitHub** at the bottom of the page. Repositories and settings are your admin's. See [Plugins](/twinny-docs/teams/plugins/#share-with-developers).
 
 ## What happens to your code
 

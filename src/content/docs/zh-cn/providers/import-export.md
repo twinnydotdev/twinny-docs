@@ -39,7 +39,7 @@ description: 在机器之间迁移提供者配置。
 }
 ```
 
-**导出包含 API 密钥。** 请把文件当作机密对待，或在分享前清空 `apiKey` 字段。
+**导出包含 API 密钥。** 请把文件当作机密对待，或在分享前清空 `apiKey` 字段。Twinny 网关提供者例外：它的密钥保存在 VS Code 的密钥存储中，不随提供者保存，因此不会被导出，导入后需要重新输入。
 
 ## 导入
 
@@ -54,14 +54,15 @@ id 会保留，因此再次导入同一文件会**更新**匹配的提供者而�
 | `id` | | 任意唯一字符串。缺失时生成 |
 | `label` | ✓ | 显示名称 |
 | `type` | ✓ | `chat`、`fim` 或 `embedding` |
-| `provider` | ✓ | `ollama`、`lmstudio`、`llamacpp`、`oobabooga`、`litellm`、`openwebui`、`openai-compatible`、`openai`、`anthropic`、`mistral`、`groq`、`openrouter`、`cohere`、`perplexity`、`gemini`、`deepseek` 或 `twinny-p2p` |
+| `provider` | ✓ | `ollama`、`lmstudio`、`llamacpp`、`oobabooga`、`litellm`、`openwebui`、`openai-compatible`、`qvac`、`openai`、`anthropic`、`mistral`、`groq`、`openrouter`、`cohere`、`perplexity`、`gemini`、`deepseek`、`twinny-remote`（Twinny 网关）或 `twinny-p2p` |
 | `modelName` | ✓ | |
 | `apiHostname` | 端点类提供者必填 | 仅主机名 |
 | `apiPort` | | 数字 |
 | `apiProtocol` | | `http` 或 `https` |
 | `apiPath` | | 对话为基路径，其他为完整路由 |
 | `apiKey` | 托管 API 必填 | |
-| `fimTemplate` | 仅 fim | `automatic`、`codellama`、`deepseek`、`codeqwen`、`codestral`、`codegemma`、`stable-code`、`starcoder`、`llama` 或 `custom-template` |
+| `fimTemplate` | 仅 fim | `automatic`、`codellama`、`deepseek`、`codeqwen`、`qwen3-coder`、`codestral`、`codegemma`、`stable-code`、`starcoder`、`llama` 或 `custom-template` |
+| `repositoryLevel` | 仅 fim | 设为 `true` 时以仓库级提示格式发送相邻文件 |
 | `deviceId` | 仅 twinny-p2p | 已配对设备的公钥。设备提供者只在与该设备配对过的机器上可用 |
 
 ## 提供者保存在哪里

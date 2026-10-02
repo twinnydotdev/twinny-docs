@@ -7,7 +7,7 @@ Everything on this page is in every plan, licence or not. The operator reference
 
 ## Audit log
 
-Every change made through the admin page, the admin routes or the command line is written to `audit/YYYY-MM.jsonl` under the data directory: keys made and revoked, invites made, opened and withdrawn, sign-ins approved, configuration saves, licence changes, plugins switched on or off, who a plugin is shared with, and every write to a plugin's routes (the method and path, never the body; a developer's writes are marked as theirs). Nothing secret is written: names, actions, targets, a few short details and the caller's address.
+Every change made through the admin page, the admin routes or the command line is written to `audit/YYYY-MM.jsonl` under the data directory: keys made and revoked, invites made, opened and withdrawn, sign-ins approved, the gateway's page opened from VS Code, configuration saves, licence changes, plugins switched on or off, who a plugin is shared with, and every write to a plugin's routes (the method and path, never the body; a developer's writes are marked as theirs). Nothing secret is written: names, actions, targets, a few short details and the caller's address.
 
 Each line carries the SHA-256 hash of the line before it. An edited or removed line breaks the chain, and **Team → Audit log** on the admin page says whether the chain is intact and, if not, where it breaks. Filter by period, actor and kind; **export** downloads the whole log as JSON lines for whatever keeps your records.
 
@@ -43,9 +43,9 @@ Give an alias a price and the Usage page shows what its tokens cost. In the mode
 
 ## When every slot is busy
 
-`maxActiveRequests` caps the chat and autocomplete requests running at once (embeddings are not counted, since indexing a workspace is hundreds of small requests). A request that finds every slot taken does not fail at once: it waits, oldest first, for up to a few seconds (`limits.queue.fimWaitMs` for autocomplete, `chatWaitMs` for chat), and a freed slot goes straight to the head of the queue. A team sharing one GPU sees a short pause rather than an error.
+`maxActiveRequests` caps the chat and autocomplete requests running at once (embeddings are not counted, since indexing a workspace is hundreds of small requests). A request that finds every slot taken does not fail at once: it waits, oldest first, for up to `limits.queue.fimWaitMs` for autocomplete (500 ms by default) or `chatWaitMs` for chat (15 s), and a freed slot goes straight to the head of the queue. A team sharing one GPU sees a short pause rather than an error.
 
-A request is refused with `rate-limited` when `limits.queue.maxWaiting` requests are already waiting, or when its own wait ran out; the message and the log line say which. An editor that moves on while its request is waiting leaves the queue without touching a backend. `twinny_queued_requests` on `/metrics` shows how often the queue is used; if it is rarely empty, the answer is a bigger `maxActiveRequests` or another backend.
+A request is refused with `rate-limited` when `limits.queue.maxWaiting` requests (8 by default; `0` refuses at once, with no queue) are already waiting, or when its own wait ran out; the message and the log line say which. An editor that moves on while its request is waiting leaves the queue without touching a backend. `twinny_queued_requests` on `/metrics` shows how often the queue is used; if it is rarely empty, the answer is a bigger `maxActiveRequests` or another backend.
 
 ## Upgrades and the data directory
 

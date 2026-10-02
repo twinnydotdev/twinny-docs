@@ -39,7 +39,7 @@ The Providers tab has **Export** and **Import** buttons that move the whole prov
 }
 ```
 
-**API keys are included in the export.** Treat the file as a secret, or blank the `apiKey` fields before sharing it.
+**API keys are included in the export.** Treat the file as a secret, or blank the `apiKey` fields before sharing it. The exception is a Twinny gateway provider: its key is kept in VS Code's secret storage, not with the provider, so it is never exported and must be entered again after an import.
 
 ## Import
 
@@ -54,14 +54,15 @@ Ids are kept, so importing the same file again **updates** the matching provider
 | `id` | | Any unique string. Generated if missing |
 | `label` | ✓ | Display name |
 | `type` | ✓ | `chat`, `fim` or `embedding` |
-| `provider` | ✓ | `ollama`, `lmstudio`, `llamacpp`, `oobabooga`, `litellm`, `openwebui`, `openai-compatible`, `openai`, `anthropic`, `mistral`, `groq`, `openrouter`, `cohere`, `perplexity`, `gemini`, `deepseek`, or `twinny-p2p` |
+| `provider` | ✓ | `ollama`, `lmstudio`, `llamacpp`, `oobabooga`, `litellm`, `openwebui`, `openai-compatible`, `qvac`, `openai`, `anthropic`, `mistral`, `groq`, `openrouter`, `cohere`, `perplexity`, `gemini`, `deepseek`, `twinny-remote` (a Twinny gateway) or `twinny-p2p` |
 | `modelName` | ✓ | |
 | `apiHostname` | for endpoint providers | Hostname only |
 | `apiPort` | | Number |
 | `apiProtocol` | | `http` or `https` |
 | `apiPath` | | Base for chat, full route otherwise |
 | `apiKey` | for hosted APIs | |
-| `fimTemplate` | fim only | `automatic`, `codellama`, `deepseek`, `codeqwen`, `codestral`, `codegemma`, `stable-code`, `starcoder`, `llama` or `custom-template` |
+| `fimTemplate` | fim only | `automatic`, `codellama`, `deepseek`, `codeqwen`, `qwen3-coder`, `codestral`, `codegemma`, `stable-code`, `starcoder`, `llama` or `custom-template` |
+| `repositoryLevel` | fim only | `true` to send neighbouring files in the repository-level prompt format |
 | `deviceId` | twinny-p2p only | The paired device's public key. A device provider only works on a machine that has paired with that device |
 
 ## Where providers are stored

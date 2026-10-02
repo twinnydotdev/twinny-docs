@@ -84,7 +84,7 @@ Set `twinny.chatToolsCommandsRunIn` to `terminal` to run commands in the **twinn
 
 ## Models and providers
 
-Tools go to the server through its own tool calling where it has one: Ollama, LM Studio, llama.cpp, LiteLLM, Open WebUI and other OpenAI-compatible servers, a [paired device](/twinny-docs/providers/devices/), OpenAI, a [team gateway](/twinny-docs/teams/connect/), and hosted APIs that take tools (Anthropic, Gemini, Mistral, Groq, OpenRouter and others). When a server or model refuses them, and for servers without tool calling, the model is asked to write its calls in the reply instead, which works through anything that carries chat. The Twinny output channel says when that happens.
+Tools go to the server through its own tool calling where it has one: Ollama, LM Studio, llama.cpp, LiteLLM, Open WebUI and other OpenAI-compatible servers, a [paired device](/twinny-docs/providers/devices/), OpenAI, a [team gateway](/twinny-docs/teams/connect/), and hosted APIs that take tools (Anthropic, Gemini, Mistral, Groq, OpenRouter and others). When a server or model refuses them, the model is asked to write its calls in the reply instead, which works through anything that carries chat; the Twinny output channel says when that happens. QVAC, text-generation-webui and hosted APIs without tool calling (Perplexity, for one) get calls written in the reply from the start.
 
 Each tool result is held to a share of the model's context, and when a request would not fit, the oldest results are trimmed first. With a context under about 8k tokens they are trimmed often and the model loses track; the output channel warns you. Raise the server's context length if you can (for Ollama, see [Context size](/twinny-docs/providers/ollama/#context-size)).
 

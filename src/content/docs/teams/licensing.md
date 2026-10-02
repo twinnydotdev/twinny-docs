@@ -15,7 +15,7 @@ A seat is an active access key on the gateway. Every developer has their own key
 | Team | the free 5, plus what you buy | $6 per extra seat per month, billed yearly ($72 per extra seat per year) | one year, renewable | one gateway per licence |
 | Enterprise | from 50 | $10 per seat per month, billed yearly | one year, renewable | the organisation: any number of gateways |
 
-Every plan includes the admin page, usage per developer, key management, live configuration, sign-in with a code, team GPU pooling. The free plan is not a trial. A licence changes the seat count and switches on [team policy](/twinny-docs/teams/policy/), [recording](/twinny-docs/teams/recording/) and [plugins](/twinny-docs/teams/plugins/): pull requests and issues from GitHub, GitLab, Gitea and Bitbucket reviewed by your own models, Slack, Discord and Teams notifications, SSO sign-in, a shared context index and backups. Team comes with email support; Enterprise with priority support from a named contact and invoice or purchase-order billing.
+Every plan includes the admin page, usage per developer, key management, invite links, live configuration, sign-in with a code, team GPU pooling, the secret shield, the audit log, read-only admins and Prometheus metrics. The free plan is not a trial. A licence changes the seat count and switches on [team policy](/twinny-docs/teams/policy/), [recording](/twinny-docs/teams/recording/) and [plugins](/twinny-docs/teams/plugins/): pull requests and issues from GitHub, GitLab, Gitea and Bitbucket reviewed by your own models, Slack, Discord and Teams notifications, SSO sign-in, a shared context index and backups. Team comes with email support; Enterprise with priority support from a named contact and invoice or purchase-order billing.
 
 ## Trying it first
 
@@ -37,7 +37,7 @@ On the gateway machine:
 twinny-server license set twl1.…
 ```
 
-Or open the admin page, **Plan and licence**, paste the token and choose **install licence**. Either way the gateway verifies the token first, keeps it in `~/.twinny/server/license`, and applies it within a second without a restart. A token that does not verify changes nothing.
+Or open the admin page, **Plan & licence**, paste the token and choose **install licence**. Either way the gateway verifies the token first, keeps it in `~/.twinny/server/license`, and applies it within a second without a restart. A token that does not verify changes nothing.
 
 ```sh
 twinny-server license

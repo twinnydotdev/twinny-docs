@@ -5,6 +5,8 @@ description: Open WebUI, LiteLLM, Oobabooga, vLLM, TGI and anything else that sp
 
 Any server that implements the OpenAI chat completions API works for chat. Completion needs a `/v1/completions`-style route (or a native one twinny knows), and embeddings a `/v1/embeddings`-style route. twinny ships presets for the servers below; for anything else use the generic **OpenAI-compatible server** preset.
 
+Open WebUI, LiteLLM and Oobabooga have presets for chat only. For autocomplete or embeddings through one of them, choose **Custom Provider** and pick the server in the **Provider** list; the paths below are filled in.
+
 ## OpenAI-compatible server (vLLM, TGI, SGLang, Jan, GPT4All, ...)
 
 The catch-all preset. Defaults to `localhost:8080` with `/v1`, `/v1/completions` and `/v1/embeddings`. Change the port to match your server.
@@ -66,6 +68,20 @@ Load a model in the web UI (`http://localhost:7860`) before testing. The API is 
 | Embeddings | `/v1/embeddings` |
 
 Oobabooga serves whatever model is loaded, so the model name is informational; name it after the family so *Automatic* FIM template detection works, or pick the template by hand.
+
+Its tool calling is patchy, so [agent mode](/twinny-docs/features/agent-mode/) asks the model to write its tool calls in the reply instead.
+
+## QVAC
+
+QVAC's local server has no preset. Choose **Custom Provider** and pick **QVAC** in the **Provider** list. Defaults:
+
+| Job | Path |
+| --- | --- |
+| Chat | `localhost:11435` `/v1` |
+| Autocomplete | `/v1/completions` |
+| Embeddings | `/v1/embeddings` |
+
+The server has no tool calling, so [agent mode](/twinny-docs/features/agent-mode/) asks the model to write its tool calls in the reply instead.
 
 ## Anything else
 

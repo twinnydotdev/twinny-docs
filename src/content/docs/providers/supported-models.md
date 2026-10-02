@@ -23,6 +23,8 @@ Hosted chat models are listed on [Hosted APIs](/twinny-docs/providers/hosted-api
 
 Vision models (`llama3.2-vision`, `llava`, hosted GPT and Claude models) accept images pasted into the chat.
 
+[Agent mode](/twinny-docs/features/agent-mode/) asks more of the chat model: it needs a capable coder model, such as `qwen3-coder:30b`, with a context of 8k tokens or more. Small models tend to call tools badly.
+
 ## Code completion (fill-in-the-middle)
 
 Only models trained with fill-in-the-middle (FIM) tokens can complete code between what is before and after the cursor. For most families that is the **base** or **code** variant. Instruct models will produce suggestions, but they tend to chatter or explain instead of completing.
@@ -31,7 +33,8 @@ twinny picks the prompt format from the model name when the FIM template is set 
 
 | Family | Recommended tags | Template | Repo-level context |
 | --- | --- | --- | --- |
-| Qwen2.5-Coder | [`qwen2.5-coder:1.5b-base`](https://ollama.com/library/qwen2.5-coder:1.5b-base), [`qwen2.5-coder:7b-base`](https://ollama.com/library/qwen2.5-coder:7b-base) | `codeqwen` (any name containing `qwen`) | ✓ |
+| Qwen2.5-Coder | [`qwen2.5-coder:1.5b-base`](https://ollama.com/library/qwen2.5-coder:1.5b-base), [`qwen2.5-coder:7b-base`](https://ollama.com/library/qwen2.5-coder:7b-base) | `codeqwen` (any name containing `qwen` but not `qwen3-coder`) | ✓ |
+| Qwen3-Coder | [`qwen3-coder`](https://ollama.com/library/qwen3-coder) | `qwen3-coder` | ✓ |
 | CodeLlama | [`codellama:7b-code`](https://ollama.com/library/codellama:7b-code), [`codellama:13b-code`](https://ollama.com/library/codellama:13b-code) | `codellama` | |
 | DeepSeek Coder | [`deepseek-coder:6.7b-base`](https://ollama.com/library/deepseek-coder:6.7b-base), [`deepseek-coder:1.3b-base`](https://ollama.com/library/deepseek-coder:1.3b-base) | `deepseek` | |
 | Codestral | [`codestral`](https://ollama.com/library/codestral), or Mistral's hosted `codestral-latest` | `codestral` | |
@@ -47,6 +50,7 @@ Notes:
 
 - A 1.5B to 7B model is the sweet spot for autocomplete: fast enough to keep up with typing, good enough to be useful. Start with `qwen2.5-coder:1.5b-base` and move up if your hardware has room. The `34b` CodeLlama does not do well at FIM.
 - `starcoder2` and `codegemma` sometimes fail to stop. Lowering `twinny.temperature` and `twinny.maxLines` helps.
+- Qwen3-Coder is released only as an instruct model. It fills the hole when the FIM prompt arrives as a chat, so the `qwen3-coder` template sends it that way: written out as ChatML for a completion route (with `raw` on Ollama), as messages for LiteLLM and a Twinny gateway.
 - If a model's name does not match any family, twinny falls back to the CodeLlama format. Set the template by hand in the provider form.
 - For a model that needs its own prompt format, choose **custom-template** and edit `~/.twinny/templates/fim.hbs`; see [Prompt templates](/twinny-docs/features/templates/#the-fim-template).
 

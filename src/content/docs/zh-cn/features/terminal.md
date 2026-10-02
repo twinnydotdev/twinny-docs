@@ -17,12 +17,12 @@ description: 根据描述编写 shell 命令，以及修复最后的终端错误
 
 ## 修复最后的终端错误
 
-命令失败时，运行 **Twinny - Fix the last terminal error**（命令面板或终端右键）。twinny 读取最后的命令及其输出，去除终端颜色码，并找出其中的文件和行号引用（`src/app.ts:42:7`、`File "main.py", line 12` 等）。然后提供：
+命令失败时，运行 **Twinny - Fix the last terminal error**（命令面板或终端右键）。twinny 读取最近一次失败的命令（先看当前终端，再看其他终端；都没有失败时取最后一条命令）及其输出，去除终端颜色码，并找出其中对工作区文件的文件和行号引用（`src/app.ts:42:7`、`File "main.py", line 12` 等）。然后提供：
 
 - **Fix in editor**：在该行打开第一个引用的文件，选中所在函数（或该行），并以错误信息为指令运行[内联编辑](/twinny-docs/zh-cn/features/inline-edit/)，修复以 diff 形式呈现供你接受或拒绝。
 - **Ask in chat**：把命令及其输出发送到对话，附上每个引用行周围的代码（最多三个文件），请求解释和修复。
 
-如果输出没有提到任何文件，只提供对话选项。
+如果输出没有提到任何工作区文件，则直接发送到对话。
 
 ## 对话中的 `@terminal`
 
@@ -30,9 +30,11 @@ description: 根据描述编写 shell 命令，以及修复最后的终端错误
 
 ## Twinny 终端
 
-twinny 运行的命令进入名为 **Twinny** 的终端，首次使用时创建，之后复用。对话中带 **terminal** 按钮的代码块也会粘贴到那里，在终端中按 `Enter` 即可运行。
+twinny 运行的命令进入名为 **Twinny** 的终端，首次使用时创建，之后复用。对话中带 **terminal** 按钮的代码块（`bash`、`sh`、`powershell`、`console` 等 shell 代码块）也会粘贴到那里，并去掉开头的 `$ ` 之类的提示符，在终端中按 `Enter` 即可运行。
+
+[智能体模式](/twinny-docs/zh-cn/features/agent-mode/)中模型运行的命令不使用这个终端：它们在后台运行，`twinny.chatToolsCommandsRunIn` 为 `terminal` 时则在名为 **twinny tools** 的终端中运行。
 
 ## 说明
 
 - 捕获输出需要开启 shell 集成。如果 twinny 报告没有终端输出，检查 *Terminal › Integrated › Shell Integration: Enabled* 以及 shell 是否受支持。安装 twinny 之前产生的输出不可用。
-- 模型看到的就是终端打印的内容。打印到终端的密钥会进入提示；在意的话先清屏。
+- 模型看到的就是终端打印的内容。打印到终端的密钥会进入提示。[密钥屏蔽](/twinny-docs/zh-cn/features/status-and-logs/#密钥屏蔽)会在提示离开本机前替换能识别的凭据，但默认不作用于本地服务器，也并非所有密钥都能识别；在意的话先清屏。

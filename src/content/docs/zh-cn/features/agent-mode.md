@@ -84,7 +84,7 @@ description: 让对话模型在工作区中读取、搜索、编辑文件并运�
 
 ## 模型与提供者
 
-服务器有自己的工具调用时，工具通过它发送：Ollama、LM Studio、llama.cpp、LiteLLM、Open WebUI 及其他兼容 OpenAI 的服务器、[配对设备](/twinny-docs/zh-cn/providers/devices/)、OpenAI、团队网关，以及支持工具的托管 API（Anthropic、Gemini、Mistral、Groq、OpenRouter 等）。服务器或模型拒绝工具时，以及对没有工具调用的服务器，模型会被要求把调用写在回复中，这适用于任何能进行对话的服务。发生这种情况时 Twinny 输出通道会说明。
+服务器有自己的工具调用时，工具通过它发送：Ollama、LM Studio、llama.cpp、LiteLLM、Open WebUI 及其他兼容 OpenAI 的服务器、[配对设备](/twinny-docs/zh-cn/providers/devices/)、OpenAI、团队网关，以及支持工具的托管 API（Anthropic、Gemini、Mistral、Groq、OpenRouter 等）。服务器或模型拒绝工具时，模型会被要求把调用写在回复中，这适用于任何能进行对话的服务；发生这种情况时 Twinny 输出通道会说明。QVAC、text-generation-webui 以及不支持工具调用的托管 API（例如 Perplexity）一开始就把调用写在回复中。
 
 每个工具结果被限制在模型上下文的一定比例内；请求放不下时，最早的结果先被裁剪。上下文少于约 8k token 时裁剪频繁，模型会失去线索；输出通道会提醒你。尽可能调大服务器的上下文长度（Ollama 见[上下文大小](/twinny-docs/zh-cn/providers/ollama/)）。
 

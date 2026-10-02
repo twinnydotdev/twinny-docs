@@ -21,15 +21,17 @@ ollama pull nomic-embed-text
 The banner shows where it listens and the admin page address:
 
 ```
-Twinny gateway 4.0.18 listening on http://127.0.0.1:8765
+Twinny gateway 4.3.4 listening on http://127.0.0.1:8765
   protocol: twinny/v1 at /twinny/v1
   models:   2 aliases (coder: fim/chat, embed: embeddings)
-  limits:   4 active, 120s deadline, 5s grace
+  limits:   4 active, 8 waiting (fim 500ms, chat 15s), 120s deadline, 5s grace
   health:   http://127.0.0.1:8765/healthz
   admin:    http://127.0.0.1:8765/admin (admin keys; a developer's key opens the plugins shared with them)
   access:   1 active key
   plan:     Free plan, 1 of 5 seats used
+  data:     /home/you/.twinny/server (format 1)
   usage:    /home/you/.twinny/server/usage (kept 30 days)
+  recording: off · sqlite at /home/you/.twinny/server/recordings/recordings.sqlite, kept 90 days
   backend:  local-ollama answers (12 ms)
 ```
 
@@ -108,7 +110,7 @@ npx twinny-server invites create alice --url https://ai.example.com
 
 If you are both at a keyboard, she can sign in without a link: **Connect to team** in the twinny sidebar, the gateway URL, then **Request a key**. She reads you the code VS Code shows her. It appears under **People → Sign-in requests** on the admin page with her suggested name and machine; you type the key name and **approve**. Her VS Code collects the key by itself. Codes last ten minutes, and approve only a code someone has read to you.
 
-You can also make keys yourself, on the admin page (**Keys → name → create key**) or:
+You can also make keys yourself, on the admin page (**People → Keys → new key**) or:
 
 ```sh
 npx twinny-server keys create alice

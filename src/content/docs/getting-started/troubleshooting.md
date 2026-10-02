@@ -19,16 +19,21 @@ Errors surface as notifications and in the chat. Each one names the provider and
 | **_provider_ rejected the request as unauthorised** | Missing or wrong API key | Paste the key into the provider. For local servers behind a proxy, the proxy may want a key too |
 | **_provider_ does not have the model _name_** | The model is not on the server | `ollama pull name`, load it in LM Studio, or pick another from the list in the form |
 | **_provider_ returned 404 at _url_** | The API path is wrong | Compare with the defaults on [Providers](/twinny-docs/providers/overview/#local-servers). For chat the path is the base (`/v1`), not `/v1/chat/completions` |
-| **The prompt was too long for _model_** | The server's context window is smaller than the request | Lower `twinny.contextLength` or `twinny.reviewMaxDiffChars`, or raise the server's context size |
+| **The prompt was too long for _model_** | The server's context window is smaller than the request | In chat, start a new conversation or remove some context files. Otherwise lower `twinny.contextLength` or `twinny.reviewMaxDiffChars`, or raise the server's context size |
 | **_provider_ is rate limiting requests** | HTTP 429 from a hosted API | Wait, or upgrade the plan |
 | **The request to _provider_ timed out** | No answer within the limit; the model may still be loading | Try again. The first request after a model swap is slow |
 | **_provider_ cannot do this** | The provider does not support the job, e.g. FIM on Anthropic | Pick a provider that does |
-| **_provider_ does not support FIM** | A chat-only hosted API set as autocomplete | See [Hosted APIs](/twinny-docs/providers/hosted-apis/) for which support completion |
+| **_provider_ only supports chat in twinny** | The provider form refuses a chat-only hosted API as autocomplete or embeddings | Use a local server, OpenRouter, DeepSeek or Mistral; see [Hosted APIs](/twinny-docs/providers/hosted-apis/) |
+| **_provider_ refused the request** | A Twinny gateway did not accept your key | Enter a current gateway key on the provider, or ask your admin; see [Connect to your team](/twinny-docs/teams/connect/) |
+
+## Installation and start-up
+
+**twinny does nothing in a WSL window: chat never loads and there are no suggestions.** Before 4.2.10, activation in WSL failed with `Cannot read properties of undefined (reading 'header')` in the Twinny output channel. Update to 4.2.10 or later. If the workspace index's native module still cannot load, embeddings are turned off and the rest of twinny works.
 
 ## Code completion
 
 **No suggestions at all.**
-- Check the status bar: `</> off` means auto-suggest is off. Click it to turn on, or press `Alt+\`.
+- Check the status bar: `</> off` means auto-suggest is off. Click it to turn it on. While it is off, `Alt+\` asks for a suggestion by hand.
 - Is an autocomplete provider set? The Autocomplete section of the Providers tab is empty if not.
 - Is the language enabled? See `twinny.enabledLanguages`.
 - Output panes, search results and the terminal never get suggestions.
@@ -39,6 +44,8 @@ Errors surface as notifications and in the chat. Each one names the provider and
 **Suggestions contain `<PRE>`, `<|fim_middle|>` or similar tokens.** The FIM template does not match the model. Set it by hand on the provider form instead of *Automatic*.
 
 **Suggestions never stop, or run on for many lines.** Lower `twinny.maxLines`, lower `twinny.temperature`, and prefer a model family that stops reliably (Qwen2.5-Coder, CodeLlama, DeepSeek Coder). StarCoder2 and CodeGemma are known to run on.
+
+**The first suggestion is slow.** A local model server loads the model on first use. twinny asks it to load the completion model when VS Code starts or regains focus (`twinny.warmUpModel`); if that is off, or the server unloaded the model, the first request waits for the load. On Ollama, raise `twinny.keepAlive`.
 
 **Suggestions are slow.** Use a smaller model for completion (1.5B or 3B). Make sure the model is on the GPU, not the CPU (`ollama ps` shows where). If chat and completion use different models on a small GPU, they swap each other out; give them the same model or more VRAM. Turn off `twinny.fileContextEnabled` if it is on.
 
@@ -51,6 +58,8 @@ Errors surface as notifications and in the chat. Each one names the provider and
 **Answers are cut short.** Raise `twinny.numPredictChat`.
 
 **The edit came back as prose, or with fences.** Small models sometimes explain instead of editing. Try a more direct instruction, or a larger model. The parser already strips fences and thinking blocks.
+
+**A reply says *N secrets withheld*.** This is the secret shield, not an error: keys, tokens and passwords in the prompt were replaced with placeholders before the request left the machine, and put back in the reply. `twinny.secretShield` controls it; see [Settings](/twinny-docs/reference/settings/).
 
 **Apply from chat put the code in the wrong place.** Apply matches the block against the file; if the block was heavily edited by the model it may not match. Reject and paste by hand, or select the target lines first and use `Ctrl+I`.
 

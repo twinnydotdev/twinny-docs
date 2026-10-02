@@ -3,7 +3,7 @@ title: 命令
 description: twinny 的每个命令、出现的位置及作用。
 ---
 
-所有命令都可从命令面板（`Ctrl+Shift+P`）使用。许多还出现在右键菜单、侧边栏标题、源代码管理和终端视图中。
+命令都可从命令面板（`Ctrl+Shift+P`）使用，但 **Twinny - Status bar options** 除外；**Accept edit** 和 **Reject edit** 只在有内联编辑等待时才列出。许多还出现在右键菜单、侧边栏标题、源代码管理和终端视图中。
 
 ## 编辑器
 
@@ -45,15 +45,16 @@ description: twinny 的每个命令、出现的位置及作用。
 
 | 命令 | 位置 | 作用 |
 | --- | --- | --- |
-| **Twinny - Generate commit message** | 源代码管理标题（闪光） | 把[提交信息](/twinny-docs/zh-cn/features/commit-messages/)写入提交框 |
+| **Twinny - Generate commit message** | 源代码管理标题（闪光），Git 仓库 | 把[提交信息](/twinny-docs/zh-cn/features/commit-messages/)写入提交框 |
 | **Twinny - Write a terminal command from a description** | 终端右键 | 描述命令、确认、运行 |
 | **Twinny - Fix the last terminal error** | 终端右键 | 在编辑器中修复或在对话中询问 |
 
-## 设备
+## 设备与团队
 
 | 命令 | 作用 |
 | --- | --- |
 | **Twinny - Share this computer's Ollama with my other devices (P2P)** | 开始共享并显示配对码；与设备区域的**共享**相同 |
+| **Twinny - Open your team's plugins (pull requests, reviews)** | 用一次性代码以已登录状态打开网关页面，[共享给你的插件](/twinny-docs/teams/connect/#plugins-shared-with-you)就在那里。网关版本早于 4.2.8 时，改为把你的团队密钥放到剪贴板 |
 
 ## 扩展
 
@@ -61,10 +62,9 @@ description: twinny 的每个命令、出现的位置及作用。
 | --- | --- |
 | **Enable twinny** / **Disable twinny** | 开关扩展（`twinny.enabled`） |
 | **Twinny - Show logs** | 打开 Twinny 输出通道 |
-| **Edit twinny templates** | 打开 `~/.twinny/templates/` 文件夹 |
-| **Twinny - Status bar options** | 点击状态栏项时显示的菜单 |
+| **Twinny - Status bar options** | 点击状态栏项时显示的菜单。不在命令面板中 |
 | **Twinny - Set up for your team (gateway, keys, usage)** | 在浏览器中打开 twinny.dev 上的[网关页面](https://twinny.dev/#teams) |
 
 ## 命令 id
 
-用于快捷键和 `tasks.json` 的 id 形如 `twinny.<name>`：`twinny.edit`、`twinny.acceptEdit`、`twinny.rejectEdit`、`twinny.explain`、`twinny.refactor`、`twinny.addTypes`、`twinny.generateDocs`、`twinny.addTests`、`twinny.addFileToContext`、`twinny.addSelectionToContext`、`twinny.stopGeneration`、`twinny.sidebar.focus`、`twinny.openChat`、`twinny.review`、`twinny.manageProviders`、`twinny.manageTemplates`、`twinny.embeddings`、`twinny.conversationHistory`、`twinny.openPanelChat`、`twinny.exportConversation`、`twinny.newConversation`、`twinny.settings`、`twinny.generateCommitMessage`、`twinny.terminalCommand`、`twinny.fixTerminalError`、`twinny.shareOllama`、`twinny.openTeamPlugins`、`twinny.enable`、`twinny.disable`、`twinny.showLogs`、`twinny.templates`、`twinny.statusBarMenu`、`twinny.setUpTeam`、`twinny.showShortcuts`、`twinny.forgetAlwaysRunCommands`。
+用于快捷键和 `tasks.json` 的 id 形如 `twinny.<name>`：`twinny.edit`、`twinny.acceptEdit`、`twinny.rejectEdit`、`twinny.explain`、`twinny.refactor`、`twinny.addTypes`、`twinny.generateDocs`、`twinny.addTests`、`twinny.addFileToContext`、`twinny.addSelectionToContext`、`twinny.stopGeneration`、`twinny.sidebar.focus`、`twinny.openChat`、`twinny.review`、`twinny.manageProviders`、`twinny.manageTemplates`、`twinny.embeddings`、`twinny.conversationHistory`、`twinny.openPanelChat`、`twinny.exportConversation`、`twinny.newConversation`、`twinny.settings`、`twinny.generateCommitMessage`、`twinny.terminalCommand`、`twinny.fixTerminalError`、`twinny.shareOllama`、`twinny.openTeamPlugins`、`twinny.enable`、`twinny.disable`、`twinny.showLogs`、`twinny.statusBarMenu`、`twinny.setUpTeam`、`twinny.showShortcuts`、`twinny.forgetAlwaysRunCommands`。

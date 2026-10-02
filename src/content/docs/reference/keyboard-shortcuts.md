@@ -11,7 +11,7 @@ description: Default keyboard shortcuts for twinny in the editor and in the chat
 | `Ctrl+I` | `Cmd+I` | Inline edit: describe a change to the selection | Editing a file |
 | `Ctrl+Shift+Enter` | `Cmd+Shift+Enter` | Accept the pending inline edit | An edit is waiting |
 | `Ctrl+Shift+Backspace` | `Cmd+Shift+Backspace` | Reject the pending inline edit | An edit is waiting |
-| `Ctrl+Shift+/` | `Cmd+Shift+/` | Stop generation (completion, chat, edit or review) | twinny is generating |
+| `Ctrl+Shift+/` | `Ctrl+Shift+/` | Stop generation (completion, chat, edit or review) | twinny is generating |
 | `Ctrl+.` | `Cmd+.` | Lightbulb: Fix with Twinny, Edit with Twinny | On a diagnostic or selection |
 
 `Tab`, `Esc` and `Ctrl+.` are VS Code's own bindings for inline suggestions and code actions.

@@ -17,12 +17,12 @@ The model is told to reply with one line and no explanation, to use pipes or `&&
 
 ## Fix the last terminal error
 
-When a command fails, run **Twinny - Fix the last terminal error** (command palette or terminal right-click). twinny reads the last command and its output, strips terminal colour codes, and finds file and line references in it (`src/app.ts:42:7`, `File "main.py", line 12`, and similar). It then offers:
+When a command fails, run **Twinny - Fix the last terminal error** (command palette or terminal right-click). twinny reads the most recent command that failed (in the active terminal first, then any terminal; the last command if none failed) and its output, strips terminal colour codes, and finds file and line references in it (`src/app.ts:42:7`, `File "main.py", line 12`, and similar) to files in the workspace. It then offers:
 
 - **Fix in editor**: opens the first referenced file at that line, selects the enclosing function (or the line), and runs an [inline edit](/twinny-docs/features/inline-edit/) with the error as the instruction, so the fix arrives as a diff you accept or reject.
 - **Ask in chat**: sends the command and its output to the chat with the code around each referenced line attached (up to three files), and asks for an explanation and a fix.
 
-If the output names no files, only the chat option is offered.
+If the output names no workspace files, it goes straight to the chat.
 
 ## `@terminal` in chat
 
@@ -30,9 +30,11 @@ Type `@terminal` in any message to attach the last command and its output to the
 
 ## The Twinny terminal
 
-Commands twinny runs go to a terminal named **Twinny**, created on first use and reused afterwards. Code blocks in the chat with a **terminal** button are pasted there too, ready to run when you press `Enter` in the terminal.
+Commands twinny runs go to a terminal named **Twinny**, created on first use and reused afterwards. Code blocks in the chat with a **terminal** button (shell blocks such as `bash`, `sh`, `powershell` or `console`) are pasted there too, with any leading prompt such as `$ ` removed, ready to run when you press `Enter` in the terminal.
+
+Commands run by the model in [agent mode](/twinny-docs/features/agent-mode/) do not use this terminal: they run in the background, or in a terminal named **twinny tools** when `twinny.chatToolsCommandsRunIn` is `terminal`.
 
 ## Notes
 
 - Shell integration must be on for output capture. If twinny reports there is no terminal output, check *Terminal › Integrated › Shell Integration: Enabled* and that the shell is one of the supported ones. Output produced before twinny was installed is not available.
-- Everything the model sees is what the terminal printed. Secrets printed to the terminal will be in the prompt; clear the terminal first if that matters.
+- Everything the model sees is what the terminal printed. Secrets printed to the terminal will be in the prompt. The [secret shield](/twinny-docs/features/status-and-logs/#secret-shield) replaces recognised credentials before a prompt leaves the machine, but not for a local server by default, and not every secret is recognised; clear the terminal first if that matters.

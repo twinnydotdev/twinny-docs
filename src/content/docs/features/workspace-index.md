@@ -24,7 +24,7 @@ Once indexed, the tab shows how many files and chunks are in the index and which
 
 Only source, config and documentation files, chosen by extension or well-known name (`Makefile`, `Dockerfile`, `README`, `.gitignore` and so on). Around 150 extensions are recognised, covering web, systems, JVM and .NET, scripting and functional languages, data and config formats, and documentation.
 
-Skipped without being read: binaries, images (including SVG), fonts, archives, lockfiles (`package-lock.json`, `yarn.lock`, `Cargo.lock`...), minified files, source maps, snapshot files, and anything matched by the workspace's `.gitignore`. Files whose contents look binary are skipped after a peek.
+Skipped without being read: binaries, images (including SVG), fonts, archives, lockfiles (`package-lock.json`, `yarn.lock`, `Cargo.lock`...), minified files, source maps, snapshot files, and anything matched by the workspace's `.gitignore`. Files over 512 KB are skipped too. Files whose contents look binary are skipped after a peek.
 
 Add your own exclusions with `twinny.embeddingIgnoredGlobs`, e.g. `["**/fixtures/**", "**/*.md", "vendor/**"]`.
 
@@ -40,7 +40,9 @@ Type `@workspace` in a message to search the index for that question. The **Use 
 
 Follow-up questions reuse the previous question and the files its answer came from, so "and where is that called?" stays on topic. Under each answer a **context** line shows what was retrieved, its score, and a preview, with a link to open the chunk in the editor. When nothing scores above the threshold it says so, with a hint on what to change.
 
-*Explain* (right-click) also looks up related code when an index exists.
+*Explain* (right-click) also looks up related code when **Use the index for every message** is on.
+
+Connected to a team gateway that runs the Shared context plugin, a search also asks the gateway's index of the team's repositories, and its hits are added to the local ones. It works without a local index; see [Plugins](/twinny-docs/teams/plugins/#shared-context).
 
 ## How retrieval works
 
@@ -50,7 +52,7 @@ Follow-up questions reuse the previous question and the files its answer came fr
 ```
 
 1. **Embed the question** with the same model as the index.
-2. **Two searches.** A vector search over the embeddings and a BM25 keyword search over the chunk text. Identifiers are split for the keyword search, so `getUserName` matches `user name`, and camelCase or snake_case in the question finds the same code.
+2. **Two searches.** A vector search over the embeddings and a BM25 keyword search over the chunk text. Identifiers are split for the keyword search, so `getUserName` matches `user name`, and camelCase or snake_case in the question finds the same code. The files you are working in (the active editor, other visible editors, the files the last answer used, then other open files) are also searched on their own, so they are always among the candidates. If the embedding server is down, the keyword search still runs.
 3. **Merge** the candidates from both.
 4. **Rerank** with a small cross-encoder that reads the question together with each candidate and scores how likely it is to answer it. The reranker is bundled with the extension and runs locally in worker threads (ONNX); no provider is involved and nothing leaves the machine.
 5. **Threshold and cap.** Chunks scoring below the rerank threshold are dropped; the best few are kept.

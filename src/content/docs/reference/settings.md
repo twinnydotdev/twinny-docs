@@ -11,7 +11,7 @@ Open with **Open twinny settings** (the gear icon in the sidebar) or search for 
 | --- | --- | --- |
 | `twinny.enabled` | `true` | Turns the extension on or off. **Enable twinny** and **Disable twinny** in the command palette flip it |
 | `twinny.locale` | `en` | Language of the sidebar UI: `en`, `zh-CN`, `zh-HK`, `de`, `es`, `es-CL`, `ja`, `fr`, `it`, `pt`, `ru`, `ko`, `nl` |
-| `twinny.temperature` | `0.2` | Randomness of the model's output for chat and completion. Lower is more deterministic |
+| `twinny.temperature` | `0.2` | Randomness of code completions. Lower is more deterministic. Chat, inline edit and review send no temperature, so the server's default applies |
 | `twinny.enableLogging` | `true` | Writes one line per request to the **Twinny** output channel: model, timing, size and why it stopped. Set the channel's log level to *Debug* to also see prompts and replies. Warnings and errors are written even when off |
 | `twinny.githubToken` | `""` | Personal access token for listing and reviewing GitHub pull requests in private repositories |
 | `twinny.providerStorageLocation` | `globalState` | Where provider configurations live. `globalState` is VS Code's global state; `file` is a file in the extension's global storage, which survives changing remotes or containers |
@@ -33,18 +33,18 @@ Open with **Open twinny settings** (the gear icon in the sidebar) or search for 
 | `twinny.fileContextEnabled` | `false` | Include snippets from neighbouring open files. Experimental; costs latency |
 | `twinny.completionCacheEnabled` | `false` | Cache suggestions for identical prompts |
 | `twinny.enableSubsequentCompletions` | `true` | Request another suggestion straight after one is accepted |
-| `twinny.warmUpModel` | `true` | Load the completion model when VS Code starts or regains focus, so the first completion does not wait for a cold model. Local model servers only (Ollama, LM Studio, llama.cpp); hosted APIs are never called |
+| `twinny.warmUpModel` | `true` | Load the completion model when VS Code starts or regains focus, so the first completion does not wait for a cold model. Local model servers only (Ollama, LM Studio, llama.cpp, text-generation-webui, a paired device, or an OpenAI-compatible server on this machine); hosted APIs are never called |
 
 ## Chat and review
 
 | Setting | Default | Description |
 | --- | --- | --- |
-| `twinny.numPredictChat` | `512` | Maximum tokens in one chat answer |
+| `twinny.numPredictChat` | `512` | Listed in VS Code settings but not read by the extension: chat requests send no token limit, so the server's own applies |
 | `twinny.chatTools` | `false` | Where the [agent mode](/twinny-docs/features/agent-mode/) switch starts, until you first switch it in the chat. Machine setting: a workspace cannot turn it on |
-| `twinny.chatToolsEdits` | `apply` | Agent mode edits: `apply` writes them straight away (`Ctrl+Z` undoes); `review` opens each as a diff and the model waits |
+| `twinny.chatToolsEdits` | `apply` | Agent mode edits: `apply` writes them straight away (`Ctrl+Z` undoes), though deleting a file git has no copy of still asks; `review` opens each as a diff and the model waits |
 | `twinny.chatToolsCommands` | `ask` | Agent mode commands: `ask` shows Run, Always run and Skip; `allow` runs them; `off` lets the model run none. Sets where the auto-run switch starts |
-| `twinny.chatToolsCommandsRunIn` | `background` | `background` runs each command in a process of its own with its output in the chat, stopped after two minutes; `terminal` runs them in the twinny tools terminal |
-| `twinny.reviewMaxDiffChars` | `16000` | Characters of diff per code-review request. Larger reviews are split into parts |
+| `twinny.chatToolsCommandsRunIn` | `background` | `background` runs each command in a process of its own with its output in the chat, stopped after two minutes; `terminal` runs them in the twinny tools terminal, or in the background when VS Code's shell integration is not available |
+| `twinny.reviewMaxDiffChars` | `16000` | Characters of diff per code-review request. Larger reviews are split into parts. At least 2,000 |
 
 ## Workspace index
 
@@ -64,7 +64,7 @@ Used for listing models in the provider form and device cards, and for the Ollam
 | `twinny.ollamaHostname` | `0.0.0.0` | Hostname of the local Ollama. `0.0.0.0` is treated as localhost |
 | `twinny.ollamaApiPort` | `11434` | Port of the local Ollama |
 | `twinny.ollamaUseTls` | `false` | Use HTTPS to reach Ollama |
-| `twinny.keepAlive` | `5m` | How long Ollama keeps a model loaded after a request: `5m`, `1h`, or `-1` for indefinitely |
+| `twinny.keepAlive` | `5m` | How long Ollama keeps the completion model loaded after a completion request: `5m`, `1h`, or `-1` for indefinitely |
 
 ## Devices (P2P)
 
@@ -90,7 +90,7 @@ These are stored by twinny rather than in `settings.json`:
 
 ## Per-workspace overrides
 
-All `twinny.*` settings can be set at the workspace level in `.vscode/settings.json`, for example to disable suggestions in a documentation repository:
+`twinny.*` settings can be set at the workspace level in `.vscode/settings.json`, except the four agent mode settings (`twinny.chatTools`, `twinny.chatToolsEdits`, `twinny.chatToolsCommands`, `twinny.chatToolsCommandsRunIn`), which are machine settings and only take effect from user settings. For example, to disable suggestions in a documentation repository:
 
 ```json
 {

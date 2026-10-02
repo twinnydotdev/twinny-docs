@@ -49,7 +49,7 @@ VSCodium 及其他 Open VSX 版本：可以，从 Open VSX 安装。支持标准
 
 ### twinny 会运行自动编辑我文件的代理吗？
 
-不会。每个修改都是你请求并在保留前能看到的：接受的建议、接受的 diff、确认的命令。这是有意设计。
+只有在你开启[智能体模式](/twinny-docs/zh-cn/features/agent-mode/)时才会，它默认关闭。开启后，对话模型会编辑文件、运行命令来完成你的请求。编辑会直接应用（`Ctrl+Z` 可撤销），除非 `twinny.chatToolsEdits` 设为 `review`；命令会先询问，除非 `twinny.chatToolsCommands` 或自动运行开关另有设定。智能体模式关闭时，每个修改都是你请求并在保留前能看到的：接受的建议、接受的 diff、确认的命令。
 
 ### 怎么修改提示词？
 

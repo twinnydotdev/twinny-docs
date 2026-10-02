@@ -42,12 +42,12 @@ Model size is measured in parameters (1.5B, 7B, 14B...). At the usual 4-bit quan
 | 12 to 16 GB VRAM, or 16 GB+ Apple silicon | `qwen2.5-coder:7b-base` | `qwen2.5-coder:14b-instruct` |
 | 24 GB VRAM, or 32 GB+ Apple silicon | `qwen2.5-coder:7b-base` | `qwen2.5-coder:32b-instruct`, `codestral` |
 
-These are starting points, not rules. Other good families are in [Supported models](/twinny-docs/providers/supported-models/).
+These are starting points, not rules. Other good families are in [Supported models](/twinny-docs/providers/supported-models/). [Agent mode](/twinny-docs/features/agent-mode/) wants more than chat does: a capable coder model such as `qwen3-coder:30b`, with a context of 8k tokens or more.
 
 Two things matter more than raw size:
 
 - **Completion wants speed.** A suggestion that arrives after two seconds is one you have already typed past. A 1.5B or 3B base model on the GPU is often a better completion experience than a 7B one, even on hardware that can run the 7B. Chat can afford to wait.
-- **Only one model is resident at a time on small GPUs.** If chat and completion use different models on the same server, each request may swap the other out. Ollama keeps models loaded for `twinny.keepAlive` (5 minutes by default); with enough VRAM both stay resident.
+- **Only one model is resident at a time on small GPUs.** If chat and completion use different models on the same server, each request may swap the other out. Ollama keeps the completion model loaded for `twinny.keepAlive` (5 minutes by default), and twinny loads it again when VS Code starts or regains focus (`twinny.warmUpModel`); with enough VRAM both models stay resident.
 
 ## When to use a hosted API
 

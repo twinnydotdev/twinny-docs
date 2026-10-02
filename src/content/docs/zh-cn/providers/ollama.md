@@ -33,7 +33,11 @@ twinny 使用的默认值：
 
 ## 保持模型加载
 
-Ollama 在一段时间不活动后卸载模型，下一个请求要付出加载时间。每个请求都会附带 `twinny.keepAlive`（默认 `5m`）来控制：`1h`、`24h`，或 `-1` 表示常驻。如果对话和补全使用不同模型而 GPU 放不下两个，它们会互相换出；要么两者用同一模型，要么补全用更小的模型，要么接受换出。
+Ollama 在一段时间不活动后卸载模型，下一个请求要付出加载时间。每个补全请求都会附带 `twinny.keepAlive`（默认 `5m`），控制补全模型保持加载多久：`1h`、`24h`，或 `-1` 表示常驻。对话请求不附带它，因此对话模型遵循 Ollama 自己的默认值。
+
+VS Code 启动或重新获得焦点时，twinny 用一个单 token 请求让 Ollama 加载补全模型，第一个建议就不必等待加载。如果模型在过去四分钟内用过，则不发送任何请求。用 `twinny.warmUpModel` 关闭此功能。
+
+如果对话和补全使用不同模型而 GPU 放不下两个，它们会互相换出；要么两者用同一模型，要么补全用更小的模型，要么接受换出。
 
 ## 上下文大小
 
@@ -78,7 +82,7 @@ OLLAMA_HOST=0.0.0.0 ollama serve
 | `twinny.ollamaHostname` | `0.0.0.0` | 调用时视为 localhost |
 | `twinny.ollamaApiPort` | `11434` | |
 | `twinny.ollamaUseTls` | `false` | |
-| `twinny.keepAlive` | `5m` | 随每个请求发送 |
+| `twinny.keepAlive` | `5m` | 随每个补全请求发送 |
 
 ## 提示
 

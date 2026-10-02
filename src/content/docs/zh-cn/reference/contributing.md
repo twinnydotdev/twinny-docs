@@ -16,14 +16,15 @@ npm install
 npm run build        # 或：npm run watch
 ```
 
-在 VS Code 中打开该文件夹并按 `F5`，会启动一个加载了源码版 twinny 的扩展开发宿主。webview 是与扩展一起打包的 React 应用；`npm run watch` 在修改时重建两者。
+在 VS Code 中打开该文件夹并按 `F5`，会启动一个加载了源码版 twinny 的扩展开发宿主。webview 是与扩展一起打包的 React 应用；`npm run watch` 在修改时重建两者。构建还会把 `twinny-node` 命令行写到 `out/node/cli.js`，把网关写到 `packages/twinny-server/cli.js`。
 
 其他脚本：
 
 | 脚本 | 作用 |
 | --- | --- |
 | `npm run lint` / `npm run lint:fix` | 对 `src` 运行 ESLint |
-| `npm test` | 构建、lint，然后在无头 VS Code 中运行测试套件。没有显示器的 Linux 上用 `xvfb-run npm test` |
+| `npm test` | 构建、lint，然后在无头 VS Code 中运行测试套件。没有显示器的 Linux 上用 `xvfb-run -a npm test` |
+| `npm run test:sqlite` | 用普通 Node 运行 `src/test/standalone` 中的测试（智能体工具、网关、SQLite 录制存储）。先运行 `npm run build-tests` |
 | `npm run node` | 从构建产物运行 `twinny-node` P2P 命令行 |
 | `npm run vscode:package` | 构建 `.vsix` |
 
@@ -52,13 +53,22 @@ src/
     p2p/                已配对设备的网关、主机、运行时
     providers/          提供者存储、管理器、探测、首次运行设置
     review/             代码审查、git 辅助、提交信息
+    team/               团队连接、共享本机、插件页面链接
     templates/          Handlebars 模板与默认值
     terminal/           命令编写器、错误修复器、shell 集成历史
+    tools/              智能体模式：工具循环、工作区工具、编辑、上下文预算
     webview/            侧边栏与面板宿主、文件处理
+  gateway/              twinny-server：路由、密钥、用量、管理页面、插件
+  licensing/            许可证令牌校验（签发端不在这里）
+  protocol/             扩展与网关之间的线路协议，
+                        以及共享算力电脑的 WebSocket 协议
   node/                 twinny-node 命令行
   p2p/                  点对点协议、配对与身份（不导入 vscode）
   webview/              React 侧边栏：对话、提供者、设备、嵌入、审查
   test/suite/           在 VS Code 内运行的测试
+  test/standalone/      用普通 Node 运行的测试（npm run test:sqlite）
+packages/twinny-server/ 网关的 npm 包与 Docker 文件
+deploy/helm/            网关的 Helm chart
 ```
 
 两条值得了解的约定：
@@ -70,7 +80,7 @@ src/
 
 1. 在 `src/common/constants/providers.ts` 的 `API_PROVIDERS` 中添加提供者 id，并在 `PROVIDER_DISPLAY_NAMES` 中添加显示名称。
 2. 如果是 OpenAI 兼容的本地服务器，加入 `OPEN_AI_COMPATIBLE_PROVIDERS`，并在 `src/common/provider-validation.ts` 中给出端点默认值；若首次运行发现应探测它，加入 `provider-discovery.ts` 的 `LOCAL_SERVER_PROVIDERS`。
-3. 如果是托管 API，加入 `HOSTED_PROVIDERS`（没有 completions 端点则也加入 `CHAT_ONLY_PROVIDERS`），并在 `src/extension/inference/adapters/hosted.ts` 中接入 SDK。
+3. 如果是托管 API，加入 `src/common/provider-validation.ts` 中的 `HOSTED_PROVIDERS`（没有 completions 端点则也加入同一文件的 `CHAT_ONLY_PROVIDERS`），并在 `src/extension/inference/adapters/hosted.ts` 中接入 SDK。
 4. 在 `src/webview/providers/presets.tsx` 添加预设，并在 `src/webview/assets/locales/` 下每个语言文件中添加 `preset-<id>` 说明。
 5. 在 `src/test/suite/inference.test.ts` 添加用例。
 
@@ -80,7 +90,7 @@ src/
 
 ## 翻译
 
-侧边栏的字符串在 `src/webview/assets/locales/<locale>.json`。添加语言：复制 `en.json`、翻译，并把该语言加入 `package.json` 中 `twinny.locale` 的枚举。修正翻译：直接编辑文件。
+侧边栏的字符串在 `src/webview/assets/locales/<locale>.json`。添加语言：复制 `en.json`、翻译，在 `src/webview/i18n.ts` 中导入，并把该语言加入 `package.json` 中 `twinny.locale` 的枚举。修正翻译：直接编辑文件。
 
 本文档位于 [twinnydotdev/twinny-docs](https://github.com/twinnydotdev/twinny-docs)，是一个 Astro Starlight 站点；页面是 `src/content/docs/` 下的 Markdown，中文翻译在 `zh-cn/` 下。`npm run dev` 可预览。
 

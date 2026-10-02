@@ -23,6 +23,8 @@ twinny 可以使用你的服务器能运行的任何模型，但三项工作需�
 
 视觉模型（`llama3.2-vision`、`llava`、托管的 GPT 和 Claude 模型）接受粘贴到对话中的图片。
 
+[智能体模式](/twinny-docs/zh-cn/features/agent-mode/)对对话模型要求更高：需要能力较强的代码模型，例如 `qwen3-coder:30b`，并以 8k token 或更大的上下文加载。小模型往往调用工具不佳。
+
 ## 代码补全（fill-in-the-middle）
 
 只有使用 fill-in-the-middle（FIM）标记训练的模型才能在光标前后的内容之间补全代码。对大多数系列来说是 **base** 或 **code** 变体。instruct 模型也会给出建议，但往往会啰嗦或解释，而不是补全。
@@ -31,7 +33,8 @@ FIM 模板设为**自动**时，twinny 根据模型名称选择提示格式。�
 
 | 系列 | 推荐标签 | 模板 | 仓库级上下文 |
 | --- | --- | --- | --- |
-| Qwen2.5-Coder | [`qwen2.5-coder:1.5b-base`](https://ollama.com/library/qwen2.5-coder:1.5b-base)、[`qwen2.5-coder:7b-base`](https://ollama.com/library/qwen2.5-coder:7b-base) | `codeqwen`（任何包含 `qwen` 的名称） | ✓ |
+| Qwen2.5-Coder | [`qwen2.5-coder:1.5b-base`](https://ollama.com/library/qwen2.5-coder:1.5b-base)、[`qwen2.5-coder:7b-base`](https://ollama.com/library/qwen2.5-coder:7b-base) | `codeqwen`（任何包含 `qwen` 但不含 `qwen3-coder` 的名称） | ✓ |
+| Qwen3-Coder | [`qwen3-coder`](https://ollama.com/library/qwen3-coder) | `qwen3-coder` | ✓ |
 | CodeLlama | [`codellama:7b-code`](https://ollama.com/library/codellama:7b-code)、[`codellama:13b-code`](https://ollama.com/library/codellama:13b-code) | `codellama` | |
 | DeepSeek Coder | [`deepseek-coder:6.7b-base`](https://ollama.com/library/deepseek-coder:6.7b-base)、[`deepseek-coder:1.3b-base`](https://ollama.com/library/deepseek-coder:1.3b-base) | `deepseek` | |
 | Codestral | [`codestral`](https://ollama.com/library/codestral)，或 Mistral 托管的 `codestral-latest` | `codestral` | |
@@ -47,6 +50,7 @@ FIM 模板设为**自动**时，twinny 根据模型名称选择提示格式。�
 
 - 1.5B 到 7B 的模型是自动补全的最佳区间：跟得上输入速度，又足够有用。从 `qwen2.5-coder:1.5b-base` 开始，硬件有余量再往上。`34b` 的 CodeLlama 在 FIM 上表现不佳。
 - `starcoder2` 和 `codegemma` 有时不会停止。降低 `twinny.temperature` 和 `twinny.maxLines` 有帮助。
+- Qwen3-Coder 只以 instruct 模型发布。FIM 提示以对话形式送达时它才会填空，所以 `qwen3-coder` 模板就这样发送：对补全路由写成 ChatML（在 Ollama 上开启 `raw`），对 LiteLLM 和 Twinny 网关则以消息形式发送。
 - 模型名称不匹配任何系列时，twinny 回退到 CodeLlama 格式。可在提供者表单中手动设置模板。
 - 需要自定义提示格式的模型，选择 **custom-template** 并编辑 `~/.twinny/templates/fim.hbs`；见[提示词模板](/twinny-docs/zh-cn/features/templates/#fim-模板)。
 
