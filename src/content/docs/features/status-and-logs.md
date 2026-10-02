@@ -52,7 +52,7 @@ twinny has no account, no telemetry, and no server of its own. What leaves your 
 | GitHub pull request review | Repository owner, name, PR number, your token | GitHub |
 | Nothing else | | Nowhere |
 
-Prompts and context mean: the code around the cursor and any completion context; the chat message and everything attached to it; the selection for inline edits; diffs for reviews and commit messages; the last terminal output for terminal features; file chunks for embedding.
+Prompts and context mean: the code around the cursor and any completion context; the chat message and everything attached to it; the selection for inline edits; diffs for reviews and commit messages; the last terminal output for terminal features; file chunks for embedding; and, with [agent mode](/twinny-docs/features/agent-mode/) on, whatever the model's tools read in the workspace (files, search results, git output, command output).
 
 The workspace index reranker runs inside the extension. The P2P DHT learns only that a key is reachable at an address. No usage data is collected by twinny's authors, and the extension makes no requests to twinny.dev or anywhere else on its own.
 
