@@ -53,7 +53,7 @@ Small models do not know when to stop, so twinny decides for them:
 - Text the suffix already contains is trimmed, so completing inside `foo(|)` does not produce a second `)`.
 - Stop tokens for the model family (`<EOT>`, `<|endoftext|>`, `<|file_sep|>` and so on) end the reply.
 - `twinny.enableSubsequentCompletions` (on) requests another suggestion straight after one is accepted, for a chain of accepts.
-- `twinny.temperature` (0.2) applies to both chat and completion. Lower it if suggestions ramble; 0 is fully deterministic on most servers.
+- `twinny.temperature` (0.2) applies to completions only; chat, inline edit and review send none, so the server's default applies. Lower it if suggestions ramble; 0 is fully deterministic on most servers.
 
 ## FIM templates
 

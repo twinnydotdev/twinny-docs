@@ -53,7 +53,7 @@ twinny 在你输入时以灰色文字在光标处给出代码建议。按 `Tab` 
 - 后缀中已有的文本会被去掉，所以在 `foo(|)` 内补全不会多出一个 `)`。
 - 该模型系列的停止标记（`<EOT>`、`<|endoftext|>`、`<|file_sep|>` 等）结束回复。
 - `twinny.enableSubsequentCompletions`（开）在接受一条建议后立即请求下一条，形成连续接受。
-- `twinny.temperature`（0.2）同时作用于对话和补全。建议啰嗦时调低；在大多数服务器上 0 完全确定。
+- `twinny.temperature`（0.2）只作用于代码补全；对话、内联编辑和审查不发送 temperature，使用服务器的默认值。建议啰嗦时调低；在大多数服务器上 0 完全确定。
 
 ## FIM 模板
 

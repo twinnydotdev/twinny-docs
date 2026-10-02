@@ -32,7 +32,7 @@ The gateway swaps API keys, tokens, private keys and passwords in prompts for pl
 
 | Value | Shields prompts sent to |
 | --- | --- |
-| `offMachine` (the default) | hosted APIs, backends on other hosts and the team pool |
+| `offMachine` (the default) | hosted APIs, backends on other hosts, paired devices, other gateways and the team pool |
 | `always` | every backend, including those on the gateway's own host |
 | `off` | nothing; prompts are forwarded as they arrive |
 

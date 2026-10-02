@@ -3,7 +3,7 @@ title: Prompt templates
 description: Every prompt twinny sends is a Handlebars file you can edit.
 ---
 
-twinny builds its prompts from [Handlebars](https://handlebarsjs.com/) templates in `~/.twinny/templates/`. The folder is created when twinny starts, with a file per template; a file you edit is used instead of the default from then on. A file that is missing or empty falls back to the built-in copy, as does one that will not render, with the reason in the **Twinny** output channel. To open the folder, click **Manage twinny templates** (the book icon) at the top of the sidebar, then **Open template editor**; the folder opens in a new window.
+twinny builds its prompts from [Handlebars](https://handlebarsjs.com/) templates in `~/.twinny/templates/`. The folder is created when twinny starts, with a file per template; a file you edit is used instead of the default from then on. A file that is missing or empty falls back to the built-in copy, as does one that will not render, with the reason in the **Twinny** output channel. To open the folder, click **Manage twinny templates** (the book icon) at the top of the sidebar, then **Open template editor**, or run **Edit twinny templates** from the command palette (4.3.5 and later); the folder opens in a new window.
 
 ## The templates
 
