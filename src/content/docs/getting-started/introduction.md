@@ -11,7 +11,7 @@ twinny is an AI coding assistant for Visual Studio Code that runs against a mode
 
 **Nothing leaves your machine unless you point it somewhere.** There is no account, no telemetry and no relay. Requests go to the server address you configured and nowhere else. The one networked feature that is not a plain HTTP request, [Devices](/twinny-docs/providers/devices/), connects your own machines to each other over an encrypted peer-to-peer link.
 
-**Small, explicit features.** twinny does not run an autonomous agent over your repository. Every feature is a single thing you ask for and can see the result of: a suggestion you accept with Tab, an edit you review as a diff, a command you confirm before it runs. This is deliberate: it keeps the tool predictable, and it works well with the small models that fit on a laptop.
+**Small, explicit features.** Every feature is a single thing you ask for and can see the result of: a suggestion you accept with Tab, an edit you review as a diff, a command you confirm before it runs. This keeps the tool predictable, and it works well with the small models that fit on a laptop. [Agent mode](/twinny-docs/features/agent-mode/), where the chat model reads, edits and runs commands in your workspace on its own, is off until you switch it on, shows every step it takes, and asks before running a command unless you tell it not to.
 
 **Works with weak models.** Prompts are short, context is chosen carefully, and output is cut at sensible boundaries, so a 1.5B or 7B model gives useful results.
 
@@ -22,6 +22,7 @@ twinny is an AI coding assistant for Visual Studio Code that runs against a mode
 | Code completion | Ghost-text suggestions as you type, from a fill-in-the-middle model | [Code completion](/twinny-docs/features/code-completion/) |
 | Inline edit | `Ctrl+I`, describe a change, review it as a diff | [Inline edit](/twinny-docs/features/inline-edit/) |
 | Chat | Ask about your code in the sidebar, with `@` mentions for context | [Chat](/twinny-docs/features/chat/) |
+| Agent mode | The chat model reads, searches and edits files and runs commands, step by step | [Agent mode](/twinny-docs/features/agent-mode/) |
 | Context and mentions | Files, symbols, problems, git, terminal output and workspace search | [Context](/twinny-docs/features/context/) |
 | Workspace index | Embeddings plus keyword search plus a local reranker | [Workspace index](/twinny-docs/features/workspace-index/) |
 | Code review | Review the working tree, a branch, or a GitHub pull request | [Code review](/twinny-docs/features/code-review/) |

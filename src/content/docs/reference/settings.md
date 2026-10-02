@@ -40,6 +40,10 @@ Open with **Open twinny settings** (the gear icon in the sidebar) or search for 
 | Setting | Default | Description |
 | --- | --- | --- |
 | `twinny.numPredictChat` | `512` | Maximum tokens in one chat answer |
+| `twinny.chatTools` | `false` | Where the [agent mode](/twinny-docs/features/agent-mode/) switch starts, until you first switch it in the chat. Machine setting: a workspace cannot turn it on |
+| `twinny.chatToolsEdits` | `apply` | Agent mode edits: `apply` writes them straight away (`Ctrl+Z` undoes); `review` opens each as a diff and the model waits |
+| `twinny.chatToolsCommands` | `ask` | Agent mode commands: `ask` shows Run, Always run and Skip; `allow` runs them; `off` lets the model run none. Sets where the auto-run switch starts |
+| `twinny.chatToolsCommandsRunIn` | `background` | `background` runs each command in a process of its own with its output in the chat, stopped after two minutes; `terminal` runs them in the twinny tools terminal |
 | `twinny.reviewMaxDiffChars` | `16000` | Characters of diff per code-review request. Larger reviews are split into parts |
 
 ## Workspace index

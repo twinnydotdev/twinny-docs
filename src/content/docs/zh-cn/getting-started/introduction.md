@@ -11,7 +11,7 @@ twinny 是一个 Visual Studio Code 的 AI 编程助手，运行在**你**选择
 
 **除非你指定，否则什么都不会离开你的机器。** 没有账号、没有遥测、没有中继。请求只发往你配置的服务器地址。唯一不是普通 HTTP 请求的联网功能[设备](/twinny-docs/zh-cn/providers/devices/)，也只是通过加密的点对点连接把你自己的机器连在一起。
 
-**小而明确的功能。** twinny 不会在你的仓库上运行自主代理。每个功能都是你明确请求、并能看到结果的一件事：按 Tab 接受的建议、以 diff 审阅的编辑、运行前需要确认的命令。这是有意为之：它让工具可预测，也让笔记本能跑的小模型发挥作用。
+**小而明确的功能。** 每个功能都是你明确请求、并能看到结果的一件事：按 Tab 接受的建议、以 diff 审阅的编辑、运行前需要确认的命令。这让工具可预测，也让笔记本能跑的小模型发挥作用。[智能体模式](/twinny-docs/zh-cn/features/agent-mode/)让对话模型自行在工作区中读取、编辑和运行命令；它在你开启之前是关闭的，显示每一步，并在运行命令前询问，除非你让它不必询问。
 
 **对弱模型友好。** 提示简短、上下文精选、输出在合理边界截断，因此 1.5B 或 7B 的模型也能给出有用的结果。
 
@@ -22,6 +22,7 @@ twinny 是一个 Visual Studio Code 的 AI 编程助手，运行在**你**选择
 | 代码补全 | 输入时来自 fill-in-the-middle 模型的灰色文字建议 | [代码补全](/twinny-docs/zh-cn/features/code-completion/) |
 | 内联编辑 | `Ctrl+I`，描述修改，以 diff 审阅 | [内联编辑](/twinny-docs/zh-cn/features/inline-edit/) |
 | 对话 | 在侧边栏就代码提问，用 `@` 提及添加上下文 | [对话](/twinny-docs/zh-cn/features/chat/) |
+| 智能体模式 | 对话模型逐步读取、搜索、编辑文件并运行命令 | [智能体模式](/twinny-docs/zh-cn/features/agent-mode/) |
 | 上下文与提及 | 文件、符号、问题、git、终端输出和工作区搜索 | [上下文](/twinny-docs/zh-cn/features/context/) |
 | 工作区索引 | 嵌入 + 关键词搜索 + 本地重排序器 | [工作区索引](/twinny-docs/zh-cn/features/workspace-index/) |
 | 代码审查 | 审查工作区、分支或 GitHub 拉取请求 | [代码审查](/twinny-docs/zh-cn/features/code-review/) |

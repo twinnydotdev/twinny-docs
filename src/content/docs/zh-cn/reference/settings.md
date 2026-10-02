@@ -40,6 +40,10 @@ description: VS Code 中 twinny 的所有设置、默认值及作用。
 | 设置 | 默认 | 说明 |
 | --- | --- | --- |
 | `twinny.numPredictChat` | `512` | 单条对话回答的最大 token 数 |
+| `twinny.chatTools` | `false` | 在你第一次在对话中切换前，[智能体模式](/twinny-docs/zh-cn/features/agent-mode/)开关的初始状态。机器级设置：工作区无法开启 |
+| `twinny.chatToolsEdits` | `apply` | 智能体模式的编辑：`apply` 直接写入（`Ctrl+Z` 撤销）；`review` 把每次编辑作为 diff 打开，模型等待 |
+| `twinny.chatToolsCommands` | `ask` | 智能体模式的命令：`ask` 显示 Run、Always run 和 Skip；`allow` 直接运行；`off` 不允许运行命令。也决定自动运行开关的初始状态 |
+| `twinny.chatToolsCommandsRunIn` | `background` | `background` 在独立进程中运行每条命令，输出显示在对话中，两分钟后停止；`terminal` 在 twinny tools 终端中运行 |
 | `twinny.reviewMaxDiffChars` | `16000` | 每次代码审查请求的 diff 字符数。更大的审查会被分成多部分 |
 
 ## 工作区索引

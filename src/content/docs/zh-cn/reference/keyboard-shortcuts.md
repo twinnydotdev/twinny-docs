@@ -1,6 +1,6 @@
 ---
 title: 键盘快捷键
-description: twinny 的默认键盘快捷键及修改方法。
+description: twinny 在编辑器和对话中的默认键盘快捷键及修改方法。
 ---
 
 | 快捷键（Windows / Linux） | macOS | 操作 | 条件 |
@@ -16,7 +16,37 @@ description: twinny 的默认键盘快捷键及修改方法。
 
 `Tab`、`Esc` 和 `Ctrl+.` 是 VS Code 自身对内联建议和代码操作的绑定。
 
-## 修改
+## 对话中的按键
+
+这些按键在对话输入框中有效，侧边栏和面板都一样。它们是对话自己的按键，与终端相同：在 macOS 上 `Ctrl` 也是 `Ctrl`。在空输入框按 `?` 查看，或从视图的 `…` 菜单运行 **Twinny - Chat keyboard shortcuts**。
+
+| 按键 | 操作 |
+| --- | --- |
+| `Enter` | 发送。回答进行中发送的消息会排队到回答结束 |
+| `Shift+Enter` | 换行 |
+| `Esc` | 停止回答，在对话中任何位置都有效 |
+| `Esc` `Esc` | 清空草稿（`↑` 可找回） |
+| `Ctrl+C` | 停止回答；没有内容在流式输出时清空草稿。选中文字时为复制 |
+| `↑` `↓` | 在空输入框中调出之前的提示 |
+| `PgUp` `PgDn` | 滚动对话记录 |
+| `Ctrl+L` | 新会话 |
+| `Shift+Tab` | 开启或关闭[智能体模式](/twinny-docs/zh-cn/features/agent-mode/) |
+| `@` | 添加文件、符号、问题、git 或终端输出作为[上下文](/twinny-docs/zh-cn/features/context/) |
+| `?` | 在空输入框中显示或隐藏按键列表 |
+
+智能体模式有命令或修改在等待、且输入框为空时：
+
+| 按键 | 操作 |
+| --- | --- |
+| `Enter` | 运行命令或应用修改 |
+| `Shift+Enter` | 总是运行这条命令 |
+| `Esc` | 跳过 |
+
+`Esc` 按以下顺序执行第一个适用的操作：关闭按键列表、跳过等待中的操作、停止回答，连按两次则清空草稿。焦点在对话记录上时输入会进入输入框。
+
+对话的按键不是 VS Code 快捷键，无法在*键盘快捷方式*中修改。
+
+## 修改编辑器快捷键
 
 打开*键盘快捷方式*（`Ctrl+K Ctrl+S`）并搜索 `twinny`。或在 `keybindings.json` 中添加：
 
@@ -43,4 +73,4 @@ description: twinny 的默认键盘快捷键及修改方法。
 | `twinny.explain` | `Ctrl+Alt+E` |
 | `twinny.terminalCommand` | `` Ctrl+Alt+` `` |
 | `twinny.fixTerminalError` | `Ctrl+Alt+F` |
-| `twinny.newConversation` | `Ctrl+Alt+N` |
+| `twinny.newConversation` | `Ctrl+Alt+N`（对话中 `Ctrl+L` 已可实现） |

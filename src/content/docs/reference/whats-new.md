@@ -5,6 +5,24 @@ description: The features added to twinny in each release, with links to their p
 
 The full list of changes, fixes included, is in [CHANGELOG.md](https://github.com/twinnydotdev/twinny/blob/main/CHANGELOG.md) in the repository and on the extension's Marketplace page. This page is the short version: what you can do now that you could not before.
 
+## 4.3.2 to 4.3.4 · 2 October 2026
+
+- **[Agent mode](/twinny-docs/features/agent-mode/)'s steps show where they happened in the reply**: what the model said, the tool it used, what it said next. A command waiting for you is at the bottom, where you are already looking. Conversations saved earlier show their steps at the top, as before.
+- **Commands run in the background, with their output in the chat.** A command the model runs goes through `bash` from the workspace root instead of opening the **twinny tools** terminal, and prints into its step. It is stopped after two minutes, and nothing can answer a prompt. `twinny.chatToolsCommandsRunIn` set to `terminal` brings the terminal back.
+- **An auto-run switch** next to the agent switch lets every command run without asking. Until you first flip it, `twinny.chatToolsCommands` decides, so commands still ask by default.
+- **Always run, one command at a time.** A waiting command has **Always run** between Run and Skip: that exact command may run again without asking. **Twinny - Forget commands set to always run** clears the list.
+- **Approve from the keyboard.** With a command or change waiting and the composer empty, `Enter` runs or applies it, `Shift+Enter` always runs it, and `Esc` skips it. See [Keyboard shortcuts](/twinny-docs/reference/keyboard-shortcuts/#in-the-chat).
+- **Stop one command, not the whole reply.** A running command has a stop button on its line; the model gets the output so far and carries on.
+- **[Recordings](/twinny-docs/teams/recording/#reviewing) fold an agent conversation into one row** with a step count, instead of a row per tool step, and the preview shows the developer's question. Storage and the training export are unchanged.
+- The composer footer fits model names and its switches in a narrow panel, and the provider and model dropdowns open again (4.3.4).
+
+## 4.3.0 and 4.3.1 · 1 October 2026
+
+- **[Agent mode](/twinny-docs/features/agent-mode/), one key away.** A switch at the bottom left of the composer, or `Shift+Tab`, lets the chat model read, search and edit files and run commands in the workspace. The choice is kept for every window; until you first switch it, `twinny.chatTools` decides. While it is on the prompt turns to a bright `❯❯`, and it pulses while the model works.
+- **Messages sent while a reply runs are queued, not lost.** They wait under the transcript, marked *queued*, and go out when the reply ends. Hover one to drop it; stopping the reply puts them back in the composer.
+- **[Chat keys](/twinny-docs/reference/keyboard-shortcuts/#in-the-chat), as in a terminal.** `Ctrl+C` stops a reply or clears the draft, `Esc` twice clears the draft and `↑` brings it back, `Ctrl+L` starts a new conversation, `PgUp` and `PgDn` scroll the transcript. `Esc` and `Ctrl+C` stop a reply from anywhere in the chat. Press `?` on an empty composer for the list, or run **Twinny - Chat keyboard shortcuts**.
+- Agent mode with Anthropic, Bedrock, Gemini and Cohere no longer fails after a tool that takes no arguments, and code in tool steps wraps as text in a narrow chat.
+
 ## 4.2.10 · 30 September 2026
 
 - **Works in WSL remotes.** Opening a folder through WSL failed activation with `Cannot read properties of undefined (reading 'header')`, so chat never loaded and completions did nothing. The [workspace index](/twinny-docs/features/workspace-index/)'s LanceDB module now loads when the index is first opened rather than at startup, so a native module that fails to load turns embeddings off instead of stopping the extension.
