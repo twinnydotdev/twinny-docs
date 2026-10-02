@@ -15,10 +15,10 @@ twinny is free and open source for individuals, and stays that way. Teams get on
 
 ## What you get
 
-- **Code stays in the building.** Prompts go to your gateway and your backend, nowhere else. The gateway makes no external requests and sends nothing to twinny.
+- **Code stays in the building.** Prompts go to your gateway and your backend, nowhere else. The gateway sends nothing to twinny; it calls out only to the backends you configure and the services the plugins you switch on talk to (your forge, your webhooks, your bucket, your identity provider). Credentials in prompts are swapped for placeholders before they reach a backend on another machine.
 - **A key per developer.** Keys are created and revoked on the admin page or the command line, take effect without a restart, and are stored as hashes.
 - **Usage per person and per model.** Requests, failures and token counts, kept for as long as you choose. Content is kept only if you switch on [recording](/twinny-docs/teams/recording/), which every developer is told about.
-- **One connection for the team.** A developer pastes the gateway address and their key once; the admin's default models for chat, autocomplete and embeddings are applied for them.
+- **One connection for the team.** A developer opens an invite link, or enters the gateway address and their key, once; the admin's default models for chat, autocomplete and embeddings are applied for them.
 - **Admin page.** Backend health, usage charts, keys, providers and models, plugins, and the plan, from a browser. Developers sign in with their own key to use the plugins you share with them.
 - **An audit trail.** Every admin change goes to a hash-chained [audit log](/twinny-docs/teams/operations/#audit-log) you can verify and export; admin keys can be read-only; `/metrics` serves Prometheus.
 

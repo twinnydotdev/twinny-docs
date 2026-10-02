@@ -9,14 +9,14 @@ The review tab reviews a diff without pasting it into the chat. The chat shows a
 
 For the open git repository the tab shows the current branch and two buttons:
 
-- **Review working tree**: staged and unstaged changes, with the count of changed files.
-- **Review branch**: everything on this branch against a base. twinny suggests the remote's default branch, or a common name such as `main` or `master`, and you can type another.
+- **Review working tree**: staged and unstaged changes to tracked files (`git diff HEAD`), with the count of changed files. A new file is included once it is staged.
+- **Review branch**: everything this branch adds since it forked from a base (`git diff base...HEAD`). twinny suggests the remote's default branch, or the first that exists of `main`, `master`, `develop` and `development` (local or on `origin`), and you can type another.
 
 Press one and the review streams into the chat as a normal conversation, so you can ask follow-up questions ("show me how you would fix the second issue") with the review as context.
 
 ## GitHub pull requests
 
-The tab detects the GitHub repository from the `origin` remote and lists its open pull requests, most recently updated first, with draft status. Edit the owner and repository to review another project. Choose a pull request to review its diff the same way.
+The tab detects the GitHub repository from the `origin` remote (or the first remote on GitHub) and lists up to 50 open pull requests, newest first, with the one for the checked-out branch at the top and draft status shown. Edit the owner and repository to review another project. Choose a pull request to review its diff the same way.
 
 Public repositories work without a token. Private repositories, and heavy use of the GitHub API, need a personal access token in `twinny.githubToken` with `repo` read access. Only the pull request list and diff are fetched; twinny never writes to GitHub.
 
@@ -29,13 +29,13 @@ The review prompt (`review.hbs`) asks for a specific structure:
 - **Suggestions**: optional improvements.
 - **Verdict**: ready to merge, merge after fixes, or needs rework.
 
-It is told to quote the relevant code, not to restate the diff, and not to ask for comments or documentation. You can change any of this in the template; see [Prompt templates](/twinny-docs/features/templates/).
+It is told to quote the relevant code, not to restate the diff, and not to ask for comments or documentation. The review is sent as a single user message, with no system message. You can change any of this in the template; see [Prompt templates](/twinny-docs/features/templates/).
 
 ## Long diffs
 
-`twinny.reviewMaxDiffChars` (16,000) is the size of one part. A diff larger than that is split at file boundaries into parts, each reviewed in turn with its own heading in the chat, and then a closing summary is written from the parts (`review-summary.hbs`): the most important issues across all parts, most severe first, and one line on merge readiness.
+`twinny.reviewMaxDiffChars` (16,000, at least 2,000) is the size of one part. A diff larger than that is split at file boundaries into parts, at most eight, each reviewed in turn with its own heading in the chat, and then a closing summary is written from the parts (`review-summary.hbs`): the most important issues across all parts, most severe first, and one line on merge readiness.
 
-Lower the setting for models with small context windows; raise it for large-context models to get fewer parts and a more coherent review. Lockfiles, binaries, minified files and build output are skipped so they do not use up the budget.
+Lower the setting for models with small context windows; raise it for large-context models to get fewer parts and a more coherent review. Lockfiles, binaries, images and other assets, minified files, source maps, test snapshots and build output (`node_modules`, `vendor`, `dist`, `build`, `out`, `.next`, `target`) are skipped so they do not use up the budget. One file's diff is cut at half a part (8,000 characters at most) and its later hunks dropped. Skipped files, and files that did not fit in eight parts, are listed in the summary at the top of the review.
 
 ## Getting a good review
 

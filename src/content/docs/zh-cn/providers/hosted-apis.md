@@ -23,6 +23,8 @@ description: 在 twinny 中使用 OpenAI、Anthropic、Mistral、DeepSeek、Open
 
 Anthropic、Groq、Cohere、Perplexity 和 Gemini 仅支持对话：它们没有 twinny 可以用 fill-in-the-middle 提示驱动的 completions 端点。表单不允许为它们创建自动补全提供者。
 
+在[智能体模式](/twinny-docs/zh-cn/features/agent-mode/)中，只要 SDK 支持，工具就通过供应商自己的工具调用传递（OpenAI、Anthropic、Gemini、Mistral、Groq、OpenRouter）；带工具的 OpenAI 对话使用其 Responses API（`/v1/responses`）。Perplexity 则被要求把工具调用写在回复中。
+
 ## 预设
 
 **添加提供者** → *托管 API* 列出各家及可修改的默认模型名称：
@@ -58,5 +60,6 @@ Mistral 的 Codestral 经过 fill-in-the-middle 训练，并在专用 FIM 端点
 ## 隐私与费用
 
 - 请求中的一切都会发给供应商：提示、附加的文件、`@workspace` 结果、审查 diff。不要把托管提供者用于不可共享的代码。
+- 密钥防护（secret shield）会在请求离开你的机器之前，把提示中的 API 密钥、令牌、私钥和密码替换为 `REDACTED_GITHUB_TOKEN_1` 这样的占位符，并在回复用到它们的地方换回原值。它覆盖对话、补全、内联编辑和嵌入，对托管 API 默认开启；`twinny.secretShield` 决定何时运行（见[设置](/twinny-docs/zh-cn/reference/settings/)）。起作用时，对话回复会显示 **N secrets withheld**。
 - 补全在每次输入停顿时都会发请求。使用托管自动补全提供者时累积起来不少；留意供应商的用量页面，或调高 `twinny.debounceWait`。
 - 除你配置的供应商外，twinny 不向任何人发送任何内容，也完全不向 twinny 的作者发送。

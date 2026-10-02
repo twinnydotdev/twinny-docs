@@ -23,6 +23,8 @@ Chat with a hosted API goes through the vendor's SDK to its fixed endpoint, so t
 
 Anthropic, Groq, Cohere, Perplexity and Gemini are chat-only: they have no completions endpoint twinny can drive with a fill-in-the-middle prompt. The form will not let you create an autocomplete provider for them.
 
+In [agent mode](/twinny-docs/features/agent-mode/), tools go through the vendor's own tool calling where the SDK supports it (OpenAI, Anthropic, Gemini, Mistral, Groq, OpenRouter); OpenAI conversations with tools use its Responses API (`/v1/responses`). Perplexity is asked to write its tool calls in the reply instead.
+
 ## Presets
 
 **Add provider** → *Hosted APIs* lists each with a default model name you can change:
@@ -58,5 +60,6 @@ A common setup: a local 1.5B model for completion (fast, private, free, good eno
 ## Privacy and cost
 
 - Everything in a request goes to the vendor: the prompt, the attached files, `@workspace` results, review diffs. Do not use a hosted provider for code you may not share.
+- The secret shield replaces API keys, tokens, private keys and passwords in a prompt with placeholders such as `REDACTED_GITHUB_TOKEN_1` before the request leaves your machine, and puts the values back where the reply uses them. It covers chat, completion, inline edit and embeddings, and is on for hosted APIs by default; `twinny.secretShield` sets when it runs (see [Settings](/twinny-docs/reference/settings/)). A chat reply shows **N secrets withheld** when it did something.
 - Completion sends a request on every pause in typing. With a hosted autocomplete provider that adds up; watch the vendor's usage page or set `twinny.debounceWait` higher.
 - twinny sends nothing to any vendor other than the ones you configure, and nothing at all to twinny's authors.

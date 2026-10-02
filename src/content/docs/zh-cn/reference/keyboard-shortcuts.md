@@ -11,7 +11,7 @@ description: twinny 在编辑器和对话中的默认键盘快捷键及修改方
 | `Ctrl+I` | `Cmd+I` | 内联编辑：描述对选区的修改 | 编辑文件时 |
 | `Ctrl+Shift+Enter` | `Cmd+Shift+Enter` | 接受待定的内联编辑 | 有编辑待定时 |
 | `Ctrl+Shift+Backspace` | `Cmd+Shift+Backspace` | 拒绝待定的内联编辑 | 有编辑待定时 |
-| `Ctrl+Shift+/` | `Cmd+Shift+/` | 停止生成（补全、对话、编辑或审查） | twinny 正在生成时 |
+| `Ctrl+Shift+/` | `Ctrl+Shift+/` | 停止生成（补全、对话、编辑或审查） | twinny 正在生成时 |
 | `Ctrl+.` | `Cmd+.` | 灯泡：Fix with Twinny、Edit with Twinny | 在诊断或选区上 |
 
 `Tab`、`Esc` 和 `Ctrl+.` 是 VS Code 自身对内联建议和代码操作的绑定。

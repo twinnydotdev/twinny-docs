@@ -30,15 +30,15 @@ Install from the [Marketplace](https://marketplace.visualstudio.com/items?itemNa
 
 ## 3. Let twinny find the server
 
-On first run twinny probes the usual local ports. Ollama answers on 11434, so twinny reads its model list and creates:
+On first run twinny probes the usual local ports. Ollama answers on 11434, so twinny reads its model list, creates the following and says so in a notification:
 
 - a **chat** provider with the instruct model,
 - an **autocomplete** provider with the base model,
 - an **embeddings** provider if an embedding model is installed.
 
-A job is left unset rather than pointed at the wrong kind of model. If you only pulled an instruct model, you get chat but no autocomplete until a code model is present.
+A job is left unset rather than pointed at the wrong kind of model. The fit is judged from the model's name. Autocomplete takes the first listed model with `code` or `coder` in its name, and that can be `qwen2.5-coder:7b-instruct`; check which model autocomplete got, and switch it to the base model if needed.
 
-If nothing answers (Ollama not running yet, or a non-default port), twinny says so once and opens the Providers tab with **Search again** and **Choose a provider**. Start the server and search again, or pick the Ollama preset and type the port.
+If nothing answers (Ollama not running yet, or a non-default port), twinny says so once, with a **Choose a provider** button, and the Providers tab shows a welcome screen with **Search again**, **Choose a provider** and **Import providers**. Start the server and search again, or pick the Ollama preset and type the port.
 
 ## 4. Check it works
 
@@ -52,7 +52,7 @@ The status bar shows `</>` when twinny is idle and a spinner while it is generat
 
 **Inline edit.** Select a few lines, press `Ctrl+I` (`Cmd+I` on macOS), type "add error handling" and press `Enter`. The change streams in as a diff. Press `Ctrl+Shift+Enter` to accept or `Ctrl+Shift+Backspace` to reject.
 
-**Chat.** In the sidebar, type `@` to see what you can attach: a file, a symbol, the current problems, the git diff, the terminal's last output, or `@workspace` for a search of the index. Ask a question. Code blocks in the answer have **apply**, **copy**, **new file** and **terminal** buttons.
+**Chat.** In the sidebar, type `@` to see what you can attach: a file, a symbol, the current problems, the git diff, the terminal's last output, or `@workspace` for a search of the index. Ask a question. Code blocks in the answer have **apply**, **insert**, **copy**, **new file** and **terminal** buttons.
 
 **Fix an error.** Put the cursor on a red squiggle, open the lightbulb and choose **Fix with Twinny**.
 

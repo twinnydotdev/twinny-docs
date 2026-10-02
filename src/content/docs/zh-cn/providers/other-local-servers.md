@@ -5,6 +5,8 @@ description: Open WebUI、LiteLLM、Oobabooga、vLLM、TGI 以及任何支持 Op
 
 任何实现了 OpenAI chat completions API 的服务器都可用于对话。补全需要 `/v1/completions` 风格的路由（或 twinny 认识的原生路由），嵌入需要 `/v1/embeddings` 风格的路由。twinny 为下列服务器提供预设；其他服务器使用通用的 **OpenAI 兼容服务器**预设。
 
+Open WebUI、LiteLLM 和 Oobabooga 只有对话预设。要经由它们做自动补全或嵌入，选择 **自定义提供程序** 并在**提供者**列表中选中该服务器；下文的路径会自动填入。
+
 ## OpenAI 兼容服务器（vLLM、TGI、SGLang、Jan、GPT4All……）
 
 兜底预设。默认 `localhost:8080`，路径 `/v1`、`/v1/completions` 和 `/v1/embeddings`。改端口以匹配你的服务器。
@@ -66,6 +68,20 @@ litellm --model ollama/qwen2.5-coder:7b-instruct --port 4000
 | 嵌入 | `/v1/embeddings` |
 
 Oobabooga 提供的是已加载的模型，模型名称仅供参考；按系列命名以便*自动* FIM 模板检测生效，或手动选择模板。
+
+它的工具调用支持不完整，因此[智能体模式](/twinny-docs/zh-cn/features/agent-mode/)会让模型把工具调用写在回复中。
+
+## QVAC
+
+QVAC 的本地服务器没有预设。选择 **自定义提供程序**，在**提供者**列表中选中 **QVAC**。默认值：
+
+| 工作 | 路径 |
+| --- | --- |
+| 对话 | `localhost:11435` `/v1` |
+| 自动补全 | `/v1/completions` |
+| 嵌入 | `/v1/embeddings` |
+
+该服务器没有工具调用，因此[智能体模式](/twinny-docs/zh-cn/features/agent-mode/)会让模型把工具调用写在回复中。
 
 ## 其他任何服务
 

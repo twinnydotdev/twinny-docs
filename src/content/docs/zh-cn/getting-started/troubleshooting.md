@@ -19,16 +19,21 @@ description: 每条错误的含义、去哪里查看，以及常见问题的修�
 | **_provider_ rejected the request as unauthorised** | 缺少或错误的 API 密钥 | 把密钥粘贴到提供者。代理后的本地服务器可能也需要密钥 |
 | **_provider_ does not have the model _name_** | 服务器上没有该模型 | `ollama pull name`，在 LM Studio 中加载，或在表单列表中选另一个 |
 | **_provider_ returned 404 at _url_** | API 路径错误 | 对照[提供者](/twinny-docs/zh-cn/providers/overview/#本地服务器)的默认值。对话的路径是基路径（`/v1`），不是 `/v1/chat/completions` |
-| **The prompt was too long for _model_** | 服务器的上下文窗口小于请求 | 降低 `twinny.contextLength` 或 `twinny.reviewMaxDiffChars`，或提高服务器的上下文大小 |
+| **The prompt was too long for _model_** | 服务器的上下文窗口小于请求 | 在对话中，开始新对话或移除一些上下文文件。其他情况降低 `twinny.contextLength` 或 `twinny.reviewMaxDiffChars`，或提高服务器的上下文大小 |
 | **_provider_ is rate limiting requests** | 托管 API 返回 HTTP 429 | 等待，或升级套餐 |
 | **The request to _provider_ timed out** | 限时内无响应；模型可能仍在加载 | 重试。模型切换后的第一个请求较慢 |
 | **_provider_ cannot do this** | 提供者不支持该工作，如 Anthropic 的 FIM | 换一个支持的提供者 |
-| **_provider_ does not support FIM** | 把仅支持对话的托管 API 设成了自动补全 | 见[托管 API](/twinny-docs/zh-cn/providers/hosted-apis/)了解哪些支持补全 |
+| **_provider_ only supports chat in twinny** | 提供者表单拒绝把仅支持对话的托管 API 用作自动补全或嵌入 | 改用本地服务器、OpenRouter、DeepSeek 或 Mistral；见[托管 API](/twinny-docs/zh-cn/providers/hosted-apis/) |
+| **_provider_ refused the request** | Twinny 网关不接受你的密钥 | 在提供者上输入有效的网关密钥，或询问管理员；见[连接到团队](/twinny-docs/teams/connect/) |
+
+## 安装与启动
+
+**在 WSL 窗口中 twinny 毫无反应：对话不加载，也没有建议。** 4.2.10 之前，twinny 在 WSL 中激活失败，Twinny 输出通道里显示 `Cannot read properties of undefined (reading 'header')`。请更新到 4.2.10 或更高版本。如果工作区索引的原生模块仍无法加载，嵌入会被关闭，twinny 的其余部分照常工作。
 
 ## 代码补全
 
 **完全没有建议。**
-- 看状态栏：`</> off` 表示自动建议已关闭。点击开启，或按 `Alt+\`。
+- 看状态栏：`</> off` 表示自动建议已关闭。点击即可开启。关闭期间可按 `Alt+\` 手动请求一个建议。
 - 设置了自动补全提供者吗？没有的话提供者标签页的自动补全分区是空的。
 - 该语言启用了吗？见 `twinny.enabledLanguages`。
 - 输出面板、搜索结果和终端永远不会有建议。
@@ -39,6 +44,8 @@ description: 每条错误的含义、去哪里查看，以及常见问题的修�
 **建议中包含 `<PRE>`、`<|fim_middle|>` 之类的标记。** FIM 模板与模型不匹配。在提供者表单中手动设置模板，而不是*自动*。
 
 **建议不停止，或连续输出很多行。** 降低 `twinny.maxLines` 和 `twinny.temperature`，优先选择能可靠停止的模型系列（Qwen2.5-Coder、CodeLlama、DeepSeek Coder）。StarCoder2 和 CodeGemma 已知会停不下来。
+
+**第一个建议很慢。** 本地模型服务器在首次使用时加载模型。twinny 会在 VS Code 启动或重新获得焦点时让它加载补全模型（`twinny.warmUpModel`）；如果关闭了此功能，或服务器已卸载模型，第一个请求就要等待加载。使用 Ollama 时，调高 `twinny.keepAlive`。
 
 **建议很慢。** 补全用更小的模型（1.5B 或 3B）。确认模型在 GPU 上而非 CPU（`ollama ps` 显示位置）。如果对话和补全在小显存 GPU 上使用不同模型，它们会互相换出；改用同一模型或增加显存。若开启了 `twinny.fileContextEnabled`，关闭它。
 
@@ -51,6 +58,8 @@ description: 每条错误的含义、去哪里查看，以及常见问题的修�
 **回答被截断。** 提高 `twinny.numPredictChat`。
 
 **编辑返回的是文字说明或带围栏。** 小模型有时解释而不是编辑。换更直接的指令，或更大的模型。解析器已会去除围栏和思考块。
+
+**回复显示 *N secrets withheld*。** 这是密钥防护，不是错误：提示中的密钥、令牌和密码在请求离开本机前被替换为占位符，并在回复中换回。由 `twinny.secretShield` 控制；见[设置](/twinny-docs/zh-cn/reference/settings/)。
 
 **从对话应用的代码放错了位置。** apply 会把代码块与文件匹配；如果模型大幅改写了代码块，可能匹配不上。拒绝后手动粘贴，或先选中目标行再用 `Ctrl+I`。
 

@@ -19,7 +19,7 @@ Every record also carries who (the key), which model and backend, when, how long
 
 ## Switching it on
 
-On the admin page, **Recordings → What to keep**: tick the features, set how many days to keep records, save. Or in the configuration:
+On the admin page, **Recordings → What is kept → change**: tick the features, set how many days to keep records, save. Or in the configuration:
 
 ```json
 "recording": { "chat": true, "fim": true, "embeddings": false, "retentionDays": 90 }
@@ -41,15 +41,15 @@ The **Recordings** page lists records newest first, filtered by feature, develop
 
 ## Exporting for training
 
-The **export training data** button, or on the gateway machine:
+The **export training data** button exports what the current filter shows (**export raw** gives the records as stored), or on the gateway machine:
 
 ```sh
 twinny-server recordings export --route chat --since 30d > chat.jsonl
 twinny-server recordings export --route fim > fim.jsonl
 ```
 
-One example per line, in the shapes fine-tuning tools expect: chat as `{"messages": [ …, {"role": "assistant", "content": "…"}]}`, autocomplete as `{"prompt", "suffix", "completion"}`, embeddings as `{"input": […]}`. Failed and cancelled requests are left out. Add `--format raw` for the records exactly as stored.
+One example per line, in the shapes fine-tuning tools expect: chat as `{"messages": [ …, {"role": "assistant", "content": "…"}]}`, autocomplete as `{"prompt", "suffix", "completion"}`, embeddings as `{"input": […]}`. An agent-mode conversation keeps its tool calls and results, and the tools offered, in the OpenAI fine-tuning shape. Failed and cancelled requests are left out. Add `--format raw` for the records exactly as stored, and `--key <name>` for one developer's.
 
 ## Where it lives
 
-`~/.twinny/server/recordings/`, in one indexed SQLite file on Node 22 or newer (the Docker image), or one JSON-lines file per day on older Node. Either way it is content: treat the directory like source code, keep it on an encrypted disk, and include it in what you back up or deliberately do not.
+`~/.twinny/server/recordings/`, in one indexed SQLite file on Node 22.5 or newer (the Docker image), or one JSON-lines file per day on older Node. `recording.store` (`auto`, `sqlite` or `jsonl`) picks one, and `recording.dir` moves it. Either way it is content: treat the directory like source code, keep it on an encrypted disk, and include it in what you back up or deliberately do not.

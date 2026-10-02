@@ -84,7 +84,7 @@ The port is fixed rather than random so the rule can be permanent.
 3. The device card shows *Online*, its latency, and the models Ollama there has installed.
 4. Use the buttons on the card to make it the chat, autocomplete or embeddings provider. twinny picks a model that fits each job from the device's list; click a job to change the model.
 
-A pairing code works once and expires after ten minutes. From then on the two machines recognise each other by key; no more codes.
+A pairing code works once and expires after ten minutes; a wrong code also voids it, so the next attempt needs a new one. From then on the two machines recognise each other by key; no more codes.
 
 Providers created from a device have no hostname or port to configure. Autocomplete keeps working with the sidebar closed, since the P2P runtime lives for the whole VS Code session.
 
@@ -100,6 +100,7 @@ Providers created from a device have no hostname or port to configure. Autocompl
 - Every connection is authenticated by key pair and encrypted end to end. The DHT only helps the two machines find each other; it never carries the traffic.
 - A node answers requests only from keys on its trusted list. Anyone who learns the peer ID can open a connection, but cannot send a request until they present a valid pairing code, and the code is single-use.
 - Requests are forwarded to Ollama unchanged, and only to Ollama. The node does not expose files or run commands.
+- A paired device counts as off this machine for the secret shield, so with `twinny.secretShield` at its default (`offMachine`) credentials in a prompt are replaced with placeholders before the request leaves.
 - Identity keys live in VS Code's secret storage (extension) or `~/.twinny/node/identity.json` with owner-only permissions (CLI). Delete the file to start with a fresh identity; paired devices then need to pair again.
 - Trusted peers live in VS Code global state (extension) or `~/.twinny/node/trusted-peers.json` (CLI).
 

@@ -52,17 +52,17 @@ The whole conversation is sent with each message, so a very long one eventually 
 
 Right-click selected code for:
 
-- **Explain**, which asks the chat to explain the selection. When a workspace index exists, related code is looked up to inform the explanation.
+- **Explain**, which asks the chat to explain the selection. When **Use the index for every message** is on in the [workspace index](/twinny-docs/features/workspace-index/) tab, related code is looked up to inform the explanation.
 - **Refactor**, **Add types**, **Generate docs** and **Edit with instruction...**, which change the code in place through [inline edit](/twinny-docs/features/inline-edit/).
 - **Write tests**, which writes tests to a sibling test file.
 
-## Suggestions in an empty chat
+## Suggestions for a selection
 
-An empty chat shows a row of suggestion buttons built from the templates you have enabled in **Manage twinny templates** (the book icon). Each runs that template over the current selection. Turn off the ones you never use.
+While code is selected in the editor, a row of suggestion buttons shows above the message box, built from the templates you have enabled in **Manage twinny templates** (the book icon). Each runs that template over the selection. Turn off the ones you never use.
 
 ## Tokens and stopping
 
-`twinny.numPredictChat` (512) caps the length of one answer. If answers are cut short, raise it; the model's own context window still applies. `twinny.temperature` (0.2) applies to chat too.
+Chat requests set no length limit of their own, so the server's limit and the model's context window decide how long an answer can be. `twinny.numPredictChat` is still listed in the settings but is not read. Chat sends no temperature either: `twinny.temperature` applies to completions only, and chat uses the server's default.
 
 ## Customising the prompts
 

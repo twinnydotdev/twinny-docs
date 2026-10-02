@@ -28,13 +28,17 @@ A pull's page has **review now**. The gateway sends the description and diffs to
 
 Open issues are listed too, and **triage** has a model suggest labels, a duplicate, a priority and a first reply, which you post or apply with a click (or let auto-triage suggest in the background). A finished review can be posted back to the host as a comment, a change request or an approval, with a footer naming the model; **auto-post** does that for every review without a click. Tick **auto-review** on a repository and its new and updated pulls are reviewed in the background: one at a time, newest first, never drafts, and only while no developer request is running, so completions and chats are never slowed down. Reviews are routed like any other request and appear in usage under `plugin:github` or `plugin:gitlab`, so the Usage page shows what they cost.
 
-The prompt is kept small for local models: at most 24k characters of description and diff, with larger patches named but left out, and at most 1,500 tokens back. Pick the review model on the plugin's page; the first chat alias is used until you do.
+The prompt is kept small for local models: at most 24k characters of description and diff, with larger patches named but left out, and at most 4,000 tokens back. A reasoning model is asked not to think. A review the output cap cut off is kept but tagged **cut short**, with the reason and how much went on thinking. Pick the review model on the plugin's page; the first chat alias is used until you do.
+
+Under a finished review is a box for questions. Each goes to the review model with the pull, the review and the earlier questions, and the exchange is kept on the review until the pull is reviewed again. Nothing in it is posted to the host.
+
+An admin can also **approve** a pull with one button next to its checks, as the repository's token, with no review text posted. GitHub, Gitea and GitLab pin the approval to the commit the page showed. The button is not shown on your own pull, on one you already approved, or to developers the plugin is shared with.
 
 ## Share with developers
 
 Admins use every plugin that is on. To let developers use the pull-request plugins too, choose **share** on the plugin's card under **Plugins → Store**: **every developer** (anyone with a key of their own) or **these people**, ticked by key name. **Admins only** is the default.
 
-A developer the plugin is shared with signs in to the gateway's page (`https://<gateway>/admin`) with their own key, or runs **Twinny - Open your team's plugins** in VS Code (see [Connect to your team](/twinny-docs/teams/connect/#plugins-shared-with-you)). They see the shared plugins and nothing else of the admin page, and on each one they can do what a reviewer does:
+There is nothing to send anyone. The developer's VS Code tells them once that the plugin was shared, with an **Open** button, and lists it on the Providers tab; opening it signs them in to the gateway's page with a one-time code, so nobody sees, copies or pastes a key (see [Connect to your team](/twinny-docs/teams/connect/#plugins-shared-with-you)). Someone not using VS Code signs in at `https://<gateway>/admin` with their own key, made under **People**. They see the shared plugins and nothing else of the admin page, and on each one they can do what a reviewer does:
 
 - read the open pulls and issues, and sync;
 - **review now**, ask about a review, and post it to the host as a comment;
@@ -66,7 +70,7 @@ Restoring is done from the shell with the gateway stopped: `twinny-server backup
 
 ## Slack, Discord and Teams
 
-Post what the other plugins report to the channels you choose: a review finished or asked for changes, a pull opened, checks failed, a backup was made or failed, a backend went down or came back. Slack through incoming webhooks (Mattermost and Rocket.Chat take the same messages), Discord through channel webhooks as embeds, Microsoft Teams through a Workflows webhook as Adaptive Cards. One webhook per channel, each picking its events, with a **test** button and a log of recent deliveries. Webhook URLs are kept on the server and never shown again.
+Post what the other plugins report to the channels you choose: a review finished, asked for changes, failed or was posted; an issue triaged; a pull opened, approved from the page, or its checks failed; a backup was made or failed; a backend went down or came back; an SSO sign-in. Slack through incoming webhooks (Mattermost and Rocket.Chat take the same messages), Discord through channel webhooks as embeds, Microsoft Teams through a Workflows webhook as Adaptive Cards. One webhook per channel, each picking its events, with a **test** button and a log of recent deliveries. Webhook URLs are kept on the server and never shown again.
 
 ## Without a licence
 

@@ -33,7 +33,11 @@ Model names are Ollama tags, exactly as `ollama list` prints them.
 
 ## Keeping models loaded
 
-Ollama unloads a model after a period of inactivity, and the next request pays the load time. `twinny.keepAlive` (default `5m`) is sent with each request to control this: `1h`, `24h`, or `-1` to keep the model resident. If chat and completion use different models and your GPU cannot hold both, they swap each other out; either use the same model for both, use a smaller completion model, or accept the swap.
+Ollama unloads a model after a period of inactivity, and the next request pays the load time. `twinny.keepAlive` (default `5m`) is sent with each completion request to control how long the completion model stays loaded: `1h`, `24h`, or `-1` to keep it resident. Chat requests do not carry it, so the chat model follows Ollama's own default.
+
+When VS Code starts or regains focus, twinny asks Ollama to load the completion model with a one-token request, so the first suggestion does not wait for it. Nothing is sent if the model was used in the last four minutes. Turn this off with `twinny.warmUpModel`.
+
+If chat and completion use different models and your GPU cannot hold both, they swap each other out; either use the same model for both, use a smaller completion model, or accept the swap.
 
 ## Context size
 
@@ -78,7 +82,7 @@ These are used beyond a single provider, for listing models and for the Ollama t
 | `twinny.ollamaHostname` | `0.0.0.0` | Treated as localhost when calling |
 | `twinny.ollamaApiPort` | `11434` | |
 | `twinny.ollamaUseTls` | `false` | |
-| `twinny.keepAlive` | `5m` | Sent with each request |
+| `twinny.keepAlive` | `5m` | Sent with each completion request |
 
 ## Tips
 

@@ -49,12 +49,27 @@ twinny 没有账号、没有遥测、没有自己的服务器。离开你机器�
 | 本地服务器 | 提示和上下文 | 本机上的该服务器 |
 | 已配对设备 | 提示和上下文，加密 | 你的另一台机器 |
 | 托管 API | 提示和上下文 | 该供应商 |
+| 团队网关 | 提示和上下文，以及供路由规则使用的当前工作区名称 | 你团队的网关及其背后的后端。只有团队开启了录制，网关才保留内容，并会在你连接前说明；见[连接到团队](/twinny-docs/teams/connect/#what-happens-to-your-code) |
 | GitHub 拉取请求审查 | 仓库所有者、名称、PR 编号、你的令牌 | GitHub |
 | 其他 | | 无 |
 
 提示和上下文指：光标周围的代码及补全上下文；对话消息及其附件；内联编辑的选区；审查和提交信息的 diff；终端功能的最后输出；用于嵌入的文件分块；以及开启[智能体模式](/twinny-docs/zh-cn/features/agent-mode/)时，模型的工具在工作区中读到的内容（文件、搜索结果、git 输出、命令输出）。
 
-工作区索引的重排序器在扩展内运行。P2P 的 DHT 只知道某个密钥可在某个地址访问。twinny 的作者不收集任何使用数据，扩展也不会自行向 twinny.dev 或任何其他地方发请求。
+工作区索引的重排序器在扩展内运行。P2P 的 DHT 只知道某个密钥可在某个地址访问。twinny 的作者不收集任何使用数据，扩展不会向 twinny.dev 或任何你没有设置的地方发请求。发往你自己服务器的请求可能在你没有操作时发出，例如在本地服务器上加载补全模型的[预热](/twinny-docs/zh-cn/features/code-completion/#预热)。
+
+### 密钥屏蔽
+
+提示中的 API 密钥、令牌、私钥和密码在请求发出前被替换为 `REDACTED_GITHUB_TOKEN_1` 之类的占位符，并在回复用到它们的地方换回，因此模型永远看不到真实值，而它写出的代码仍然可用。覆盖对话（包括智能体模式的工具结果）、补全、内联编辑和嵌入。它能识别 GitHub、GitLab、AWS、Stripe、Slack、OpenAI、Anthropic、Google、Hugging Face 和 npm 的令牌格式，以及 PEM 私钥、JWT、URL 中的密码，和代码及 `.env` 文件中以密钥命名的值；`process.env.X` 或 `<your-key>` 这类值不受影响。对话回复会显示 **N secrets withheld** 及其类型；补全则记录到 **Twinny** 通道。
+
+`twinny.secretShield` 决定何时运行：
+
+| 值 | 屏蔽发往以下目标的请求 |
+| --- | --- |
+| `offMachine`（默认） | 托管 API、团队网关、已配对设备，以及任何不在本机的服务器（`localhost`、`127.x.x.x`、`0.0.0.0` 和 `::1` 算作本机） |
+| `always` | 本地服务器也包括在内 |
+| `off` | 不屏蔽；提示原样发送 |
+
+团队网关可以在提示到达其后端之前再次屏蔽；见[策略](/twinny-docs/teams/policy/#rules-the-gateway-applies)。
 
 ## twinny 写入的文件
 
@@ -63,8 +78,8 @@ twinny 没有账号、没有遥测、没有自己的服务器。离开你机器�
 | `~/.twinny/templates/` | 提示词模板 |
 | `~/.twinny/embeddings/<workspace>/` | 工作区索引（LanceDB）和清单 |
 | `~/.twinny/node/` | 命令行节点的身份和受信设备 |
-| VS Code 全局状态 | 提供者（默认）、会话、已配对设备、侧边栏中选择的设置 |
-| VS Code 密钥存储 | 扩展的 P2P 身份 |
+| VS Code 全局状态 | 提供者（默认）、会话、已配对设备、侧边栏中选择的设置、设为始终运行的命令 |
+| VS Code 密钥存储 | 扩展的 P2P 身份；团队网关密钥 |
 | 扩展全局存储 | `twinny.providerStorageLocation` 为 `file` 时的提供者；P2P 主机锁 |
 
 这些都可以删除；twinny 会重建所需内容。

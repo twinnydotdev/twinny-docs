@@ -38,10 +38,11 @@ twinny is a workspace extension: in a Remote SSH, WSL, Dev Container or Codespac
 - "localhost" in a provider means the **remote** machine. If your model server runs on your laptop and your code is in a container, point the provider at the laptop's address on the network, or run the server inside the container.
 - Provider configuration is stored per VS Code installation. Set `twinny.providerStorageLocation` to `file` if you move between remotes often and want the list to survive, or use [Export and import](/twinny-docs/providers/import-export/).
 - [Devices](/twinny-docs/providers/devices/) work from a remote as long as the remote can reach the network on UDP.
+- WSL windows need twinny 4.2.10 or later; earlier versions failed to activate there.
 
 ## After installing
 
-twinny activates when VS Code starts. The first time, it looks for a model server on this machine and sets up providers if it finds one; otherwise it opens the Providers tab. Follow the [Quick start](/twinny-docs/getting-started/quick-start/).
+twinny activates when VS Code starts. The first time, it looks for a model server on this machine and sets up providers if it finds one; otherwise it says so once, with a **Choose a provider** button that opens the Providers tab. Follow the [Quick start](/twinny-docs/getting-started/quick-start/).
 
 You will see:
 

@@ -52,17 +52,17 @@ description: 在侧边栏就你的代码提问，以文件、符号、问题、g
 
 右键选中的代码可以：
 
-- **Explain**：让对话解释选区。存在工作区索引时会查找相关代码以辅助解释。
+- **Explain**：让对话解释选区。在[工作区索引](/twinny-docs/zh-cn/features/workspace-index/)标签页开启 **Use the index for every message** 时，会查找相关代码以辅助解释。
 - **Refactor**、**Add types**、**Generate docs** 和 **Edit with instruction...**：通过[内联编辑](/twinny-docs/zh-cn/features/inline-edit/)就地修改代码。
 - **Write tests**：把测试写入同级测试文件。
 
-## 空对话中的建议
+## 选区建议
 
-空对话显示一排建议按钮，来自你在 **Manage twinny templates**（书本图标）中启用的模板。每个按钮对当前选区运行该模板。把从不使用的关掉。
+在编辑器中选中代码时，消息框上方会显示一排建议按钮，来自你在 **Manage twinny templates**（书本图标）中启用的模板。每个按钮对选区运行该模板。把从不使用的关掉。
 
 ## Token 与停止
 
-`twinny.numPredictChat`（512）限制单条回答的长度。回答被截断时可调高；模型自身的上下文窗口仍然适用。`twinny.temperature`（0.2）也作用于对话。
+对话请求本身不设长度上限，回答能有多长由服务器的上限和模型的上下文窗口决定。`twinny.numPredictChat` 仍列在设置中，但不会被读取。对话也不发送 temperature：`twinny.temperature` 只作用于补全，对话使用服务器的默认值。
 
 ## 自定义提示
 

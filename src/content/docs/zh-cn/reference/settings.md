@@ -11,7 +11,7 @@ description: VS Code 中 twinny 的所有设置、默认值及作用。
 | --- | --- | --- |
 | `twinny.enabled` | `true` | 开关扩展。命令面板中的 **Enable twinny** 和 **Disable twinny** 可切换 |
 | `twinny.locale` | `en` | 侧边栏界面语言：`en`、`zh-CN`、`zh-HK`、`de`、`es`、`es-CL`、`ja`、`fr`、`it`、`pt`、`ru`、`ko`、`nl` |
-| `twinny.temperature` | `0.2` | 对话和补全输出的随机性。越低越确定 |
+| `twinny.temperature` | `0.2` | 代码补全的随机性。越低越确定。对话、内联编辑和审查不发送 temperature，使用服务器的默认值 |
 | `twinny.enableLogging` | `true` | 每个请求向 **Twinny** 输出通道写一行：模型、耗时、大小和停止原因。把通道日志级别设为 *Debug* 还可看到提示和回复。关闭时仍会写入警告和错误 |
 | `twinny.githubToken` | `""` | 用于列出和审查私有仓库 GitHub 拉取请求的个人访问令牌 |
 | `twinny.providerStorageLocation` | `globalState` | 提供者配置的保存位置。`globalState` 为 VS Code 全局状态；`file` 为扩展全局存储中的文件，切换远程或容器时得以保留 |
@@ -33,18 +33,18 @@ description: VS Code 中 twinny 的所有设置、默认值及作用。
 | `twinny.fileContextEnabled` | `false` | 包含相邻打开文件的片段。实验性；增加延迟 |
 | `twinny.completionCacheEnabled` | `false` | 缓存相同提示的建议 |
 | `twinny.enableSubsequentCompletions` | `true` | 接受一条建议后立即请求下一条 |
-| `twinny.warmUpModel` | `true` | 在 VS Code 启动或重新获得焦点时加载补全模型，使第一次补全不必等待冷启动的模型。仅用于本地模型服务器（Ollama、LM Studio、llama.cpp）；从不调用托管 API |
+| `twinny.warmUpModel` | `true` | 在 VS Code 启动或重新获得焦点时加载补全模型，使第一次补全不必等待冷启动的模型。仅用于本地模型服务器（Ollama、LM Studio、llama.cpp、text-generation-webui、已配对设备，或本机上兼容 OpenAI 的服务器）；从不调用托管 API |
 
 ## 对话与审查
 
 | 设置 | 默认 | 说明 |
 | --- | --- | --- |
-| `twinny.numPredictChat` | `512` | 单条对话回答的最大 token 数 |
+| `twinny.numPredictChat` | `512` | 出现在 VS Code 设置中，但扩展不会读取：对话请求不发送 token 上限，以服务器自身的上限为准 |
 | `twinny.chatTools` | `false` | 在你第一次在对话中切换前，[智能体模式](/twinny-docs/zh-cn/features/agent-mode/)开关的初始状态。机器级设置：工作区无法开启 |
-| `twinny.chatToolsEdits` | `apply` | 智能体模式的编辑：`apply` 直接写入（`Ctrl+Z` 撤销）；`review` 把每次编辑作为 diff 打开，模型等待 |
+| `twinny.chatToolsEdits` | `apply` | 智能体模式的编辑：`apply` 直接写入（`Ctrl+Z` 撤销），但删除 git 中没有副本的文件仍会先询问；`review` 把每次编辑作为 diff 打开，模型等待 |
 | `twinny.chatToolsCommands` | `ask` | 智能体模式的命令：`ask` 显示 Run、Always run 和 Skip；`allow` 直接运行；`off` 不允许运行命令。也决定自动运行开关的初始状态 |
-| `twinny.chatToolsCommandsRunIn` | `background` | `background` 在独立进程中运行每条命令，输出显示在对话中，两分钟后停止；`terminal` 在 twinny tools 终端中运行 |
-| `twinny.reviewMaxDiffChars` | `16000` | 每次代码审查请求的 diff 字符数。更大的审查会被分成多部分 |
+| `twinny.chatToolsCommandsRunIn` | `background` | `background` 在独立进程中运行每条命令，输出显示在对话中，两分钟后停止；`terminal` 在 twinny tools 终端中运行，VS Code 的 shell 集成不可用时改为后台运行 |
+| `twinny.reviewMaxDiffChars` | `16000` | 每次代码审查请求的 diff 字符数。更大的审查会被分成多部分。最小 2,000 |
 
 ## 工作区索引
 
@@ -64,7 +64,7 @@ description: VS Code 中 twinny 的所有设置、默认值及作用。
 | `twinny.ollamaHostname` | `0.0.0.0` | 本地 Ollama 的主机名。`0.0.0.0` 视为 localhost |
 | `twinny.ollamaApiPort` | `11434` | 本地 Ollama 的端口 |
 | `twinny.ollamaUseTls` | `false` | 用 HTTPS 访问 Ollama |
-| `twinny.keepAlive` | `5m` | 请求后 Ollama 保持模型加载的时间：`5m`、`1h`，或 `-1` 表示一直保持 |
+| `twinny.keepAlive` | `5m` | 补全请求后 Ollama 保持补全模型加载的时间：`5m`、`1h`，或 `-1` 表示一直保持 |
 
 ## 设备（P2P）
 
@@ -90,7 +90,7 @@ description: VS Code 中 twinny 的所有设置、默认值及作用。
 
 ## 按工作区覆盖
 
-所有 `twinny.*` 设置都可以在 `.vscode/settings.json` 中按工作区设置，例如在文档仓库中禁用建议：
+`twinny.*` 设置都可以在 `.vscode/settings.json` 中按工作区设置，但智能体模式的四个设置（`twinny.chatTools`、`twinny.chatToolsEdits`、`twinny.chatToolsCommands`、`twinny.chatToolsCommandsRunIn`）除外：它们是机器级设置，只在用户设置中生效。例如在文档仓库中禁用建议：
 
 ```json
 {

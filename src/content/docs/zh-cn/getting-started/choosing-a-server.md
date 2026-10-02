@@ -42,12 +42,12 @@ twinny 的能力取决于背后的模型，模型的速度取决于运行它的�
 | 12 至 16 GB 显存，或 16 GB 以上 Apple 芯片 | `qwen2.5-coder:7b-base` | `qwen2.5-coder:14b-instruct` |
 | 24 GB 显存，或 32 GB 以上 Apple 芯片 | `qwen2.5-coder:7b-base` | `qwen2.5-coder:32b-instruct`、`codestral` |
 
-这些是起点而非规则。其他优秀的模型系列见[支持的模型](/twinny-docs/zh-cn/providers/supported-models/)。
+这些是起点而非规则。其他优秀的模型系列见[支持的模型](/twinny-docs/zh-cn/providers/supported-models/)。[智能体模式](/twinny-docs/zh-cn/features/agent-mode/)比对话要求更高：需要能力较强的代码模型，例如 `qwen3-coder:30b`，上下文 8k token 或更大。
 
 比原始大小更重要的两点：
 
 - **补全要快。** 两秒后才到的建议早已被你打过去了。GPU 上的 1.5B 或 3B base 模型往往比 7B 的补全体验更好，即使硬件跑得动 7B。对话可以等。
-- **小显存上一次只驻留一个模型。** 如果对话和补全在同一服务器上使用不同模型，每个请求可能把另一个换出。Ollama 按 `twinny.keepAlive`（默认 5 分钟）保持模型加载；显存足够时两者都能驻留。
+- **小显存上一次只驻留一个模型。** 如果对话和补全在同一服务器上使用不同模型，每个请求可能把另一个换出。Ollama 按 `twinny.keepAlive`（默认 5 分钟）保持补全模型加载，twinny 也会在 VS Code 启动或重新获得焦点时再次加载它（`twinny.warmUpModel`）；显存足够时两个模型都能驻留。
 
 ## 何时使用托管 API
 

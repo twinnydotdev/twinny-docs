@@ -80,7 +80,7 @@ All in [chat](/twinny-docs/features/chat/).
 - One information message, once, two weeks after first use on a machine not connected to a team, saying the gateway exists.
 - A **[30-day Team trial](/twinny-docs/teams/licensing/#trying-it-first)** with every feature, issued by email from twinny.dev, no card.
 
-## 4.2 · September 2026
+## 4.2 · 21 September 2026
 
 All on the gateway side, for teams.
 
@@ -102,7 +102,7 @@ All on the gateway side, for teams.
 - **[Licensing and seats](/twinny-docs/teams/licensing/)**: five seats free for good; a token bought by card raises the count and switches on [policy](/twinny-docs/teams/policy/) and [recording](/twinny-docs/teams/recording/).
 - Mistral fixes for chat and autocomplete, and the right autocomplete prompt format behind a gateway alias.
 
-## 4.0 · September 2026
+## 4.0 · 7 to 17 September 2026
 
 The 4.x rewrite of the extension.
 

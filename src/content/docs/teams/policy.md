@@ -5,7 +5,7 @@ description: Rules the gateway sends to connected developers and their VS Code e
 
 Team defaults tell a connecting developer which models to use. A **policy** goes one step further: rules that the developer's VS Code enforces while they are connected, and rules the gateway applies to their requests. It is what an engineering manager means by "can we make sure nobody sends code to a cloud API".
 
-Policy is a licence feature. See [Licensing and seats](/twinny-docs/teams/licensing/).
+Policy is a licence feature, apart from the [secret shield](#secret-shield), which applies on every plan. See [Licensing and seats](/twinny-docs/teams/licensing/).
 
 ## Rules the extension enforces
 
@@ -24,14 +24,29 @@ Policy is a licence feature. See [Licensing and seats](/twinny-docs/teams/licens
 
 A refused request fails in the editor with a message that says which rule refused it. Routing stays on the gateway; the extension only supplies the workspace name.
 
+[Plugin](/twinny-docs/teams/plugins/) requests go through the same rules. A pull-request review, an issue triage or a shared-context index of `acme/payments-api` is matched as the workspace `payments-api`, so `payments-*` keeps its diffs off hosted models too.
+
+## Secret shield
+
+The gateway swaps API keys, tokens, private keys and passwords in prompts for placeholders before a request reaches a backend, and puts them back in the reply, whichever client sent it: the extension, the TUI or Neovim. `policy.secretShield` says for which backends:
+
+| Value | Shields prompts sent to |
+| --- | --- |
+| `offMachine` (the default) | hosted APIs, backends on other hosts and the team pool |
+| `always` | every backend, including those on the gateway's own host |
+| `off` | nothing; prompts are forwarded as they arrive |
+
+Unlike the rules above, the secret shield needs no licence: it applies on every plan. The extension has its own shield for prompts that leave the developer's machine, set with `twinny.secretShield`; see [Settings](/twinny-docs/reference/settings/#general).
+
 ## Setting it
 
-On the admin page, **Policy**: tick the rules, write the system prompt, add routing rules by workspace pattern. Save. Or in the configuration file:
+On the admin page, **Policy**: tick the rules, choose the secret shield, write the system prompt, add routing rules by workspace pattern. Save. Or in the configuration file:
 
 ```json
 "policy": {
   "teamOnly": true,
   "lockDefaults": true,
+  "secretShield": "always",
   "systemPrompt": "Answer in British English. Prefer the standard library.",
   "routing": [
     { "workspace": "payments-*", "localOnly": true },

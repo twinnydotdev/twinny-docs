@@ -49,7 +49,7 @@ Chat answers in the sidebar and you decide what to do with the answer. Inline ed
 
 ### Does twinny run an agent that edits my files on its own?
 
-No. Every change is something you asked for and can see before it is kept: a suggestion you accept, a diff you accept, a command you confirm. This is by design.
+Only if you switch on [agent mode](/twinny-docs/features/agent-mode/), which is off by default. Then the chat model edits files and runs commands to finish what you asked. Edits are applied straight away (`Ctrl+Z` undoes) unless `twinny.chatToolsEdits` is `review`, and commands ask first unless `twinny.chatToolsCommands` or the auto-run switch says otherwise. With agent mode off, every change is something you asked for and can see before it is kept: a suggestion you accept, a diff you accept, a command you confirm.
 
 ### How do I change the prompts?
 
