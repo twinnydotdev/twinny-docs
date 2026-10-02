@@ -3,7 +3,7 @@ title: 提示词模板
 description: twinny 发送的每个提示都是可编辑的 Handlebars 文件。
 ---
 
-twinny 用 `~/.twinny/templates/` 中的 [Handlebars](https://handlebarsjs.com/) 模板构建提示。文件夹在 twinny 启动时创建，每个模板一个文件；你编辑过的文件会替代默认值。缺失或为空的文件会回退到内置版本，无法渲染的文件也一样，原因写入 **Twinny** 输出通道。要打开文件夹，点击侧边栏顶部的 **Manage twinny templates**（书本图标），再点 **Open template editor**；文件夹会在新窗口中打开。
+twinny 用 `~/.twinny/templates/` 中的 [Handlebars](https://handlebarsjs.com/) 模板构建提示。文件夹在 twinny 启动时创建，每个模板一个文件；你编辑过的文件会替代默认值。缺失或为空的文件会回退到内置版本，无法渲染的文件也一样，原因写入 **Twinny** 输出通道。要打开文件夹，点击侧边栏顶部的 **Manage twinny templates**（书本图标），再点 **Open template editor**，或从命令面板运行 **Edit twinny templates**（4.3.5 及以后）；文件夹会在新窗口中打开。
 
 ## 模板列表
 

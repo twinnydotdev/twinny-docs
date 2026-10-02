@@ -62,7 +62,7 @@ description: 在侧边栏就你的代码提问，以文件、符号、问题、g
 
 ## Token 与停止
 
-对话请求本身不设长度上限，回答能有多长由服务器的上限和模型的上下文窗口决定。`twinny.numPredictChat` 仍列在设置中，但不会被读取。对话也不发送 temperature：`twinny.temperature` 只作用于补全，对话使用服务器的默认值。
+对话请求本身不设长度上限，回答能有多长由提供者的默认上限和模型的上下文窗口决定。对话也不发送 temperature：`twinny.temperature` 只作用于补全，对话使用服务器的默认值。
 
 ## 自定义提示
 

@@ -62,7 +62,7 @@ While code is selected in the editor, a row of suggestion buttons shows above th
 
 ## Tokens and stopping
 
-Chat requests set no length limit of their own, so the server's limit and the model's context window decide how long an answer can be. `twinny.numPredictChat` is still listed in the settings but is not read. Chat sends no temperature either: `twinny.temperature` applies to completions only, and chat uses the server's default.
+Chat requests set no length limit of their own, so the provider's default limit and the model's context window decide how long an answer can be. Chat sends no temperature either: `twinny.temperature` applies to completions only, and chat uses the server's default.
 
 ## Customising the prompts
 

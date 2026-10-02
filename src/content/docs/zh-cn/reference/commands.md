@@ -62,9 +62,10 @@ description: twinny 的每个命令、出现的位置及作用。
 | --- | --- |
 | **Enable twinny** / **Disable twinny** | 开关扩展（`twinny.enabled`） |
 | **Twinny - Show logs** | 打开 Twinny 输出通道 |
+| **Edit twinny templates** | 在新窗口中打开 `~/.twinny/templates/` 文件夹（4.3.5 及以后） |
 | **Twinny - Status bar options** | 点击状态栏项时显示的菜单。不在命令面板中 |
 | **Twinny - Set up for your team (gateway, keys, usage)** | 在浏览器中打开 twinny.dev 上的[网关页面](https://twinny.dev/#teams) |
 
 ## 命令 id
 
-用于快捷键和 `tasks.json` 的 id 形如 `twinny.<name>`：`twinny.edit`、`twinny.acceptEdit`、`twinny.rejectEdit`、`twinny.explain`、`twinny.refactor`、`twinny.addTypes`、`twinny.generateDocs`、`twinny.addTests`、`twinny.addFileToContext`、`twinny.addSelectionToContext`、`twinny.stopGeneration`、`twinny.sidebar.focus`、`twinny.openChat`、`twinny.review`、`twinny.manageProviders`、`twinny.manageTemplates`、`twinny.embeddings`、`twinny.conversationHistory`、`twinny.openPanelChat`、`twinny.exportConversation`、`twinny.newConversation`、`twinny.settings`、`twinny.generateCommitMessage`、`twinny.terminalCommand`、`twinny.fixTerminalError`、`twinny.shareOllama`、`twinny.openTeamPlugins`、`twinny.enable`、`twinny.disable`、`twinny.showLogs`、`twinny.statusBarMenu`、`twinny.setUpTeam`、`twinny.showShortcuts`、`twinny.forgetAlwaysRunCommands`。
+用于快捷键和 `tasks.json` 的 id 形如 `twinny.<name>`：`twinny.edit`、`twinny.acceptEdit`、`twinny.rejectEdit`、`twinny.explain`、`twinny.refactor`、`twinny.addTypes`、`twinny.generateDocs`、`twinny.addTests`、`twinny.addFileToContext`、`twinny.addSelectionToContext`、`twinny.stopGeneration`、`twinny.sidebar.focus`、`twinny.openChat`、`twinny.review`、`twinny.manageProviders`、`twinny.manageTemplates`、`twinny.embeddings`、`twinny.conversationHistory`、`twinny.openPanelChat`、`twinny.exportConversation`、`twinny.newConversation`、`twinny.settings`、`twinny.generateCommitMessage`、`twinny.terminalCommand`、`twinny.fixTerminalError`、`twinny.shareOllama`、`twinny.openTeamPlugins`、`twinny.enable`、`twinny.disable`、`twinny.showLogs`、`twinny.templates`、`twinny.statusBarMenu`、`twinny.setUpTeam`、`twinny.showShortcuts`、`twinny.forgetAlwaysRunCommands`。

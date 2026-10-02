@@ -5,6 +5,13 @@ description: The features added to twinny in each release, with links to their p
 
 The full list of changes, fixes included, is in [CHANGELOG.md](https://github.com/twinnydotdev/twinny/blob/main/CHANGELOG.md) in the repository and on the extension's Marketplace page. This page is the short version: what you can do now that you could not before.
 
+## 4.3.5 · 2 October 2026
+
+- **Edit twinny templates runs.** It was in the command palette but never registered; it now opens the [templates](/twinny-docs/features/templates/) folder.
+- **Chilean Spanish is used when chosen** (`twinny.locale` set to `es-CL`); before, the sidebar fell back to the general Spanish translations.
+- **`twinny.numPredictChat` is gone.** Nothing had read it since 3.21; chat sets no length limit of its own, so the provider's default applies.
+- `twinny.temperature`'s description says it covers completions only, the inline edit's Stop button shows `⌃⇧/` on macOS, and the gateway preset names `twinny-server`.
+
 ## 4.3.2 to 4.3.4 · 2 October 2026
 
 - **[Agent mode](/twinny-docs/features/agent-mode/)'s steps show where they happened in the reply**: what the model said, the tool it used, what it said next. A command waiting for you is at the bottom, where you are already looking. Conversations saved earlier show their steps at the top, as before.

@@ -55,7 +55,7 @@ Errors surface as notifications and in the chat. Each one names the provider and
 
 **Nothing answers.** No chat provider is set, or the active one is failing. The empty chat says which model it will answer with.
 
-**Answers are cut short.** Raise `twinny.numPredictChat`.
+**Answers are cut short.** Chat sends no length limit of its own, so the provider's default applies (for Anthropic, a default set by the client library). Raise the server's output limit or context length (for Ollama, see [Context size](/twinny-docs/providers/ollama/#context-size)).
 
 **The edit came back as prose, or with fences.** Small models sometimes explain instead of editing. Try a more direct instruction, or a larger model. The parser already strips fences and thinking blocks.
 
