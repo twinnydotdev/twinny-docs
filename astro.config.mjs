@@ -93,6 +93,7 @@ export default defineConfig({
 						page('Code completion', '代码补全', '/features/code-completion'),
 						page('Inline edit', '内联编辑', '/features/inline-edit'),
 						page('Chat', '对话', '/features/chat'),
+						page('Agent mode', '智能体模式', '/features/agent-mode'),
 						page('Context and mentions', '上下文与提及', '/features/context'),
 						page('Workspace index', '工作区索引', '/features/workspace-index'),
 						page('Code review', '代码审查', '/features/code-review'),

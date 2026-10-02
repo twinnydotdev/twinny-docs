@@ -65,7 +65,7 @@ In VS Code's global state for the installation. They are not synced by Settings 
 
 ### Can twinny read my whole repository?
 
-Chat reads what you attach, and `@workspace` searches an index you build. Nothing is read or sent without one of those. See [Context and mentions](/twinny-docs/features/context/).
+Chat reads what you attach, and `@workspace` searches an index you build. Nothing is read or sent without one of those, unless you turn on [agent mode](/twinny-docs/features/agent-mode/): then the model may read any file in the workspace that is not ignored by a `.gitignore` or `twinny.embeddingIgnoredGlobs`, and what it reads goes to the chat provider. See [Context and mentions](/twinny-docs/features/context/).
 
 ### What happened to Symmetry?
 

@@ -37,6 +37,8 @@ This is a team decision made on the team's gateway, in the same way a company's 
 
 The **Recordings** page lists records newest first, filtered by feature, developer, period or a text search. Open one to read the whole conversation as turns, or an autocomplete as before, completion, after.
 
+[Agent mode](/twinny-docs/features/agent-mode/) sends the conversation again for every tool step. The list folds those steps, and the later turns of the same chat, into one row with a step count, and its preview is the question the developer asked. Opening the row shows the whole conversation, and the caret lists each step. `↑` and `↓` move between rows. Each step is still stored as its own record, so the training export has one example per step.
+
 ## Exporting for training
 
 The **export training data** button, or on the gateway machine:

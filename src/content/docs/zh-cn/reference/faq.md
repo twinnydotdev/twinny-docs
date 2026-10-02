@@ -65,7 +65,7 @@ VSCodium 及其他 Open VSX 版本：可以，从 Open VSX 安装。支持标准
 
 ### twinny 能读我的整个仓库吗？
 
-对话读取你附加的内容，`@workspace` 搜索你建立的索引。没有这两者，不会读取或发送任何内容。见[上下文与提及](/twinny-docs/zh-cn/features/context/)。
+对话读取你附加的内容，`@workspace` 搜索你建立的索引。没有这两者，不会读取或发送任何内容，除非你开启[智能体模式](/twinny-docs/zh-cn/features/agent-mode/)：此时模型可以读取工作区中未被 `.gitignore` 或 `twinny.embeddingIgnoredGlobs` 忽略的任何文件，它读到的内容会发送给对话提供者。见[上下文与提及](/twinny-docs/zh-cn/features/context/)。
 
 ### Symmetry 怎么了？
 
