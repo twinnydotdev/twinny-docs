@@ -39,6 +39,7 @@ Open with **Open twinny settings** (the gear icon in the sidebar) or search for 
 
 | Setting | Default | Description |
 | --- | --- | --- |
+| `twinny.chatSuggestions` | `true` | Grey text ahead of the cursor in the chat composer: `Tab` accepts it, `Ctrl+→` a word of it, `Esc` puts it away. Finishes words from your earlier prompts; once a conversation has an exchange, half a second's pause after a word asks the chat model for the rest, given the last three exchanges. Never while a reply is coming |
 | `twinny.chatTools` | `false` | Where the [agent mode](/twinny-docs/features/agent-mode/) switch starts, until you first switch it in the chat. Machine setting: a workspace cannot turn it on |
 | `twinny.chatToolsEdits` | `apply` | Agent mode edits: `apply` writes them straight away (`Ctrl+Z` undoes), though deleting a file git has no copy of still asks; `review` opens each as a diff and the model waits |
 | `twinny.chatToolsCommands` | `ask` | Agent mode commands: `ask` shows Run, Always run and Skip; `allow` runs them; `off` lets the model run none. Sets where the auto-run switch starts |

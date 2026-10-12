@@ -30,6 +30,8 @@ These work in the chat's composer, in the sidebar and in the panel. They are the
 | `↑` `↓` | Earlier prompts, from an empty composer |
 | `PgUp` `PgDn` | Scroll the transcript |
 | `Ctrl+L` | New conversation |
+| `Tab` | Accept the grey suggestion after the cursor |
+| `Ctrl+→` | Accept one word of the suggestion |
 | `Shift+Tab` | [Agent mode](/twinny-docs/features/agent-mode/) on or off |
 | `@` | Add a file, symbol, problems, git or terminal output as [context](/twinny-docs/features/context/) |
 | `?` | Show or hide the list of keys, on an empty composer |
@@ -42,7 +44,7 @@ When agent mode has a command or change waiting for you and the composer is empt
 | `Shift+Enter` | Always run that command |
 | `Esc` | Skip it |
 
-`Esc` does the first of these that applies: close the list of keys, skip what is waiting, stop the reply, and, pressed twice, clear the draft. Typing while the focus is on the transcript goes to the composer.
+`Esc` does the first of these that applies: put a suggestion away, close the list of keys, skip what is waiting, stop the reply, and, pressed twice, clear the draft. Typing while the focus is on the transcript goes to the composer.
 
 The chat's keys are not VS Code keybindings and cannot be changed in *Keyboard Shortcuts*.
 

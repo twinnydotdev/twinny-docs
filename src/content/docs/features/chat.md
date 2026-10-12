@@ -16,6 +16,7 @@ The chat's keys work as in a terminal. Press `?` on an empty composer for the li
 - `Shift+Enter` starts a new line.
 - `↑` and `↓` from an empty composer step through what you have sent, across conversations. Typing into a recalled prompt makes it your draft.
 - `Esc` twice clears the draft, and `↑` brings a cleared draft back. `Ctrl+C` stops a reply, or clears the draft when nothing is streaming; with text selected it still copies.
+- Grey text after the cursor is a suggestion: `Tab` accepts it, `Ctrl+→` accepts one word, `Esc` puts it away. From the first key it finishes the word you are typing, or guesses the next one, from your own earlier prompts, as a phone keyboard does. Once the conversation has a reply, a short pause after a word asks the chat model for the rest of the message given the last three exchanges; nothing is asked while a reply is coming. `twinny.chatSuggestions` turns it off.
 - `Ctrl+L` starts a new conversation. `PgUp` and `PgDn` scroll the transcript without leaving the composer, and typing with the focus on the transcript goes to the composer.
 
 A message sent while a reply is still running is **queued**, not lost: it waits under the transcript and goes out when the reply ends, one message per reply. Hover a queued message to drop it. Stopping the reply puts queued messages back in the composer instead of sending them.

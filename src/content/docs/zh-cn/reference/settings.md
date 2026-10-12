@@ -39,6 +39,7 @@ description: VS Code 中 twinny 的所有设置、默认值及作用。
 
 | 设置 | 默认 | 说明 |
 | --- | --- | --- |
+| `twinny.chatSuggestions` | `true` | 对话输入框中光标后的灰色文字：`Tab` 接受，`Ctrl+→` 接受一个词，`Esc` 收起。根据你之前的提示补全单词；会话有过一轮交流后，在一个词后停顿半秒会请求对话模型补全余下的消息，依据最近三轮交流。回答进行中不会请求 |
 | `twinny.chatTools` | `false` | 在你第一次在对话中切换前，[智能体模式](/twinny-docs/zh-cn/features/agent-mode/)开关的初始状态。机器级设置：工作区无法开启 |
 | `twinny.chatToolsEdits` | `apply` | 智能体模式的编辑：`apply` 直接写入（`Ctrl+Z` 撤销），但删除 git 中没有副本的文件仍会先询问；`review` 把每次编辑作为 diff 打开，模型等待 |
 | `twinny.chatToolsCommands` | `ask` | 智能体模式的命令：`ask` 显示 Run、Always run 和 Skip；`allow` 直接运行；`off` 不允许运行命令。也决定自动运行开关的初始状态 |

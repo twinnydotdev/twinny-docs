@@ -5,6 +5,17 @@ description: The features added to twinny in each release, with links to their p
 
 The full list of changes, fixes included, is in [CHANGELOG.md](https://github.com/twinnydotdev/twinny/blob/main/CHANGELOG.md) in the repository and on the extension's Marketplace page. This page is the short version: what you can do now that you could not before.
 
+## 4.3.7 · 7 October 2026
+
+- **[Plugin](/twinny-docs/teams/plugins/#open-pull-requests-in-one-place) tokens are saved once, for any number of repositories.** A GitHub, GitLab, Gitea or Bitbucket plugin page has a **Tokens** panel: save a token once, then each repository reads with one of the saved tokens, picked in its **reads with** column. One classic token for everything, a fine-grained token per organisation, or a token per repository all work, and saving a token can list the repositories it reads so you can tick several at once.
+- **One replace for an expired token.** **Replace** checks the new value with the host, then every repository on that token syncs with it. When the host refuses a token, the token and each repository on it say so.
+- Tokens stored per repository in `repos.json` are folded into saved tokens on first start, with repository ids kept. An older `twinny-server` cannot read them: back up the file before rolling back.
+
+## 4.3.6 · 6 October 2026
+
+- **Grey suggestions in the [chat composer](/twinny-docs/features/chat/#the-composer).** As in the editor, a suggestion shows in grey after the cursor: `Tab` accepts it, `Ctrl+→` accepts one word, `Esc` puts it away. It finishes the word you are typing, or guesses the next one, from your own earlier prompts; once the conversation has a reply, a pause after a word asks the chat model for the rest of the message given the last three exchanges. Nothing is asked of the model while a reply is coming. `twinny.chatSuggestions` turns it off.
+- **Gateway: sign-in requests are counted per developer behind a proxy.** `POST /twinny/v1/signin` allows five waiting requests per client address; behind nginx or Caddy on the same machine every developer arrived from the proxy's loopback address and shared five. It now takes the forwarded address, as the audit log does: `X-Forwarded-For` is believed only from a loopback peer.
+
 ## 4.3.5 · 2 October 2026
 
 - **Edit twinny templates runs.** It was in the command palette but never registered; it now opens the [templates](/twinny-docs/features/templates/) folder.

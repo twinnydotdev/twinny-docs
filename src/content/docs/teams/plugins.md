@@ -22,6 +22,8 @@ To watch a repository, give it as `owner/name` and a token that can read it:
 
 GitHub Enterprise Server and self-managed GitLab work by setting the host URL on the plugin's page. Tokens are checked against the host before they are kept, live in a file only the server's user can read, and are never shown again.
 
+A token is saved once, for any number of repositories. The plugin's **Tokens** panel holds them, and each repository picks one in its **reads with** column, so one classic token for everything, a fine-grained token per organisation and a token per repository all work. Saving a token can list the repositories it reads, to tick several at once. When a token expires, **Replace** checks the new value with the host and every repository on it syncs with it; a token the host refuses is marked, with each repository on it. Tokens pasted per repository before 4.3.7 are folded into saved tokens on first start, with repository ids kept; an older `twinny-server` cannot read them, so keep a backup of `repos.json` before rolling back.
+
 ## Reviews by your own models
 
 A pull's page has **review now**. The gateway sends the description and diffs to one of its chat aliases and keeps the answer on the server: a summary, issues found, suggestions, and a verdict. The review shows with the model, the time and who asked; a pull that has moved on marks it as being for an earlier commit.
