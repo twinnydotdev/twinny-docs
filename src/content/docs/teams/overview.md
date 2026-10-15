@@ -34,7 +34,7 @@ twinny is free and open source for individuals, and stays that way. Teams get on
 | Gateways covered | one | one per licence | any number, one organisation licence |
 | Support | community (GitHub discussions) | email | priority, with a named contact |
 | Runs where | your machine | your machine | your machines |
-| Cost | nothing, forever | $6 per seat beyond the free 5, per month, billed yearly | $10 per seat per month, billed yearly |
+| Cost | nothing, forever | $15 per seat beyond the free 5, per month, billed yearly | $25 per seat per month, billed yearly |
 
 A **seat** is an active key. The free plan is not a trial: a team of five runs the gateway with no licence, indefinitely, with everything the gateway does: the admin page, usage per developer, keys, invite links, team GPU pooling, live provider configuration, the audit log and metrics. Beyond five, a licence token from twinny raises the seat count and switches on policy, recording and plugins. The token is installed once and checked locally; the gateway never phones home. Enterprise adds one licence for the whole organisation, priority support from a named contact, and invoice or purchase-order billing. See [Licensing and seats](/twinny-docs/teams/licensing/).
 
