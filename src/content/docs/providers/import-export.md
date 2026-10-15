@@ -54,7 +54,7 @@ Ids are kept, so importing the same file again **updates** the matching provider
 | `id` | | Any unique string. Generated if missing |
 | `label` | ✓ | Display name |
 | `type` | ✓ | `chat`, `fim` or `embedding` |
-| `provider` | ✓ | `ollama`, `lmstudio`, `llamacpp`, `oobabooga`, `litellm`, `openwebui`, `openai-compatible`, `qvac`, `openai`, `anthropic`, `mistral`, `groq`, `openrouter`, `cohere`, `perplexity`, `gemini`, `deepseek`, `twinny-remote` (a Twinny gateway) or `twinny-p2p` |
+| `provider` | ✓ | `ollama`, `lmstudio`, `llamacpp`, `oobabooga`, `litellm`, `openwebui`, `openai-compatible`, `qvac`, `openai`, `openai-chatgpt-plan` (ChatGPT Plan), `anthropic`, `mistral`, `groq`, `openrouter`, `cohere`, `perplexity`, `gemini`, `deepseek`, `twinny-remote` (a Twinny gateway) or `twinny-p2p` |
 | `modelName` | ✓ | |
 | `apiHostname` | for endpoint providers | Hostname only |
 | `apiPort` | | Number |
@@ -63,6 +63,7 @@ Ids are kept, so importing the same file again **updates** the matching provider
 | `apiKey` | for hosted APIs | |
 | `fimTemplate` | fim only | `automatic`, `codellama`, `deepseek`, `codeqwen`, `qwen3-coder`, `codestral`, `codegemma`, `stable-code`, `starcoder`, `llama` or `custom-template` |
 | `repositoryLevel` | fim only | `true` to send neighbouring files in the repository-level prompt format |
+| `reasoningEffort` | openai-chatgpt-plan only | `none`, `minimal`, `low`, `medium`, `high`, `xhigh` or `max`; left out for the model's default. The sign-in is not exported, and the address and key fields are emptied |
 | `deviceId` | twinny-p2p only | The paired device's public key. A device provider only works on a machine that has paired with that device |
 
 ## Where providers are stored

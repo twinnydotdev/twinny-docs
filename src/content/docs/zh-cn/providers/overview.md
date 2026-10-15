@@ -46,6 +46,7 @@ Ollama、LM Studio、llama.cpp 和 OpenAI 兼容服务器有自动补全和嵌�
 | 提供者 | 对话 | 自动补全 | 嵌入 |
 | --- | --- | --- | --- |
 | OpenAI | ✓ | | ✓ |
+| ChatGPT Plan | ✓ | ✓ | |
 | Anthropic | ✓ | | |
 | Mistral | ✓ | ✓ Codestral | |
 | DeepSeek | ✓ | ✓ | |
@@ -99,7 +100,7 @@ Ollama、LM Studio、llama.cpp 和 OpenAI 兼容服务器有自动补全和嵌�
 twinny 有一个推理层，包含三类适配器：
 
 - **HTTP**：向你指定的地址发出普通的流式请求。用于所有本地服务器、DeepSeek、已配对设备，以及托管 API 的补全和嵌入端点。对话以 OpenAI 格式发往 `<路径>/chat/completions`；补全使用服务器的原生路由（Ollama 的 `/api/generate`，llama.cpp 的 `/completion`，其他为 `/v1/completions`），并按模型渲染 FIM 提示。
-- **托管**：用供应商自己的 SDK 与 Anthropic、OpenAI、Mistral、Groq、OpenRouter、Cohere、Perplexity 和 Gemini 对话。端点固定。带有[智能体模式](/twinny-docs/zh-cn/features/agent-mode/)工具的 OpenAI 对话改走其 Responses API（`/v1/responses`）。
+- **托管**：用供应商自己的 SDK 与 Anthropic、OpenAI、Mistral、Groq、OpenRouter、Cohere、Perplexity 和 Gemini 对话。端点固定。带有[智能体模式](/twinny-docs/zh-cn/features/agent-mode/)工具的 OpenAI 对话改走其 Responses API（`/v1/responses`）。**ChatGPT Plan** 的对话和补全也发往该 Responses API，用你的 ChatGPT 账户登录而不是密钥。
 - **网关**：通过 Twinny 协议（`/twinny/v1`）连接 `twinny-server`，供 Twinny gateway 提供者使用。
 
 设备提供者是一个 HTTP 提供者，其地址是扩展内的回环网关；该网关通过 P2P 连接转发到已配对机器的 Ollama。

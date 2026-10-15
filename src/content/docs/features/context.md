@@ -7,7 +7,7 @@ A model can only answer about what it is shown. twinny makes attaching the right
 
 ## The `@` menu
 
-Type `@` in the message box. A category list appears; pick one, then an item, or keep typing to filter. Attached items show as chips above the message box and can be removed before sending.
+Type `@` in the message box. A category list appears; pick one, then an item. Keep typing after the `@` (`@useSugg`) and every match is listed at once: files, symbols and `@workspace`, `@problems`, `@git` and `@terminal` together, each with its category's icon. Attached items show as chips above the message box and can be removed before sending.
 
 | Mention | What is sent | Limits |
 | --- | --- | --- |
@@ -18,7 +18,7 @@ Type `@` in the message box. A category list appears; pick one, then an item, or
 | `@git` | The current branch, `git status --short`, and the working tree diff | Diff cut at 16,000 characters on a file boundary |
 | `@terminal` | The last command run in the active terminal and what it printed, through VS Code's shell integration | Last 200 lines or 12,000 characters |
 
-The words `@workspace`, `@problems`, `@git` and `@terminal` are removed from the question before it is sent; the model sees the attached block instead.
+The words `@workspace`, `@problems`, `@git` and `@terminal` are removed from the question before it is sent; the model sees the attached block instead. Clicking a symbol mention in a sent message opens its file at the symbol's line.
 
 ## Other ways to attach
 

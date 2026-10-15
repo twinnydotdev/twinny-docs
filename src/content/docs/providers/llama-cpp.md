@@ -18,7 +18,7 @@ llama-server -m qwen2.5-coder-7b-instruct-q4_k_m.gguf \
 - Add `--embedding` if this server should also answer embedding requests.
 - `-hf user/repo` can download a model straight from Hugging Face in recent builds.
 
-One `llama-server` serves one model. Run a second one on another port for a different completion model:
+Started with `-m`, one `llama-server` serves one model. Run a second one on another port for a different completion model, or use [router mode](#router-mode):
 
 ```sh
 llama-server -m qwen2.5-coder-1.5b-q8_0.gguf --port 8081 -c 4096 -ngl 99
@@ -34,7 +34,11 @@ llama-server -m qwen2.5-coder-1.5b-q8_0.gguf --port 8081 -c 4096 -ngl 99
 | Autocomplete | `/completion` | llama.cpp's native route, so the FIM prompt is rendered by twinny |
 | Embeddings | `/embedding` | Server must run with `--embedding` |
 
-The model name is informational for llama.cpp, since the server has exactly one model loaded; twinny still uses it to pick the FIM template when set to *Automatic*, so name it after the family (`qwen2.5-coder-1.5b`) or choose the template by hand.
+With a single-model server the model name is informational; twinny still uses it to pick the FIM template when set to *Automatic*, so name it after the family (`qwen2.5-coder-1.5b`) or choose the template by hand.
+
+### Router mode
+
+A `llama-server` in router mode serves several models and picks one by the model named in each request. twinny names the provider's model in completion requests (and the warm-up before them), and when reading the chat's context size, which does not load the model. Set the model name to one the router knows. A single-model server ignores the name, and a provider with no model name sends none.
 
 Change the port on the provider if you used something other than 8080. Because the generic *OpenAI-compatible server* preset also defaults to 8080, first-run discovery credits whichever answers to llama.cpp first.
 

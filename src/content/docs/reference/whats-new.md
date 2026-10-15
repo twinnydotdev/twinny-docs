@@ -5,6 +5,36 @@ description: The features added to twinny in each release, with links to their p
 
 The full list of changes, fixes included, is in [CHANGELOG.md](https://github.com/twinnydotdev/twinny/blob/main/CHANGELOG.md) in the repository and on the extension's Marketplace page. This page is the short version: what you can do now that you could not before.
 
+## 4.3.13 · 15 October 2026
+
+- **Gateway: Buy seats goes to [twinny.dev's pricing](https://twinny.dev/#pricing)** instead of a payment link built into `twinny-server`, so a change of price or checkout needs no new release. Team seats are $15 a seat a month, billed yearly; see [Licensing and seats](/twinny-docs/teams/licensing/).
+
+## 4.3.12 · 15 October 2026
+
+- **[ChatGPT Plan](/twinny-docs/providers/hosted-apis/#chatgpt-plan) provider.** Chat and completions on the models your ChatGPT account can use, without an API key: pick **ChatGPT Plan** in the presets and **Sign in**. A **Reasoning effort** setting trades answer quality for speed. Embeddings are not offered, and `twinny-server` refuses the provider kind, since it needs the editor's sign-in.
+- **Log lines go through the secret shield too**, in the extension's output channel and `twinny-server`'s stderr, so a credential put back into a reply is not written to the log.
+
+## 4.3.11 · 15 October 2026
+
+- **Completions work with `llama-server` in [router mode](/twinny-docs/providers/llama-cpp/#router-mode).** They failed with `400 model name is missing from the request`; completion requests now name the provider's model, and the chat's context size is read from a router-mode server too.
+
+## 4.3.10 · 15 October 2026
+
+- **[`@` mentions](/twinny-docs/features/context/#the--menu) list matches as you type.** `@useSugg` lists files, symbols and `@workspace`, `@problems`, `@git` and `@terminal` together. A bare `@` still opens the category menu.
+- **`@symbol` mentions attach the symbol.** Before, the symbol's code never reached the model. Clicking one in a sent message opens the file at its line.
+
+## 4.3.8 and 4.3.9 · 14 October 2026
+
+- **[Undo what an agent reply changed](/twinny-docs/features/agent-mode/#undoing-a-reply).** A reply that changed files ends with the list of them and their line counts. Click a file to compare it with what it was; **undo** puts one back, **undo all** every file. Files a command changed inside a git repository are covered too.
+- **[Agent settings](/twinny-docs/features/agent-mode/#agent-settings) in the chat.** A gear beside the agent switch sets changes, commands, where they run and steps per reply (new setting `twinny.chatToolsMaxSteps`, 12 by default), and forgets what was set to always run.
+- **[MCP servers](/twinny-docs/features/agent-mode/#mcp-servers) in agent mode.** Name them in `twinny.chatToolsMcpServers` and their tools join agent mode. Local servers over standard input and output only. Each call asks, with **Always run** for that tool.
+- **The agent sees the errors it causes.** After an edit, the model is told of new errors the editor reports in that file, and the step says `· 1 new error`.
+- **[`AGENTS.md`](/twinny-docs/features/agent-mode/#project-instructions) is followed**, or `CLAUDE.md` or `.github/copilot-instructions.md` without one, and a folder's own `AGENTS.md` when the agent works there. Changes to them are always shown for review.
+- **[Team rules for agent mode](/twinny-docs/teams/policy/#agent-mode).** `policy.agent`, or **Policy → Agent mode** on the admin page: turn agent mode off, make commands ask or take them away, make every change wait for review, block paths, turn MCP servers off. Extensions too old to follow the rules are refused agent requests while a team sets any.
+- **A finished command can be copied or put in your terminal**, where nothing runs until you press `Enter`.
+- **The `git` tool can no longer read files outside the workspace, or files `.gitignore` hides.** A command that leaves something running in the background now finishes, and ends what it left running.
+- 4.3.9 changes only the version number.
+
 ## 4.3.7 · 7 October 2026
 
 - **[Plugin](/twinny-docs/teams/plugins/#open-pull-requests-in-one-place) tokens are saved once, for any number of repositories.** A GitHub, GitLab, Gitea or Bitbucket plugin page has a **Tokens** panel: save a token once, then each repository reads with one of the saved tokens, picked in its **reads with** column. One classic token for everything, a fine-grained token per organisation, or a token per repository all work, and saving a token can list the repositories it reads so you can tick several at once.

@@ -54,7 +54,7 @@ id 会保留，因此再次导入同一文件会**更新**匹配的提供者而�
 | `id` | | 任意唯一字符串。缺失时生成 |
 | `label` | ✓ | 显示名称 |
 | `type` | ✓ | `chat`、`fim` 或 `embedding` |
-| `provider` | ✓ | `ollama`、`lmstudio`、`llamacpp`、`oobabooga`、`litellm`、`openwebui`、`openai-compatible`、`qvac`、`openai`、`anthropic`、`mistral`、`groq`、`openrouter`、`cohere`、`perplexity`、`gemini`、`deepseek`、`twinny-remote`（Twinny 网关）或 `twinny-p2p` |
+| `provider` | ✓ | `ollama`、`lmstudio`、`llamacpp`、`oobabooga`、`litellm`、`openwebui`、`openai-compatible`、`qvac`、`openai`、`openai-chatgpt-plan`（ChatGPT Plan）、`anthropic`、`mistral`、`groq`、`openrouter`、`cohere`、`perplexity`、`gemini`、`deepseek`、`twinny-remote`（Twinny 网关）或 `twinny-p2p` |
 | `modelName` | ✓ | |
 | `apiHostname` | 端点类提供者必填 | 仅主机名 |
 | `apiPort` | | 数字 |
@@ -63,6 +63,7 @@ id 会保留，因此再次导入同一文件会**更新**匹配的提供者而�
 | `apiKey` | 托管 API 必填 | |
 | `fimTemplate` | 仅 fim | `automatic`、`codellama`、`deepseek`、`codeqwen`、`qwen3-coder`、`codestral`、`codegemma`、`stable-code`、`starcoder`、`llama` 或 `custom-template` |
 | `repositoryLevel` | 仅 fim | 设为 `true` 时以仓库级提示格式发送相邻文件 |
+| `reasoningEffort` | 仅 openai-chatgpt-plan | `none`、`minimal`、`low`、`medium`、`high`、`xhigh` 或 `max`；省略则用模型默认值。登录信息不会被导出，地址和密钥字段会被清空 |
 | `deviceId` | 仅 twinny-p2p | 已配对设备的公钥。设备提供者只在与该设备配对过的机器上可用 |
 
 ## 提供者保存在哪里

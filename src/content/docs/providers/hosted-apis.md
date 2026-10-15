@@ -1,6 +1,6 @@
 ---
 title: Hosted APIs
-description: Using OpenAI, Anthropic, Mistral, DeepSeek, OpenRouter, Gemini, Groq, Cohere and Perplexity with twinny.
+description: Using OpenAI, a ChatGPT plan, Anthropic, Mistral, DeepSeek, OpenRouter, Gemini, Groq, Cohere and Perplexity with twinny.
 ---
 
 Hosted APIs give you large models without hardware. twinny treats them as providers like any other; the difference is that your code is sent to the vendor, and you pay per token. Keys are stored with the provider in VS Code's storage and are redacted from twinny's logs.
@@ -12,6 +12,7 @@ Chat with a hosted API goes through the vendor's SDK to its fixed endpoint, so t
 | Provider | Chat | Autocomplete (FIM) | Embeddings | Get a key |
 | --- | --- | --- | --- | --- |
 | OpenAI | ✓ | | ✓ `/v1/embeddings` | [platform.openai.com](https://platform.openai.com/) |
+| ChatGPT Plan | ✓ | ✓ | | No key: [sign in with ChatGPT](#chatgpt-plan) |
 | Anthropic | ✓ | | | [console.anthropic.com](https://console.anthropic.com/) |
 | Mistral | ✓ | ✓ Codestral `/v1/fim/completions` | | [console.mistral.ai](https://console.mistral.ai/) |
 | DeepSeek | ✓ | ✓ `/beta/completions` | | [platform.deepseek.com](https://platform.deepseek.com/) |
@@ -42,6 +43,18 @@ In [agent mode](/twinny-docs/features/agent-mode/), tools go through the vendor'
 | Perplexity | `llama-3.1-sonar-small-128k-online` | Answers can include web search results |
 
 Model names change as vendors release new ones; use whatever the vendor's documentation lists. twinny does not validate hosted model names until a request is made, and a wrong name comes back as a *model not found* error.
+
+## ChatGPT Plan
+
+The **ChatGPT Plan** preset gives completions and chat on the models your ChatGPT account can use, without an API key.
+
+1. **Add provider** → *Hosted APIs* → **ChatGPT Plan**, for chat or autocomplete.
+2. **Sign in** opens ChatGPT's sign-in in the browser. The model list then fills from your account.
+3. Pick a model, and optionally a **Reasoning effort**: model default, or `none`, `minimal`, `low`, `medium`, `high`, `xhigh` or `max`. Lower is faster; use a low one for completions.
+
+The sign-in is kept in VS Code's secret storage and survives restarts. **Sign out** ends it and stops any request in flight. Requests go to OpenAI's Responses API (`api.openai.com/v1/responses`) with `store: false`. Embeddings are not offered. Expect hosted latency for completions, about 2 to 4 seconds, not a local model's.
+
+A [team gateway](/twinny-docs/teams/gateway/) cannot serve this provider kind: it needs the editor's sign-in, so `twinny-server` refuses it in its configuration.
 
 ## Codestral for completion
 
