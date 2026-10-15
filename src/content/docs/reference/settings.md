@@ -44,6 +44,8 @@ Open with **Open twinny settings** (the gear icon in the sidebar) or search for 
 | `twinny.chatToolsEdits` | `apply` | Agent mode edits: `apply` writes them straight away (`Ctrl+Z` undoes), though deleting a file git has no copy of still asks; `review` opens each as a diff and the model waits |
 | `twinny.chatToolsCommands` | `ask` | Agent mode commands: `ask` shows Run, Always run and Skip; `allow` runs them; `off` lets the model run none. Sets where the auto-run switch starts |
 | `twinny.chatToolsCommandsRunIn` | `background` | `background` runs each command in a process of its own with its output in the chat, stopped after two minutes; `terminal` runs them in the twinny tools terminal, or in the background when VS Code's shell integration is not available |
+| `twinny.chatToolsMaxSteps` | `12` | Tool steps one agent reply may take before the model is asked to answer with what it has, 4 to 40. Each step is another request to the model |
+| `twinny.chatToolsMcpServers` | `{}` | [MCP servers](/twinny-docs/features/agent-mode/#mcp-servers) whose tools agent mode can use, by name, each with a `command` and optional `args`, `env` and `cwd`. Run on this machine over standard input and output; each call asks unless you chose Always run for that tool |
 | `twinny.reviewMaxDiffChars` | `16000` | Characters of diff per code-review request. Larger reviews are split into parts. At least 2,000 |
 
 ## Workspace index
@@ -90,7 +92,7 @@ These are stored by twinny rather than in `settings.json`:
 
 ## Per-workspace overrides
 
-`twinny.*` settings can be set at the workspace level in `.vscode/settings.json`, except the four agent mode settings (`twinny.chatTools`, `twinny.chatToolsEdits`, `twinny.chatToolsCommands`, `twinny.chatToolsCommandsRunIn`), which are machine settings and only take effect from user settings. For example, to disable suggestions in a documentation repository:
+`twinny.*` settings can be set at the workspace level in `.vscode/settings.json`, except the six agent mode settings (`twinny.chatTools`, `twinny.chatToolsEdits`, `twinny.chatToolsCommands`, `twinny.chatToolsCommandsRunIn`, `twinny.chatToolsMaxSteps`, `twinny.chatToolsMcpServers`), which are machine settings and only take effect from user settings. For example, to disable suggestions in a documentation repository:
 
 ```json
 {

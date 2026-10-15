@@ -44,6 +44,8 @@ description: VS Code 中 twinny 的所有设置、默认值及作用。
 | `twinny.chatToolsEdits` | `apply` | 智能体模式的编辑：`apply` 直接写入（`Ctrl+Z` 撤销），但删除 git 中没有副本的文件仍会先询问；`review` 把每次编辑作为 diff 打开，模型等待 |
 | `twinny.chatToolsCommands` | `ask` | 智能体模式的命令：`ask` 显示 Run、Always run 和 Skip；`allow` 直接运行；`off` 不允许运行命令。也决定自动运行开关的初始状态 |
 | `twinny.chatToolsCommandsRunIn` | `background` | `background` 在独立进程中运行每条命令，输出显示在对话中，两分钟后停止；`terminal` 在 twinny tools 终端中运行，VS Code 的 shell 集成不可用时改为后台运行 |
+| `twinny.chatToolsMaxSteps` | `12` | 一次智能体回答最多可用的工具步数，之后模型会被要求用已有信息作答，范围 4 到 40。每一步都是对模型的又一次请求 |
+| `twinny.chatToolsMcpServers` | `{}` | 智能体模式可使用其工具的 [MCP 服务器](/twinny-docs/zh-cn/features/agent-mode/#mcp-服务器)，按名称配置，每个包含 `command`，以及可选的 `args`、`env` 和 `cwd`。在本机通过标准输入输出运行；每次调用都会询问，除非你对该工具选了 Always run |
 | `twinny.reviewMaxDiffChars` | `16000` | 每次代码审查请求的 diff 字符数。更大的审查会被分成多部分。最小 2,000 |
 
 ## 工作区索引
@@ -90,7 +92,7 @@ description: VS Code 中 twinny 的所有设置、默认值及作用。
 
 ## 按工作区覆盖
 
-`twinny.*` 设置都可以在 `.vscode/settings.json` 中按工作区设置，但智能体模式的四个设置（`twinny.chatTools`、`twinny.chatToolsEdits`、`twinny.chatToolsCommands`、`twinny.chatToolsCommandsRunIn`）除外：它们是机器级设置，只在用户设置中生效。例如在文档仓库中禁用建议：
+`twinny.*` 设置都可以在 `.vscode/settings.json` 中按工作区设置，但智能体模式的六个设置（`twinny.chatTools`、`twinny.chatToolsEdits`、`twinny.chatToolsCommands`、`twinny.chatToolsCommandsRunIn`、`twinny.chatToolsMaxSteps`、`twinny.chatToolsMcpServers`）除外：它们是机器级设置，只在用户设置中生效。例如在文档仓库中禁用建议：
 
 ```json
 {

@@ -46,6 +46,7 @@ Autocomplete and embeddings presets exist for Ollama, LM Studio, llama.cpp and t
 | Provider | Chat | Autocomplete | Embeddings |
 | --- | --- | --- | --- |
 | OpenAI | ✓ | | ✓ |
+| ChatGPT Plan | ✓ | ✓ | |
 | Anthropic | ✓ | | |
 | Mistral | ✓ | ✓ Codestral | |
 | DeepSeek | ✓ | ✓ | |
@@ -99,7 +100,7 @@ By default providers are kept in VS Code's global state. Set `twinny.providerSto
 twinny has one inference layer with three kinds of adapter:
 
 - **HTTP**: a plain streaming request to the address you gave. Used for every local server, for DeepSeek, for paired devices, and for the completion and embedding endpoints of hosted APIs. Chat goes to `<path>/chat/completions` in the OpenAI format; completion uses the server's native route (`/api/generate` for Ollama, `/completion` for llama.cpp, `/v1/completions` elsewhere) with the FIM prompt rendered for the model.
-- **Hosted**: the vendor's own SDK for chat with Anthropic, OpenAI, Mistral, Groq, OpenRouter, Cohere, Perplexity and Gemini. These have fixed endpoints. OpenAI chat that carries [agent mode](/twinny-docs/features/agent-mode/) tools goes to its Responses API (`/v1/responses`) instead.
+- **Hosted**: the vendor's own SDK for chat with Anthropic, OpenAI, Mistral, Groq, OpenRouter, Cohere, Perplexity and Gemini. These have fixed endpoints. OpenAI chat that carries [agent mode](/twinny-docs/features/agent-mode/) tools goes to its Responses API (`/v1/responses`) instead. **ChatGPT Plan** sends chat and completions to the same Responses API, signed in with your ChatGPT account rather than a key.
 - **Gateway**: the Twinny protocol (`/twinny/v1`) to a `twinny-server`, for the Twinny gateway provider.
 
 A device provider is an HTTP provider whose address is a loopback gateway inside the extension; that gateway forwards to a paired machine's Ollama over the P2P link.

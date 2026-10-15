@@ -1,6 +1,6 @@
 ---
 title: 托管 API
-description: 在 twinny 中使用 OpenAI、Anthropic、Mistral、DeepSeek、OpenRouter、Gemini、Groq、Cohere 和 Perplexity。
+description: 在 twinny 中使用 OpenAI、ChatGPT 订阅、Anthropic、Mistral、DeepSeek、OpenRouter、Gemini、Groq、Cohere 和 Perplexity。
 ---
 
 托管 API 让你无需硬件就能使用大模型。twinny 把它们当作普通提供者；区别在于你的代码会发送给供应商，并按 token 付费。密钥随提供者保存在 VS Code 存储中，并会从 twinny 的日志中脱敏。
@@ -12,6 +12,7 @@ description: 在 twinny 中使用 OpenAI、Anthropic、Mistral、DeepSeek、Open
 | 提供者 | 对话 | 自动补全（FIM） | 嵌入 | 获取密钥 |
 | --- | --- | --- | --- | --- |
 | OpenAI | ✓ | | ✓ `/v1/embeddings` | [platform.openai.com](https://platform.openai.com/) |
+| ChatGPT Plan | ✓ | ✓ | | 无需密钥：[用 ChatGPT 登录](#chatgpt-plan) |
 | Anthropic | ✓ | | | [console.anthropic.com](https://console.anthropic.com/) |
 | Mistral | ✓ | ✓ Codestral `/v1/fim/completions` | | [console.mistral.ai](https://console.mistral.ai/) |
 | DeepSeek | ✓ | ✓ `/beta/completions` | | [platform.deepseek.com](https://platform.deepseek.com/) |
@@ -42,6 +43,18 @@ Anthropic、Groq、Cohere、Perplexity 和 Gemini 仅支持对话：它们没有
 | Perplexity | `llama-3.1-sonar-small-128k-online` | 回答可包含网页搜索结果 |
 
 供应商发布新模型时名称会变化；以供应商文档列出的为准。twinny 在发出请求前不会校验托管模型名称，名称错误会返回*模型未找到*错误。
+
+## ChatGPT Plan
+
+**ChatGPT Plan** 预设让你无需 API 密钥，就能在 ChatGPT 账户可用的模型上使用补全和对话。
+
+1. **添加提供者** → *托管 API* → **ChatGPT Plan**，用于对话或自动补全。
+2. **Sign in** 会在浏览器中打开 ChatGPT 登录。之后模型列表会从你的账户中填充。
+3. 选择模型，并可选择 **Reasoning effort**：模型默认，或 `none`、`minimal`、`low`、`medium`、`high`、`xhigh`、`max`。越低越快；补全请用较低的值。
+
+登录信息保存在 VS Code 的密钥存储中，重启后仍有效。**Sign out** 结束登录，并停止进行中的请求。请求发往 OpenAI 的 Responses API（`api.openai.com/v1/responses`），带 `store: false`。不提供嵌入。补全的延迟是托管服务的水平，约 2 到 4 秒，而不是本地模型的水平。
+
+[团队网关](/twinny-docs/teams/gateway/)不能提供这种提供者：它需要编辑器中的登录，因此 `twinny-server` 会在配置中拒绝它。
 
 ## 用 Codestral 做补全
 

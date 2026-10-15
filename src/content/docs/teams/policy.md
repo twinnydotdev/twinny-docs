@@ -14,6 +14,24 @@ Policy is a licence feature, apart from the [secret shield](#secret-shield), whi
 | **Team gateway only** (`teamOnly`) | The add-provider gallery shows only the team gateway. Adding or activating any other kind of provider is refused with a message that names the policy. |
 | **Keep defaults active** (`lockDefaults`) | Chat, autocomplete and embeddings stay on the team's models. Switching one of them to another provider is refused with a message that names the policy. |
 | **Team system prompt** (`systemPrompt`) | Put before every chat's system prompt. Shown on the consent card before connecting, so nobody is surprised by it. |
+| **Agent mode** (`agent`) | Limits what [agent mode](/twinny-docs/features/agent-mode/) may do in the developer's workspace. See [below](#agent-mode). |
+
+### Agent mode
+
+`policy.agent` only ever tightens a developer's own agent settings: a rule left out leaves theirs in force. On the admin page it is **Policy → Agent mode**.
+
+| Field | Effect |
+| --- | --- |
+| `off: true` | Agent mode is off. The chat's agent switch is shown off and cannot be turned on |
+| `commands: "ask"` | Every command waits for the developer's **Run**; auto-run and **Always run** do nothing. Every MCP tool call asks too |
+| `commands: "off"` | The agent cannot run commands, and uses no MCP servers. Reading git history is not a command and still works |
+| `edits: "review"` | Every change waits in the editor as a diff to accept, and the agent stops until it is answered |
+| `mcp: "off"` | Agent mode uses none of the [MCP servers](/twinny-docs/features/agent-mode/#mcp-servers) developers set up |
+| `blockedPaths` | Paths in `.gitignore` syntax, from each workspace's root, that the agent may not list, read, search, see in git or change. At most 200. A command the agent runs is not held to them; use `commands` for that |
+
+The developer's agent settings panel shows these rules as set by the team. An extension re-reads the policy before an agent reply when it is more than a minute old, so a change reaches developers at their next agent reply.
+
+The rules are enforced by the extension. An extension too old to know them would ignore them, so while a team sets any, the gateway refuses agent requests from it, with a message to update twinny or switch agent mode off. Its plain chat, completions and embeddings carry on. A newer extension connected to an older gateway gets no rules.
 
 ## Rules the gateway applies
 
@@ -40,7 +58,7 @@ Unlike the rules above, the secret shield needs no licence: it applies on every 
 
 ## Setting it
 
-On the admin page, **Policy**: tick the rules, choose the secret shield, write the system prompt, add routing rules by workspace pattern. Save. Or in the configuration file:
+On the admin page, **Policy**: tick the rules, choose the secret shield, write the system prompt, set the agent mode rules, add routing rules by workspace pattern. Save. Or in the configuration file:
 
 ```json
 "policy": {
@@ -48,6 +66,11 @@ On the admin page, **Policy**: tick the rules, choose the secret shield, write t
   "lockDefaults": true,
   "secretShield": "always",
   "systemPrompt": "Answer in British English. Prefer the standard library.",
+  "agent": {
+    "commands": "ask",
+    "edits": "review",
+    "blockedPaths": [".env*", "infra/", "secrets/**"]
+  },
   "routing": [
     { "workspace": "payments-*", "localOnly": true },
     { "workspace": "docs", "aliases": ["cheap"] }
@@ -59,8 +82,8 @@ Every rule is optional. A policy with none set is the same as no policy. The sec
 
 ## How it reaches developers
 
-1. **Consent first.** When a developer connects to the team, the policy is shown under "Your team sets a policy" before anything is applied, the system prompt included. Connecting is agreeing to it.
-2. **Re-read at every VS Code start.** A change you save reaches each developer at their next start. If the gateway stops sending a policy, because you removed it or the licence lapsed, they are released from it.
+1. **Consent first.** When a developer connects to the team, the policy is shown under "Your team sets a policy" before anything is applied, the system prompt and agent mode rules included. Connecting is agreeing to it.
+2. **Re-read at every VS Code start.** A change you save reaches each developer at their next start, or for agent mode rules at their next agent reply. If the gateway stops sending a policy, because you removed it or the licence lapsed, they are released from it.
 3. **Visible while it applies.** The Providers tab shows "Managed by your team" with the rules in force and the gateway address.
 4. **Leaving is one click.** The same banner has **Leave team**, which removes the team's provider entries, their key and the policy, and falls back to whatever providers the developer has of their own.
 

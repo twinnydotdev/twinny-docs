@@ -18,7 +18,7 @@ llama-server -m qwen2.5-coder-7b-instruct-q4_k_m.gguf \
 - 如果该服务器还要回答嵌入请求，加上 `--embedding`。
 - 较新版本可用 `-hf user/repo` 直接从 Hugging Face 下载模型。
 
-一个 `llama-server` 只服务一个模型。为不同的补全模型在另一个端口再启动一个：
+用 `-m` 启动时，一个 `llama-server` 只服务一个模型。为不同的补全模型在另一个端口再启动一个，或使用[路由模式](#路由模式)：
 
 ```sh
 llama-server -m qwen2.5-coder-1.5b-q8_0.gguf --port 8081 -c 4096 -ngl 99
@@ -34,7 +34,11 @@ llama-server -m qwen2.5-coder-1.5b-q8_0.gguf --port 8081 -c 4096 -ngl 99
 | 自动补全 | `/completion` | llama.cpp 原生路由，FIM 提示由 twinny 渲染 |
 | 嵌入 | `/embedding` | 服务器需以 `--embedding` 运行 |
 
-对 llama.cpp 来说模型名称仅供参考，因为服务器只加载了一个模型；但设为*自动*时 twinny 仍用它选择 FIM 模板，所以请按系列命名（`qwen2.5-coder-1.5b`）或手动选择模板。
+对单模型服务器来说模型名称仅供参考；但设为*自动*时 twinny 仍用它选择 FIM 模板，所以请按系列命名（`qwen2.5-coder-1.5b`）或手动选择模板。
+
+### 路由模式
+
+路由模式下的 `llama-server` 服务多个模型，并按每个请求中指定的模型来选择。twinny 在补全请求（以及之前的预热）中写明提供者的模型，读取对话的上下文大小时也是如此，且读取不会加载模型。请把模型名称设为路由器认识的模型。单模型服务器会忽略该名称，没有设置模型名称的提供者不会发送。
 
 如果端口不是 8080，在提供者中修改。由于通用的 *OpenAI 兼容服务器*预设也默认 8080，首次运行发现会把响应者优先归为 llama.cpp。
 
