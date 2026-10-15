@@ -12,8 +12,8 @@ A seat is an active access key on the gateway. Every developer has their own key
 | Plan | Seats | Price | Term | Covers |
 | --- | --- | --- | --- | --- |
 | Free | 5 | nothing, forever | permanent | one gateway |
-| Team | the free 5, plus what you buy | $6 per extra seat per month, billed yearly ($72 per extra seat per year) | one year, renewable | one gateway per licence |
-| Enterprise | from 50 | $10 per seat per month, billed yearly | one year, renewable | the organisation: any number of gateways |
+| Team | the free 5, plus what you buy | $15 per extra seat per month, billed yearly ($180 per extra seat per year) | one year, renewable | one gateway per licence |
+| Enterprise | from 50 | $25 per seat per month, billed yearly | one year, renewable | the organisation: any number of gateways |
 
 Every plan includes the admin page, usage per developer, key management, invite links, live configuration, sign-in with a code, team GPU pooling, the secret shield, the audit log, read-only admins and Prometheus metrics. The free plan is not a trial. A licence changes the seat count and switches on [team policy](/twinny-docs/teams/policy/), [recording](/twinny-docs/teams/recording/) and [plugins](/twinny-docs/teams/plugins/): pull requests and issues from GitHub, GitLab, Gitea and Bitbucket reviewed by your own models, Slack, Discord and Teams notifications, SSO sign-in, a shared context index and backups. Team comes with email support; Enterprise with priority support from a named contact and invoice or purchase-order billing.
 
@@ -23,7 +23,7 @@ Every plan includes the admin page, usage per developer, key management, invite 
 
 ## Getting a licence
 
-**Team:** [buy seats](https://buy.stripe.com/eVq00igUndD80qW6AR7Zu00) by card. Choose how many seats you need **beyond the free five** (a team of eight buys three), enter your organisation name, and pay; the page that follows shows your licence token, a single line beginning `twl1.`, and a copy goes to the email you paid with. The subscription renews yearly and a new token is issued for the same licence id; cancelling stops the renewal and the licence runs to its expiry.
+**Team:** [buy seats](https://buy.stripe.com/cNi6oGfQj6aG8Xs3oF7Zu03) by card. Choose how many seats you need **beyond the free five** (a team of eight buys three), enter your organisation name, and pay; the page that follows shows your licence token, a single line beginning `twl1.`, and a copy goes to the email you paid with. The subscription renews yearly and a new token is issued for the same licence id; cancelling stops the renewal and the licence runs to its expiry.
 
 **Enterprise:** use the [contact form](https://twinny.dev/#contact) with your organisation name and the number of seats. You receive a token by email within one business day, with an invoice or against a purchase order.
 
