@@ -43,8 +43,10 @@ Open `http://127.0.0.1:8765/admin`, sign in with the admin key, and check the **
 npx twinny-server init                      # writes ./twinny.gateway.json
 # edit the file: set each alias's "model" to one you have pulled
 npx twinny-server keys create you --admin   # shown once; opens the admin page
-npx twinny-server serve --config ./twinny.gateway.json
+npx twinny-server serve
 ```
+
+After the first run, `npx twinny-server` on its own starts the gateway. Without `--config` it uses the first configuration it finds: `$TWINNY_CONFIG`, then `./twinny.gateway.json`, then the one it served last, then `~/twinny.gateway.json`. If there is none and it runs in a terminal, it runs setup and then serves; outside a terminal it lists where it looked and exits with code 2. `serve` and the admin commands (`keys`, `usage`, `license` and the rest) look the same way, so `--config` is only needed for a file kept somewhere else.
 
 ## 2. Reach it from other machines (HTTPS)
 

@@ -33,7 +33,13 @@ description: 让对话模型在工作区中读取、搜索、编辑文件并运�
 | `move_file`、`delete_file` | 移动、重命名或删除文件 |
 | `run_command` | 在工作区根目录运行 shell 命令，读取退出码和输出 |
 
-一次回答默认最多 12 步，之后模型会被要求用已有信息作答。`twinny.chatToolsMaxSteps`（4 到 40）或[智能体设置](#智能体设置)可以修改。每一步都是对模型的又一次请求。
+一次回答默认最多 30 步，之后模型会被要求用已有信息作答。模型若原地打转，重复三次就会被停下，远早于上限。`twinny.chatToolsMaxSteps`（4 到 40）或[智能体设置](#智能体设置)可以修改上限。每一步都是对模型的又一次请求。
+
+用完所有步数的回答会在页脚标为 **out of steps**，并带有 **Continue** 按钮。Continue 会让智能体带着新的步数和工具已找到的信息回到任务上。
+
+### 中途引导回答
+
+智能体回答进行中时发送的消息，会在模型的下一步被读取，而不必等回答结束。它在输入框上方的队列中显示为 **next step**；模型读取后，它会以 **you** 出现在回答的步骤中。如果模型先完成，这条消息会作为你的下一轮发送。带 `@` 提及或图片的消息仍会等到自己的一轮。
 
 ## 它不能碰的
 
@@ -106,7 +112,7 @@ description: 让对话模型在工作区中读取、搜索、编辑文件并运�
 | changes | `apply` 或 `review`（`twinny.chatToolsEdits`） |
 | commands | `ask`、`run` 或 `off`；`run` 即自动运行开关 |
 | run in | `background` 或 `terminal`（`twinny.chatToolsCommandsRunIn`） |
-| steps per reply | 8、12、20 或 30（`twinny.chatToolsMaxSteps`） |
+| steps per reply | 12、20、30 或 40（`twinny.chatToolsMaxSteps`） |
 
 **ask again** 清除设为总是运行的命令和 MCP 工具。面板还会显示设置了多少个 [MCP 服务器](#mcp-服务器)，并链接到全部智能体设置。你的[团队](/twinny-docs/teams/policy/#agent-mode)设定的规则会标为由团队设定，无法在此放宽。
 
@@ -153,7 +159,7 @@ description: 让对话模型在工作区中读取、搜索、编辑文件并运�
 | `twinny.chatToolsEdits` | `apply` | `apply` 直接写入编辑；`review` 把每次编辑作为 diff 打开 |
 | `twinny.chatToolsCommands` | `ask` | `ask`、`allow` 或 `off`；自动运行开关的初始状态 |
 | `twinny.chatToolsCommandsRunIn` | `background` | `background` 在独立进程中运行命令；`terminal` 在 twinny tools 终端中运行 |
-| `twinny.chatToolsMaxSteps` | `12` | 一次回答在模型被要求作答前最多可用的工具步数，4 到 40 |
+| `twinny.chatToolsMaxSteps` | `30` | 一次回答在模型被要求作答前最多可用的工具步数，4 到 40 |
 | `twinny.chatToolsMcpServers` | `{}` | 智能体模式可使用其工具的 MCP 服务器，按名称配置 |
 
 这六项都是机器级设置：请在用户设置中设置。工作区无法添加 MCP 服务器。
