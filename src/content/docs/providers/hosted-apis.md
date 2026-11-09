@@ -21,8 +21,9 @@ Chat with a hosted API goes through the vendor's SDK to its fixed endpoint, so t
 | Groq | ✓ | | | [console.groq.com](https://console.groq.com/) |
 | Cohere | ✓ | | | [dashboard.cohere.com](https://dashboard.cohere.com/) |
 | Perplexity | ✓ | | | [perplexity.ai/settings/api](https://www.perplexity.ai/settings/api) |
+| DemonRoute | ✓ | | | A DemonRoute account |
 
-Anthropic, Groq, Cohere, Perplexity and Gemini are chat-only: they have no completions endpoint twinny can drive with a fill-in-the-middle prompt. The form will not let you create an autocomplete provider for them.
+Anthropic, Groq, Cohere, Perplexity, Gemini and DemonRoute are chat-only: they have no completions endpoint twinny can drive with a fill-in-the-middle prompt. The form will not let you create an autocomplete provider for them.
 
 In [agent mode](/twinny-docs/features/agent-mode/), tools go through the vendor's own tool calling where the SDK supports it (OpenAI, Anthropic, Gemini, Mistral, Groq, OpenRouter); OpenAI conversations with tools use its Responses API (`/v1/responses`). Perplexity is asked to write its tool calls in the reply instead.
 
@@ -33,16 +34,17 @@ In [agent mode](/twinny-docs/features/agent-mode/), tools go through the vendor'
 | Provider | Default chat model | Notes |
 | --- | --- | --- |
 | OpenAI | `gpt-4.1` | Embeddings preset uses `text-embedding-3-small` |
-| Anthropic | `claude-sonnet-4-20250514` | |
-| DeepSeek | `deepseek-chat` | Completion uses the same key with `/beta/completions`; `deepseek-coder` models work for FIM |
-| Gemini | `gemini-2.5-pro-preview-05-06` | |
+| Anthropic | `claude-sonnet-5-5` | |
+| DeepSeek | `deepseek-flash` | Completion uses the same key with `/beta/completions`; `deepseek-coder` models work for FIM |
+| Gemini | `gemini-3.8-flash` | |
 | Groq | `llama-3.3-70b-versatile` | Very fast; good for chat with open models |
 | Mistral | `mistral-small-latest` | The **Codestral** preset (`codestral-latest`) is the recommended hosted autocomplete model |
 | OpenRouter | `openai/gpt-4.1` | One key for hundreds of models; names are `vendor/model` |
-| Cohere | `command-r-plus` | |
-| Perplexity | `llama-3.1-sonar-small-128k-online` | Answers can include web search results |
+| Cohere | `command-a-plus-05-2026` | |
+| Perplexity | `sonar` | Answers can include web search results |
+| DemonRoute | `shoukewei/Qwen3.8-27B-OBLITERATED22-AGENT` | An OpenAI-compatible service at `api.demonroute.com`; any model on your key can be picked instead |
 
-Model names change as vendors release new ones; use whatever the vendor's documentation lists. twinny does not validate hosted model names until a request is made, and a wrong name comes back as a *model not found* error.
+Model names change as vendors release new ones. For most hosted APIs twinny accepts the models in its own list, which the model dropdown shows: a name it does not know is refused with *Invalid 'model' field* before any request is made, and newer models arrive with twinny updates. OpenRouter and DemonRoute take any name, and a wrong one comes back from the vendor as a *model not found* error.
 
 ## ChatGPT Plan
 

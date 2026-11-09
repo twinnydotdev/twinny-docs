@@ -21,8 +21,9 @@ description: 在 twinny 中使用 OpenAI、ChatGPT 订阅、Anthropic、Mistral�
 | Groq | ✓ | | | [console.groq.com](https://console.groq.com/) |
 | Cohere | ✓ | | | [dashboard.cohere.com](https://dashboard.cohere.com/) |
 | Perplexity | ✓ | | | [perplexity.ai/settings/api](https://www.perplexity.ai/settings/api) |
+| DemonRoute | ✓ | | | DemonRoute 账户 |
 
-Anthropic、Groq、Cohere、Perplexity 和 Gemini 仅支持对话：它们没有 twinny 可以用 fill-in-the-middle 提示驱动的 completions 端点。表单不允许为它们创建自动补全提供者。
+Anthropic、Groq、Cohere、Perplexity、Gemini 和 DemonRoute 仅支持对话：它们没有 twinny 可以用 fill-in-the-middle 提示驱动的 completions 端点。表单不允许为它们创建自动补全提供者。
 
 在[智能体模式](/twinny-docs/zh-cn/features/agent-mode/)中，只要 SDK 支持，工具就通过供应商自己的工具调用传递（OpenAI、Anthropic、Gemini、Mistral、Groq、OpenRouter）；带工具的 OpenAI 对话使用其 Responses API（`/v1/responses`）。Perplexity 则被要求把工具调用写在回复中。
 
@@ -33,16 +34,17 @@ Anthropic、Groq、Cohere、Perplexity 和 Gemini 仅支持对话：它们没有
 | 提供者 | 默认对话模型 | 说明 |
 | --- | --- | --- |
 | OpenAI | `gpt-4.1` | 嵌入预设使用 `text-embedding-3-small` |
-| Anthropic | `claude-sonnet-4-20250514` | |
-| DeepSeek | `deepseek-chat` | 补全使用同一密钥和 `/beta/completions`；`deepseek-coder` 模型可用于 FIM |
-| Gemini | `gemini-2.5-pro-preview-05-06` | |
+| Anthropic | `claude-sonnet-5-5` | |
+| DeepSeek | `deepseek-flash` | 补全使用同一密钥和 `/beta/completions`；`deepseek-coder` 模型可用于 FIM |
+| Gemini | `gemini-3.8-flash` | |
 | Groq | `llama-3.3-70b-versatile` | 非常快；适合用开源模型对话 |
 | Mistral | `mistral-small-latest` | **Codestral** 预设（`codestral-latest`）是推荐的托管自动补全模型 |
 | OpenRouter | `openai/gpt-4.1` | 一个密钥用数百个模型；名称为 `vendor/model` |
-| Cohere | `command-r-plus` | |
-| Perplexity | `llama-3.1-sonar-small-128k-online` | 回答可包含网页搜索结果 |
+| Cohere | `command-a-plus-05-2026` | |
+| Perplexity | `sonar` | 回答可包含网页搜索结果 |
+| DemonRoute | `shoukewei/Qwen3.8-27B-OBLITERATED22-AGENT` | 位于 `api.demonroute.com` 的 OpenAI 兼容服务；也可以改选你的密钥可用的任何模型 |
 
-供应商发布新模型时名称会变化；以供应商文档列出的为准。twinny 在发出请求前不会校验托管模型名称，名称错误会返回*模型未找到*错误。
+供应商发布新模型时名称会变化。大多数托管 API 只接受 twinny 自带列表中的模型（即模型下拉菜单所列）：列表外的名称会在发出请求前被拒绝，报 *Invalid 'model' field*，新模型随 twinny 更新加入。OpenRouter 和 DemonRoute 接受任何名称，名称错误会由供应商返回*模型未找到*错误。
 
 ## ChatGPT Plan
 

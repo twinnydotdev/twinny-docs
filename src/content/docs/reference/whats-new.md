@@ -5,6 +5,29 @@ description: The features added to twinny in each release, with links to their p
 
 The full list of changes, fixes included, is in [CHANGELOG.md](https://github.com/twinnydotdev/twinny/blob/main/CHANGELOG.md) in the repository and on the extension's Marketplace page. This page is the short version: what you can do now that you could not before.
 
+## 4.3.17 · 9 November 2026
+
+- **Current models for [hosted APIs](/twinny-docs/providers/hosted-apis/#presets).** Gemini's current models, Mistral Large 4 and Claude Haiku 5.5 are accepted; until now twinny refused them before sending anything. New hosted providers start on current models (`claude-sonnet-5-5`, `gemini-3.8-flash`, `deepseek-flash`, `command-a-plus-05-2026`, `sonar`). A provider saved with a retired model name now shows *Invalid 'model' field*: pick one from the list.
+- **Autocomplete with the twinny log open.** With debug logging on and the Output panel showing twinny's log, suggestions were cancelled as each log line was written. They no longer are.
+- **[Plugin](/twinny-docs/teams/plugins/#open-pull-requests-in-one-place) pages:** the **open ↗** link stays in view when the pull request table is wider than the window, and **waiting for me** works again after an expired GitHub token is replaced.
+
+## 4.3.16 · 3 November 2026
+
+- **[`twinny-server` without `--config`](/twinny-docs/teams/gateway/#the-same-step-by-step).** It uses the first configuration it finds, `$TWINNY_CONFIG`, `./twinny.gateway.json`, the one it served last or `~/twinny.gateway.json`, and runs setup when there is none.
+- **A new look for the admin page** and a clearer start-up screen in a colour terminal.
+- **[Workspace index](/twinny-docs/features/workspace-index/) fixes**, contributed by [@DivyamTalwar](https://github.com/DivyamTalwar): each workspace keeps its own index, emptied files drop out of search, and index saves no longer fail with `ENOENT`.
+
+## 4.3.15 · 16 October 2026
+
+- **[Steer the agent mid-reply](/twinny-docs/features/agent-mode/#steering-a-reply).** A message sent while an agent reply works is read at its next step.
+- **[30 tool steps per reply](/twinny-docs/features/agent-mode/#what-the-model-can-do) by default**, up from 12, a stop after three repeated steps, and **Continue** when a reply runs out of steps.
+- **Edit misses show the nearest lines**, so small models land their next edit without reading the file again.
+- **The sidebar reads like VS Code:** its UI font for prose, the editor's monospace for code, greyscale controls, and code highlighting that follows light themes.
+
+## 4.3.14 · 15 October 2026
+
+- **[DemonRoute](/twinny-docs/providers/hosted-apis/#presets)** among the hosted chat presets, contributed by [@haterfactory](https://github.com/haterfactory).
+
 ## 4.3.13 · 15 October 2026
 
 - **Gateway: Buy seats goes to [twinny.dev's pricing](https://twinny.dev/#pricing)** instead of a payment link built into `twinny-server`, so a change of price or checkout needs no new release. Team seats are $15 a seat a month, billed yearly; see [Licensing and seats](/twinny-docs/teams/licensing/).

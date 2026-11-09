@@ -33,7 +33,13 @@ Agent mode needs a folder open. With several folders in the workspace, the tools
 | `move_file`, `delete_file` | Move, rename or delete a file |
 | `run_command` | Run a shell command from the workspace root and read its exit code and output |
 
-A reply takes at most 12 steps by default; then the model is asked to answer with what it has. `twinny.chatToolsMaxSteps` (4 to 40) or the [agent settings](#agent-settings) change that. Each step is another request to the model.
+A reply takes at most 30 steps by default; then the model is asked to answer with what it has. A model going round in circles is stopped after three repeats, long before that. `twinny.chatToolsMaxSteps` (4 to 40) or the [agent settings](#agent-settings) change the limit. Each step is another request to the model.
+
+A reply that used every step is marked **out of steps** in its footer, with a **Continue** button. Continue sends the agent back to the task with a fresh set of steps and what its tools found so far.
+
+### Steering a reply
+
+A message you send while an agent reply is working is read by the model at its next step, rather than waiting until the reply ends. In the queue above the composer it shows as **next step**; once the model has read it, it appears in the reply's steps as **you**. If the model finishes first, the message goes as your next turn. A message with `@` mentions or images waits for its own turn.
 
 ## What it may not touch
 
@@ -106,7 +112,7 @@ With agent mode on, a gear beside the agent switch opens what agent mode may do:
 | changes | `apply` or `review` (`twinny.chatToolsEdits`) |
 | commands | `ask`, `run` or `off`; `run` is the auto-run switch |
 | run in | `background` or `terminal` (`twinny.chatToolsCommandsRunIn`) |
-| steps per reply | 8, 12, 20 or 30 (`twinny.chatToolsMaxSteps`) |
+| steps per reply | 12, 20, 30 or 40 (`twinny.chatToolsMaxSteps`) |
 
 **ask again** forgets the commands and MCP tools set to always run. The panel also says how many [MCP servers](#mcp-servers) are set, and links to all the agent settings. A rule your [team](/twinny-docs/teams/policy/#agent-mode) sets shows as set by your team and cannot be loosened there.
 
@@ -153,7 +159,7 @@ Tool results go through the [secret shield](/twinny-docs/features/status-and-log
 | `twinny.chatToolsEdits` | `apply` | `apply` writes edits straight away; `review` opens each as a diff |
 | `twinny.chatToolsCommands` | `ask` | `ask`, `allow` or `off`; where the auto-run switch starts |
 | `twinny.chatToolsCommandsRunIn` | `background` | `background` runs commands in a process of their own; `terminal` in the twinny tools terminal |
-| `twinny.chatToolsMaxSteps` | `12` | Tool steps one reply may take before the model is asked to answer, 4 to 40 |
+| `twinny.chatToolsMaxSteps` | `30` | Tool steps one reply may take before the model is asked to answer, 4 to 40 |
 | `twinny.chatToolsMcpServers` | `{}` | MCP servers whose tools agent mode can use, by name |
 
 All six are machine settings: set them in your user settings. A workspace cannot add an MCP server.
