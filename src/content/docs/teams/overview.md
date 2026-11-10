@@ -26,7 +26,7 @@ twinny is free and open source for individuals, and stays that way. Teams get on
 
 | | Free | Personal | Team | Enterprise |
 | --- | --- | --- | --- | --- |
-| Developers (active keys) | up to 5 | you, on up to 5 keys | the free 5, plus the seats you buy | from 50 |
+| Developers (active keys) | up to 5 | 1: you, on all your machines | the free 5, plus the seats you buy | from 50 |
 | Everything above | yes | yes | yes | yes |
 | [Team policy](/twinny-docs/teams/policy/): team-only providers, locked defaults, routing rules, a team system prompt | no | yes | yes | yes |
 | [Recording](/twinny-docs/teams/recording/): keep chat, autocomplete and embedding content; review it; export training data | no | yes | yes | yes |

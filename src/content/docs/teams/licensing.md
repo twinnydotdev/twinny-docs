@@ -12,7 +12,7 @@ A seat is an active access key on the gateway. Every developer has their own key
 | Plan | Seats | Price | Term | Covers |
 | --- | --- | --- | --- | --- |
 | Free | 5 | nothing, forever | permanent | one gateway |
-| Personal | the free 5, for one person | $29 once | for good, with every future update | one gateway |
+| Personal | 1, for one person (in place of the free 5) | $29 once | for good, with every future update | one gateway |
 | Team | the free 5, plus what you buy | $15 per extra seat per month, billed yearly ($180 per extra seat per year) | one year, renewable | one gateway per licence |
 | Enterprise | from 50 | $25 per seat per month, billed yearly | one year, renewable | the organisation: any number of gateways |
 
@@ -24,7 +24,7 @@ Every plan includes the admin page, usage per developer, key management, invite 
 
 ## Getting a licence
 
-**Personal:** [buy it](https://buy.stripe.com/3cI5kCbA32Yu4Hc5wN7Zu07) for $29, paid once. The page that follows shows your licence token, and a copy goes to the email you paid with. It is licensed to you by name, carries the free five seats with policy, recording and plugins, and does not expire, so there is nothing to renew.
+**Personal:** [buy it](https://buy.stripe.com/3cI5kCbA32Yu4Hc5wN7Zu07) for $29, paid once. The page that follows shows your licence token, and a copy goes to the email you paid with. It is licensed to you by name, carries one seat with policy, recording and plugins, and does not expire, so there is nothing to renew. One key works on every machine you use, so one seat is all one person needs. It takes the place of the free five: while it is installed the gateway allows one active key. Remove it (`twinny-server license remove`) and the free plan's five come back. Gateways older than 4.3.19 still allow five.
 
 **Team:** [buy seats](https://buy.stripe.com/cNi6oGfQj6aG8Xs3oF7Zu03) by card. Choose how many seats you need **beyond the free five** (a team of eight buys three), enter your organisation name, and pay; the page that follows shows your licence token, a single line beginning `twl1.`, and a copy goes to the email you paid with. The subscription renews yearly and a new token is issued for the same licence id; cancelling stops the renewal and the licence runs to its expiry.
 
@@ -73,7 +73,7 @@ After each renewal, copy the new token from your licence page or renewal email a
 
 **Does a seat count keys or people?** Keys. One key per person is the intent, and the admin page makes that easy, but the gateway does not know or care who is behind a key.
 
-**Can my company use a Personal licence?** No. Personal is for one person's own gateway: your laptop, desktop and home server. A gateway shared by a team, or paid for by a company, needs Team.
+**Can my company use a Personal licence?** No. Personal is one person on their own gateway, with one key. A gateway shared by a team, or paid for by a company, needs Team.
 
 **What about several gateways?** A Team licence is per gateway: buy seats for each. An Enterprise licence covers the organisation, so one token goes on every gateway.
 
