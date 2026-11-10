@@ -5,6 +5,10 @@ description: The features added to twinny in each release, with links to their p
 
 The full list of changes, fixes included, is in [CHANGELOG.md](https://github.com/twinnydotdev/twinny/blob/main/CHANGELOG.md) in the repository and on the extension's Marketplace page. This page is the short version: what you can do now that you could not before.
 
+## 4.3.19 · 10 November 2026
+
+- **[Personal licence](/twinny-docs/teams/licensing/), $29 once.** One person gets policy, recording and plugins on their own gateway, for good. `twinny-server` holds a Personal licence to its one key, in place of the free five; removing it brings the five back. A licence that does not expire says "for good" instead of a date.
+
 ## 4.3.17 · 9 November 2026
 
 - **Current models for [hosted APIs](/twinny-docs/providers/hosted-apis/#presets).** Gemini's current models, Mistral Large 4 and Claude Haiku 5.5 are accepted; until now twinny refused them before sending anything. New hosted providers start on current models (`claude-sonnet-5-5`, `gemini-3.8-flash`, `deepseek-flash`, `command-a-plus-05-2026`, `sonar`). A provider saved with a retired model name now shows *Invalid 'model' field*: pick one from the list.
