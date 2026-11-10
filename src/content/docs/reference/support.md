@@ -5,7 +5,7 @@ description: Buy a licence, or other ways to support the twinny project.
 
 Thanks for using twinny!
 
-twinny is free and open source under the MIT licence, and will stay that way. If it has been useful to you, the best way to support it is to **buy a licence**: [Team seats](https://twinny.dev/#pricing) for a gateway with more than five developers, or [Enterprise](https://twinny.dev/#contact) for the whole organisation. A licence adds seats and switches on [team policy](/twinny-docs/teams/policy/), [recording](/twinny-docs/teams/recording/) and [plugins](/twinny-docs/teams/plugins/); see [Licensing and seats](/twinny-docs/teams/licensing/). Not sure yet? A [30-day trial](https://twinny.dev/#trial) needs no card.
+twinny is free and open source under the MIT licence, and will stay that way. If it has been useful to you, the best way to support it is to **buy a licence**: [Personal](https://twinny.dev/#pricing) for $29 once, if you work on your own, [Team seats](https://twinny.dev/#pricing) for a gateway with more than five developers, or [Enterprise](https://twinny.dev/#contact) for the whole organisation. A licence adds seats and switches on [team policy](/twinny-docs/teams/policy/), [recording](/twinny-docs/teams/recording/) and [plugins](/twinny-docs/teams/plugins/); see [Licensing and seats](/twinny-docs/teams/licensing/). Not sure yet? A [30-day trial](https://twinny.dev/#trial) needs no card.
 
 Other ways to give back:
 
