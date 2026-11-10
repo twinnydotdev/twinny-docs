@@ -3,7 +3,7 @@ title: Licensing and seats
 description: The free plan, what a seat is, how to get and install a licence, and what happens when it lapses.
 ---
 
-The twinny extension is MIT licensed and free for everyone. So is the gateway, `twinny-server`, for teams of up to five. Those five seats stay free for good: a bigger team buys only the **seats** beyond them.
+The twinny extension is MIT licensed and free for everyone. So is the gateway, `twinny-server`, for teams of up to five. Those five seats stay free for good: a bigger team buys only the **seats** beyond them. One person who wants the licence features on their own gateway buys **Personal**, once.
 
 ## Seats
 
@@ -12,16 +12,19 @@ A seat is an active access key on the gateway. Every developer has their own key
 | Plan | Seats | Price | Term | Covers |
 | --- | --- | --- | --- | --- |
 | Free | 5 | nothing, forever | permanent | one gateway |
+| Personal | the free 5, for one person | $29 once | for good, with every future update | one gateway |
 | Team | the free 5, plus what you buy | $15 per extra seat per month, billed yearly ($180 per extra seat per year) | one year, renewable | one gateway per licence |
 | Enterprise | from 50 | $25 per seat per month, billed yearly | one year, renewable | the organisation: any number of gateways |
 
-Every plan includes the admin page, usage per developer, key management, invite links, live configuration, sign-in with a code, team GPU pooling, the secret shield, the audit log, read-only admins and Prometheus metrics. The free plan is not a trial. A licence changes the seat count and switches on [team policy](/twinny-docs/teams/policy/), [recording](/twinny-docs/teams/recording/) and [plugins](/twinny-docs/teams/plugins/): pull requests and issues from GitHub, GitLab, Gitea and Bitbucket reviewed by your own models, Slack, Discord and Teams notifications, SSO sign-in, a shared context index and backups. Team comes with email support; Enterprise with priority support from a named contact and invoice or purchase-order billing.
+Every plan includes the admin page, usage per developer, key management, invite links, live configuration, sign-in with a code, team GPU pooling, the secret shield, the audit log, read-only admins and Prometheus metrics. The free plan is not a trial. A licence changes the seat count and switches on [team policy](/twinny-docs/teams/policy/), [recording](/twinny-docs/teams/recording/) and [plugins](/twinny-docs/teams/plugins/): pull requests and issues from GitHub, GitLab, Gitea and Bitbucket reviewed by your own models, Slack, Discord and Teams notifications, SSO sign-in, a shared context index and backups. Personal comes with support through GitHub issues, Team with email support; Enterprise with priority support from a named contact and invoice or purchase-order billing.
 
 ## Trying it first
 
 [twinny.dev/#trial](https://twinny.dev/#trial) issues a **30-day Team trial** by email: 25 seats, policy, recording and plugins, no card. Install it like any token. When it expires the gateway goes back to the free plan after the usual grace; nothing is deleted, and seats bought afterwards carry on from where you were. One trial per email address; if a month is not enough, say so through the [contact form](https://twinny.dev/#contact).
 
 ## Getting a licence
+
+**Personal:** [buy it](https://buy.stripe.com/3cI5kCbA32Yu4Hc5wN7Zu07) for $29, paid once. The page that follows shows your licence token, and a copy goes to the email you paid with. It is licensed to you by name, carries the free five seats with policy, recording and plugins, and does not expire, so there is nothing to renew.
 
 **Team:** [buy seats](https://buy.stripe.com/cNi6oGfQj6aG8Xs3oF7Zu03) by card. Choose how many seats you need **beyond the free five** (a team of eight buys three), enter your organisation name, and pay; the page that follows shows your licence token, a single line beginning `twl1.`, and a copy goes to the email you paid with. The subscription renews yearly and a new token is issued for the same licence id; cancelling stops the renewal and the licence runs to its expiry.
 
@@ -56,6 +59,8 @@ The token carries your organisation name, the seat count, the dates and the feat
 
 ## When it lapses
 
+A Personal licence does not expire, so none of this applies to it.
+
 - **30 days before expiry** the admin page, the startup banner and the log say so.
 - **After expiry** there are 14 days of grace during which the licensed seat count, policy, recording and plugins still apply.
 - **After the grace** the free plan applies and paid policy, recording and plugins are disabled. Existing keys are not deleted: the five oldest keep their seats, and the rest are refused with "This gateway key has no seat" until the licence is renewed or keys are revoked. The admin key made on day one is the oldest, so an operator is never locked out of their own gateway.
@@ -67,6 +72,8 @@ After each renewal, copy the new token from your licence page or renewal email a
 **Can I try more than five before buying?** Yes: the [30-day trial](https://twinny.dev/#trial) is a full Team token, issued by email in a minute.
 
 **Does a seat count keys or people?** Keys. One key per person is the intent, and the admin page makes that easy, but the gateway does not know or care who is behind a key.
+
+**Can my company use a Personal licence?** No. Personal is for one person's own gateway: your laptop, desktop and home server. A gateway shared by a team, or paid for by a company, needs Team.
 
 **What about several gateways?** A Team licence is per gateway: buy seats for each. An Enterprise licence covers the organisation, so one token goes on every gateway.
 

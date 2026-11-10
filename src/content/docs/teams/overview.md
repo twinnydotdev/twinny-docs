@@ -24,19 +24,19 @@ twinny is free and open source for individuals, and stays that way. Teams get on
 
 ## Plans
 
-| | Free | Team | Enterprise |
-| --- | --- | --- | --- |
-| Developers (active keys) | up to 5 | the free 5, plus the seats you buy | from 50 |
-| Everything above | yes | yes | yes |
-| [Team policy](/twinny-docs/teams/policy/): team-only providers, locked defaults, routing rules, a team system prompt | no | yes | yes |
-| [Recording](/twinny-docs/teams/recording/): keep chat, autocomplete and embedding content; review it; export training data | no | yes | yes |
-| [Plugins](/twinny-docs/teams/plugins/): pull requests and issues from GitHub, GitLab, Gitea and Bitbucket reviewed by your own models; Slack, Discord and Teams notifications; SSO sign-in; shared context; backups | no | yes | yes |
-| Gateways covered | one | one per licence | any number, one organisation licence |
-| Support | community (GitHub discussions) | email | priority, with a named contact |
-| Runs where | your machine | your machine | your machines |
-| Cost | nothing, forever | $15 per seat beyond the free 5, per month, billed yearly | $25 per seat per month, billed yearly |
+| | Free | Personal | Team | Enterprise |
+| --- | --- | --- | --- | --- |
+| Developers (active keys) | up to 5 | you, on up to 5 keys | the free 5, plus the seats you buy | from 50 |
+| Everything above | yes | yes | yes | yes |
+| [Team policy](/twinny-docs/teams/policy/): team-only providers, locked defaults, routing rules, a team system prompt | no | yes | yes | yes |
+| [Recording](/twinny-docs/teams/recording/): keep chat, autocomplete and embedding content; review it; export training data | no | yes | yes | yes |
+| [Plugins](/twinny-docs/teams/plugins/): pull requests and issues from GitHub, GitLab, Gitea and Bitbucket reviewed by your own models; Slack, Discord and Teams notifications; SSO sign-in; shared context; backups | no | yes | yes | yes |
+| Gateways covered | one | one | one per licence | any number, one organisation licence |
+| Support | community (GitHub discussions) | GitHub issues | email | priority, with a named contact |
+| Runs where | your machine | your machine | your machine | your machines |
+| Cost | nothing, forever | $29 once, for good | $15 per seat beyond the free 5, per month, billed yearly | $25 per seat per month, billed yearly |
 
-A **seat** is an active key. The free plan is not a trial: a team of five runs the gateway with no licence, indefinitely, with everything the gateway does: the admin page, usage per developer, keys, invite links, team GPU pooling, live provider configuration, the audit log and metrics. Beyond five, a licence token from twinny raises the seat count and switches on policy, recording and plugins. The token is installed once and checked locally; the gateway never phones home. Enterprise adds one licence for the whole organisation, priority support from a named contact, and invoice or purchase-order billing. See [Licensing and seats](/twinny-docs/teams/licensing/).
+A **seat** is an active key. The free plan is not a trial: a team of five runs the gateway with no licence, indefinitely, with everything the gateway does: the admin page, usage per developer, keys, invite links, team GPU pooling, live provider configuration, the audit log and metrics. Beyond five, a licence token from twinny raises the seat count and switches on policy, recording and plugins. The token is installed once and checked locally; the gateway never phones home. Personal gives one person policy, recording and plugins on their own gateway for a single payment. Enterprise adds one licence for the whole organisation, priority support from a named contact, and invoice or purchase-order billing. See [Licensing and seats](/twinny-docs/teams/licensing/).
 
 ## Where to start
 
