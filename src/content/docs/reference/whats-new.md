@@ -5,6 +5,15 @@ description: The features added to twinny in each release, with links to their p
 
 The full list of changes, fixes included, is in [CHANGELOG.md](https://github.com/twinnydotdev/twinny/blob/main/CHANGELOG.md) in the repository and on the extension's Marketplace page. This page is the short version: what you can do now that you could not before.
 
+## 4.3.21 · 12 November 2026
+
+- **Suggestions in the [chat composer](/twinny-docs/features/chat/#the-composer) that show up.** A short pause anywhere in a message, the first of a conversation included and in the middle of a word too, asks a model for the rest of it; until now that took a reply, a space and a longer pause. Three dots after the cursor show while it is asked. The single next-word guess is gone.
+- **Composer settings.** The text-size button beside Send chooses words, sentences or both, which provider and model writes the sentences, and the size of the text you type, and says which model was asked and how the last ask went.
+
+## 4.3.20 · 11 November 2026
+
+- **Faster [completions](/twinny-docs/features/code-completion/) from a local model.** The model's server reuses more of each prompt from one request to the next, and while a suggestion is on screen the completion for the line after it is asked for, so accepting and pressing Enter shows the next one at once. `twinny.prefetchNextCompletion` turns the second off.
+
 ## 4.3.19 · 10 November 2026
 
 - **[Personal licence](/twinny-docs/teams/licensing/), $29 once.** One person gets policy, recording and plugins on their own gateway, for good. `twinny-server` holds a Personal licence to its one key, in place of the free five; removing it brings the five back. A licence that does not expire says "for good" instead of a date.
